@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/constants/app_constants.dart';
-import 'package:flutter_e_commerce/features/auth/presentations/views/login/login_screen.dart';
+import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/features/on_boarding/data/statics/on_boarding_statics.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/view_models/controllers/on_boarding_controller.dart';
 import 'package:get/get.dart';
@@ -12,7 +12,7 @@ class OnBoardingControllerImp extends OnBoardingController{
       currentPage++;
       pageController.animateToPage(currentPage, duration: AppConstants.transitionDuration, curve: Curves.easeInOut);
     }else{
-      Get.to(()=>const LoginScreen());
+      Get.offAllNamed(AppRouteKeys.login);
     }
   }
 

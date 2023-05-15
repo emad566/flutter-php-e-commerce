@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce/app_routes.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
 import 'package:get/get.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const OnBoardingScreen(),
+      routes: AppRoutes.routes,
     );
   }
 }
