@@ -69,6 +69,8 @@ dependencies:
   timelines: ^0.1.0
   flutter_ringtone_player: ^3.2.0
 
+  google_fonts: ^4.0.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -81,7 +83,7 @@ flutter:
     - assets/images/
     - assets/images/avatar.png
     - assets/lottie/
-    - assets/svg/
+#    - assets/svg/
 
   fonts:
     - family: Cairo
