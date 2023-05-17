@@ -1,14 +1,13 @@
 import 'package:flutter_e_commerce/core/constants/app_paths.dart';
-import 'package:flutter_e_commerce/core/localization/en_tr.dart';
 import 'package:flutter_e_commerce/features/on_boarding/data/models/on_boarding_model.dart';
-
-abstract class OnBoardingStatics{
-  static List<OnBoardingModel> onBoardingList = [
+import 'package:get/get.dart';
+class OnBoardingStatics{
+  static List<OnBoardingModel> get onBoardingList => [
     OnBoardingModel(
-        title: enTr["2"], body: enTr["3"], image: AppPaths.onBoardingImageOne),
+        title: '2'.tr, body: '3'.tr, image: AppPaths.onBoardingImageOne),
     OnBoardingModel(
-        title: enTr["4"], body: enTr["5"], image: AppPaths.onBoardingImageTwo),
+        title: '4'.tr, body: '5'.tr, image: AppPaths.onBoardingImageTwo),
     OnBoardingModel(
-        title: enTr["6"], body: enTr["7"], image: AppPaths.onBoardingImageThree),
+        title: '6'.tr, body: '7'.tr, image: AppPaths.onBoardingImageThree),
   ];
 }

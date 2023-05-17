@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
+import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/view_models/controllers/on_boarding_controller_imp.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/widgets/on_boarding_dot_controller.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/widgets/on_boarding_button.dart';
@@ -14,8 +15,9 @@ class OnBoardingScreen extends StatelessWidget {
     Get.put(OnBoardingControllerImp());
 
     SizeConfig().init(context);
-    return  const Scaffold(
-      body: SafeArea(
+    return  Scaffold(
+      backgroundColor: ThemeColors.primaryBg,
+      body: const SafeArea(
         child: Column(
           children: [
             Expanded(

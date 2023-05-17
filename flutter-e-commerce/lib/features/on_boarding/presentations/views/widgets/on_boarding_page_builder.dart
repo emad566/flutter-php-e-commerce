@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/core/constants/app_styles.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/features/on_boarding/data/models/on_boarding_model.dart';
@@ -26,21 +25,22 @@ class OnBoardingPageBuilder extends GetView<OnBoardingControllerImp> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              onBoardingList.title!,
-              style: AppStyles.style20Bold,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 80,),
+            const SizedBox(height: 40,),
             Image.asset(
               onBoardingList.image!,
               width: 200,
-              height: SizeConfig.screenHeight * 0.30,
+              height: SizeConfig.screenHeight * 0.45,
             ),
-            const SizedBox(height: 80,),
+            const SizedBox(height: 20,),
+            Text(
+              onBoardingList.title!,
+              style: Theme.of(context).textTheme.headlineLarge,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 30,),
             Text(
               onBoardingList.body!,
-              style: AppStyles.style18.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: ThemeColors.secondaryText,
                 height: 2,
               ),

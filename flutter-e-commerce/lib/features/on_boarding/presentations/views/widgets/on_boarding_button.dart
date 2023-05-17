@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/core/constants/app_styles.dart';
-import 'package:flutter_e_commerce/core/localization/en_tr.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/view_models/controllers/on_boarding_controller_imp.dart';
@@ -23,8 +21,8 @@ class OnBoardingButton extends GetView<OnBoardingControllerImp>{
         height: 40,
         color: ThemeColors.primaryClr,
         child: Text(
-          enTr['8']!,
-          style: AppStyles.style16Bold.copyWith(
+          '8'.tr,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
             color: ThemeColors.white,
           ),
         ),
