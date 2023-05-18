@@ -2,29 +2,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:get/get.dart';
 
-abstract class LoginController extends GetxController{
+abstract class ForgetPasswordController extends GetxController{
   late TextEditingController emailController;
-  late TextEditingController passwordController;
-  void login();
+  void forgetPassword();
   void goToSignUp();
-  void goToForgetPassword();
+  void goToLogin();
+  void goToVerifyCode();
 }
 
-class LoginControllerImp extends LoginController{
+class ForgetPasswordControllerImp extends ForgetPasswordController{
 
   @override
-  void goToForgetPassword() {
-    Get.toNamed(AppRouteKeys.forgetPassword);
+  void goToLogin() {
+    Get.offAllNamed(AppRouteKeys.login);
   }
 
   @override
   void goToSignUp() {
-    Get.toNamed(AppRouteKeys.signUp);
+    Get.offAndToNamed(AppRouteKeys.signUp);
   }
 
   @override
-  void login() {
+  void forgetPassword() {
     // TODO: implement login
+  }
+
+  @override
+  void goToVerifyCode() {
+    Get.toNamed(AppRouteKeys.verifyCode);
   }
 
 
@@ -32,14 +37,12 @@ class LoginControllerImp extends LoginController{
   void onInit() {
     super.onInit();
     emailController = TextEditingController();
-    passwordController = TextEditingController();
   }
 
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
-    passwordController.dispose();
   }
 
 }

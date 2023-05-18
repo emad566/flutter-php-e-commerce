@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:get/get.dart';
 
 abstract class SignUpController extends GetxController{
@@ -16,17 +17,17 @@ class SignUpControllerImp extends SignUpController{
 
   @override
   void goToForgetPassword() {
-    // TODO: implement goToForgetPassword
+    Get.offAndToNamed(AppRouteKeys.forgetPassword);
   }
  
   @override
   void goToLogIn() {
-    Get.back();
+    Get.offAllNamed(AppRouteKeys.login);
   }
 
   @override
   void signUp() {
-    // TODO: implement login
+
   }
 
 
