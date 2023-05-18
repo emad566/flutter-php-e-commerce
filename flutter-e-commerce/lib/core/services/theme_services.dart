@@ -10,7 +10,6 @@ class ThemeServices {
   _loadThemeFromBox() => _box.read<bool>(_key) ?? false;
 
   ThemeMode get theme {
-    return ThemeMode.system;
     if (_box.read<bool>(_key) == null) return ThemeMode.system;
     return _loadThemeFromBox() ? ThemeMode.dark : ThemeMode.light;
   }

@@ -22,7 +22,7 @@ class CustomTextButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: InkWell(
-        onTap: (){},
+        onTap: ()=>onPress(),
         child: Text(
           text,
           style:  Theme.of(context).textTheme.titleSmall?.copyWith(

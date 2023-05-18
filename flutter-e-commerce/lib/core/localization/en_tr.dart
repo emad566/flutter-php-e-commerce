@@ -40,5 +40,6 @@ Map<String, String> enTr = {
   "35": "New Password",
   "36": "Password has been reset successfully",
   "37": "congratulations",
-  "38": "successfully registered"
+  "38": "successfully registered",
+  "Already have account? Sign In.": "Already have account? Sign In.",
 };
