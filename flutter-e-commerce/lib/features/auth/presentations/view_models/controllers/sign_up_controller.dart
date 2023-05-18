@@ -27,7 +27,7 @@ class SignUpControllerImp extends SignUpController{
 
   @override
   void signUp() {
-
+    Get.offNamed(AppRouteKeys.checkEmail);
   }
 
 

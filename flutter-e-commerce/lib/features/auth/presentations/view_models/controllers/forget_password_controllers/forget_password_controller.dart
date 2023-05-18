@@ -29,7 +29,7 @@ class ForgetPasswordControllerImp extends ForgetPasswordController{
 
   @override
   void goToVerifyCode() {
-    Get.toNamed(AppRouteKeys.verifyCode);
+    Get.offNamed(AppRouteKeys.verifyCode);
   }
 
 

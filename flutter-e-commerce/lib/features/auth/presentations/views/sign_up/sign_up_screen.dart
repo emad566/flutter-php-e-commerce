@@ -81,7 +81,7 @@ class SignUpScreen extends StatelessWidget {
                   text: '17'.tr,
                   borderRadius: 50,
                   onPress: (){
-
+                    controller.signUp();
                   },
                   width: 100,
                 ),

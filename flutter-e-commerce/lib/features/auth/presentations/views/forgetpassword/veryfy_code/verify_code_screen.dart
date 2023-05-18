@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
-import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/verify_code_controller.dart';
+import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/forget_password_controllers/verify_code_controller.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/auth_logo.dart';
 import 'package:get/get.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
