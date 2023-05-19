@@ -19,13 +19,11 @@ class LoginControllerImp extends LoginController{
   @override
   void goToForgetPassword() {
     Get.toNamed(AppRouteKeys.forgetPassword);
-    Get.delete<LoginController>();
   }
 
   @override
   void goToSignUp() {
     Get.toNamed(AppRouteKeys.signUp);
-    Get.delete<LoginController>();
   }
 
   @override

@@ -27,7 +27,6 @@ class ResetPasswordControllerImp extends ResetPasswordController{
   @override
   void savePassword() {
     Get.offNamed(AppRouteKeys.successResetPassword);
-    Get.delete<ResetPasswordController>();
   }
 
 }

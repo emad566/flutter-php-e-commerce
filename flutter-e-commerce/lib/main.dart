@@ -5,7 +5,6 @@ import 'package:flutter_e_commerce/core/localization/change_lang_controller.dart
 import 'package:flutter_e_commerce/core/services/app_services.dart';
 import 'package:flutter_e_commerce/core/services/app_themes.dart';
 import 'package:flutter_e_commerce/core/services/theme_services.dart';
-import 'package:flutter_e_commerce/features/auth/presentations/views/login/login_screen.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -39,8 +38,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightThem,
       darkTheme: AppThemes.darkThem,
       themeMode: themeMode,
-      home: const LoginScreen(),
-      routes: AppRoutes.routes,
+      getPages: appRoutes,
     );
   }
 }

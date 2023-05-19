@@ -15,13 +15,11 @@ class ForgetPasswordControllerImp extends ForgetPasswordController{
   @override
   void goToLogin() {
     Get.offAllNamed(AppRouteKeys.login);
-    Get.delete<ForgetPasswordController>();
   }
 
   @override
   void goToSignUp() {
     Get.offAndToNamed(AppRouteKeys.signUp);
-    Get.delete<ForgetPasswordController>();
   }
 
   @override
@@ -32,7 +30,6 @@ class ForgetPasswordControllerImp extends ForgetPasswordController{
   @override
   void goToVerifyCode() {
     Get.offNamed(AppRouteKeys.verifyCode);
-    Get.delete<ForgetPasswordController>();
   }
 
 

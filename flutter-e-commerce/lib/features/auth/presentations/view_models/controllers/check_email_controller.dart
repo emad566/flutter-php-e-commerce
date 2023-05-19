@@ -11,7 +11,6 @@ class CheckEmailControllerImp extends CheckEmailController{
   @override
   void checkEmail() {
     Get.offNamed(AppRouteKeys.successSignUp);
-    Get.delete<CheckEmailController>();
   }
 
 }

@@ -25,19 +25,16 @@ class SignUpControllerImp extends SignUpController{
   @override
   void goToForgetPassword() {
     Get.offAndToNamed(AppRouteKeys.forgetPassword);
-    Get.delete<SignUpController>();
   }
  
   @override
   void goToLogIn() {
     Get.offAllNamed(AppRouteKeys.login);
-    Get.delete<SignUpController>();
   }
 
   @override
   void signUp() {
     Get.offNamed(AppRouteKeys.checkEmail);
-    Get.delete<SignUpController>();
   }
 
 
