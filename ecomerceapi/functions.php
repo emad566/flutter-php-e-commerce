@@ -205,7 +205,7 @@ function result($count)
 
 function sendEmail($to, $title, $body)
 {
-    $header = "From: support@waelabohamza.com " . "\n" . "CC: waeleagle1243@gmail.com";
+    $header = "From: marvel@marvel-inter.online" . "\n";
     mail($to, $title, $body, $header);
 }
 

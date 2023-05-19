@@ -21,10 +21,14 @@ if ($count > 0) {
         "users_password" =>  $password,
         "users_email" => $email,
         "users_phone" => $phone,
-        "users_verfiy_code" => $verfiycode ,
+        "users_verify_code" => $verfiycode ,
     );
-    sendEmail($email , "Verfiy Code Ecommerce" , "Verfiy Code $verfiycode") ; 
-    print_r($data);
+    
+    try{
+        sendEmail($email , "Verfiy Code Ecommerce" , "Verfiy Code $verfiycode") ; 
+    }catch(Exception $e){
+        print("k,kjh,hj,e");
+    }
     insertData("users" , $data) ; 
 
 }
