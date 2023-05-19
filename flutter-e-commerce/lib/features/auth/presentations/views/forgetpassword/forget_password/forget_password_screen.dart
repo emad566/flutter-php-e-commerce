@@ -4,7 +4,6 @@ import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_text_button.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/forget_password_controllers/forget_password_controller.dart';
-import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/auth_logo.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/sign_in_email_input.dart';
 import 'package:get/get.dart';
 
@@ -32,52 +31,55 @@ class ForgetPasswordScreen extends StatelessWidget {
         ),
         elevation: 0,
       ),
-      body: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 50,),
-              Text(
-                'Please enter your email to reset password'.tr,
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 50,),
+      body: SingleChildScrollView(
+        child: Container(
+          height: SizeConfig.screenHeight-100,
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50,),
+                Text(
+                  'Please enter your email to reset password'.tr,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 50,),
 
 
-              SignInEmailInput(emailController: controller.emailController, emailKey: emailKey),
-              const SizedBox(height: 30,),
+                SignInEmailInput(emailController: controller.emailController, emailKey: emailKey),
+                const SizedBox(height: 30,),
 
-              CustomButton(
-                text: 'Check'.tr,
-                borderRadius: 50,
-                onPress: (){
-                  controller.goToVerifyCode();
-                },
-                width: 100,
-              ),
-              const SizedBox(height: 30,),
-              CustomTextButton(
-                text: 'Do you remember password? login.'.tr,
-                onPress: (){
-                  controller.goToLogin();
-                },
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 30,),
-              CustomTextButton(
-                text: 'You could create new account'.tr,
-                textAlign: TextAlign.center,
-                onPress: (){
-                  controller.goToSignUp();
-                },
-              ),
+                CustomButton(
+                  text: 'Check'.tr,
+                  borderRadius: 50,
+                  onPress: (){
+                    controller.goToVerifyCode();
+                  },
+                  width: 100,
+                ),
+                const SizedBox(height: 30,),
+                CustomTextButton(
+                  text: 'Do you remember password? login.'.tr,
+                  onPress: (){
+                    controller.goToLogin();
+                  },
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 30,),
+                CustomTextButton(
+                  text: 'You could create new account'.tr,
+                  textAlign: TextAlign.center,
+                  onPress: (){
+                    controller.goToSignUp();
+                  },
+                ),
 
-            ],
+              ],
+            ),
           ),
         ),
       ),

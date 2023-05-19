@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatefulWidget {
@@ -47,16 +49,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       key: widget.inputKey,
-      onChanged: (val) {
-        if (widget.isRequired) {
-          widget.inputKey.currentState!.validate();
+      onChanged: (val){
+        if(widget.controller.text.length<2){
+          setState(() {
+
+          });
         }
+        widget.inputKey.currentState!.validate();
       },
       validator: (val) {
         if (widget.isRequired && widget.controller.text == '') {
-          return 'This field is required';
+          return 'This field is required'.tr;
         }
-        if (widget.validator != null) return widget.validator!();
+        if (widget.validator != null) return widget.validator!(val);
         return null;
       },
       controller: widget.controller,
@@ -88,6 +93,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 });
               },
               icon: Icon(isShowPassword? Icons.visibility_off : Icons.visibility , size: 24,),
+            );
+          }
+          if(widget.controller.text.isNotEmpty) {
+            return IconButton(
+              onPressed: (){
+                setState(() {
+                  widget.controller.text = '';
+                  widget.inputKey.currentState!.validate();
+                });
+              },
+              icon: const Icon(Icons.close , size: 24,),
             );
           }
           return null;

@@ -9,5 +9,7 @@ class OnBoardingStatics{
         title: '4'.tr, body: '5'.tr, image: AppPaths.onBoardingImageTwo),
     OnBoardingModel(
         title: '6'.tr, body: '7'.tr, image: AppPaths.onBoardingImageThree),
+    OnBoardingModel(
+        title: '6'.tr, body: '7'.tr, image: AppPaths.onBoardingImageFour),
   ];
 }

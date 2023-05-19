@@ -6,6 +6,7 @@ import 'package:flutter_e_commerce/core/services/app_services.dart';
 import 'package:flutter_e_commerce/core/services/app_themes.dart';
 import 'package:flutter_e_commerce/core/services/theme_services.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/login_screen.dart';
+import 'package:flutter_e_commerce/features/choose_language/presentations/views/choose_language_screen.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';

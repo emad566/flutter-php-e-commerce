@@ -5,6 +5,7 @@ abstract class AppPaths{
   static const String onBoardingImageOne = "$rootImages/one.PNG";
   static const String onBoardingImageTwo = "$rootImages/two.PNG";
   static const String onBoardingImageThree = "$rootImages/three.PNG";
+  static const String onBoardingImageFour = "$rootImages/onboardingone.PNG";
 
   static const String saleOne    = "$rootImages/001-sale.png";
   static const String saleTwo    = "$rootImages/002-sale-tag.png";

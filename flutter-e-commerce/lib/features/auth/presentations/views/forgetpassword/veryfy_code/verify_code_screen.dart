@@ -34,10 +34,13 @@ class VerifyCodeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
+          height: SizeConfig.screenHeight-100,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 50,),
                 const AuthLogo(),

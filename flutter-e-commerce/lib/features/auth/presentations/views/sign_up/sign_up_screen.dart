@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce/core/constants/app_validate_types.dart';
+import 'package:flutter_e_commerce/core/functions/validator.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
@@ -48,7 +50,14 @@ class SignUpScreen extends StatelessWidget {
 
                 // User Name
                 CustomTextField(
+                  validator: (val)=> validateInput(
+                    val: val,
+                    type: AppValidateTypes.isUserName,
+                    min: 10,
+                    max: 50,
+                  ),
                   borderColor: ThemeColors.secondClr,
+                  keyboardType: TextInputType.name,
                   prefixIcon: const Icon(Icons.supervised_user_circle),
                   hintText: '20'.tr,
                   controller: controller.userNameController,
@@ -60,6 +69,13 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(height: 30,),
                 // Phone
                 CustomTextField(
+                  validator: (val)=> validateInput(
+                    val: val,
+                    type: AppValidateTypes.isPhone,
+                    min: 10,
+                    max: 50,
+                  ),
+                  keyboardType: TextInputType.phone,
                   borderColor: ThemeColors.secondClr,
                   prefixIcon: const Icon(Icons.phone),
                   hintText: '21'.tr,

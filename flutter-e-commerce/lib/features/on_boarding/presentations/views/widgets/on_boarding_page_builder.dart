@@ -14,6 +14,8 @@ class OnBoardingPageBuilder extends GetView<OnBoardingControllerImp> {
 
   @override
   Widget build(BuildContext context) {
+    BuildContext context2 = context;
+
     return PageView.builder(
       controller: controller.pageController,
       onPageChanged: (index){
@@ -28,19 +30,19 @@ class OnBoardingPageBuilder extends GetView<OnBoardingControllerImp> {
             const SizedBox(height: 40,),
             Image.asset(
               onBoardingList.image!,
-              width: 200,
+              width: SizeConfig.screenWidth * 80,
               height: SizeConfig.screenHeight * 0.45,
             ),
             const SizedBox(height: 20,),
             Text(
               onBoardingList.title!,
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context2).textTheme.headlineLarge,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30,),
             Text(
               onBoardingList.body!,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              style: Theme.of(context2).textTheme.bodyMedium?.copyWith(
                 color: ThemeColors.secondaryText,
                 height: 2,
               ),
