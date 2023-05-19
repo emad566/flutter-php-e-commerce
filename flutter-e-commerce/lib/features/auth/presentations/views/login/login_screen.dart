@@ -12,10 +12,7 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
-  GlobalKey formKey = GlobalKey<FormState>();
-  GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
-  GlobalKey<FormFieldState> passwordKey = GlobalKey<FormFieldState>();
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +37,16 @@ class LoginScreen extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
-            key: formKey,
+            key: controller.formKey,
             child: Column(
               children: [
                 const AuthLogo(),
                 const SizedBox(height: 30,),
                 const SignInTextHeader(),
                 const SizedBox(height: 30,),
-                SignInEmailInput(emailController: controller.emailController, emailKey: emailKey),
+                SignInEmailInput(emailController: controller.emailController, emailKey: controller.emailKey),
                 const SizedBox(height: 30,),
-                SignInPasswordInput(passwordController: controller.passwordController, passwordKey: passwordKey),
+                SignInPasswordInput(passwordController: controller.passwordController, passwordKey: controller.passwordKey),
                 const SizedBox(height: 30,),
                 CustomTextButton(
                   text: '14'.tr,

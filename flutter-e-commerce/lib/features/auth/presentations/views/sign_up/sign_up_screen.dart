@@ -13,12 +13,7 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class SignUpScreen extends StatelessWidget {
-  SignUpScreen({Key? key}) : super(key: key);
-  GlobalKey formKey = GlobalKey<FormState>();
-  GlobalKey<FormFieldState> userNameKey = GlobalKey<FormFieldState>();
-  GlobalKey<FormFieldState> phoneKey = GlobalKey<FormFieldState>();
-  GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
-  GlobalKey<FormFieldState> passwordKey = GlobalKey<FormFieldState>();
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +38,7 @@ class SignUpScreen extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
-            key: formKey,
+            key: controller.formKey,
             child: Column(
               children: [
                 const SizedBox(height: 50,),
@@ -61,11 +56,11 @@ class SignUpScreen extends StatelessWidget {
                   prefixIcon: const Icon(Icons.supervised_user_circle),
                   hintText: '20'.tr,
                   controller: controller.userNameController,
-                  inputKey: userNameKey,
+                  inputKey: controller.userNameKey,
                 ),
                 const SizedBox(height: 30,),
 
-                SignInEmailInput(emailController: controller.emailController, emailKey: emailKey),
+                SignInEmailInput(emailController: controller.emailController, emailKey: controller.emailKey),
                 const SizedBox(height: 30,),
                 // Phone
                 CustomTextField(
@@ -80,10 +75,10 @@ class SignUpScreen extends StatelessWidget {
                   prefixIcon: const Icon(Icons.phone),
                   hintText: '21'.tr,
                   controller: controller.phoneController,
-                  inputKey: phoneKey,
+                  inputKey: controller.phoneKey,
                 ),
                 const SizedBox(height: 30,),
-                SignInPasswordInput(passwordController: controller.passwordController, passwordKey: passwordKey),
+                SignInPasswordInput(passwordController: controller.passwordController, passwordKey: controller.passwordKey),
                 const SizedBox(height: 30,),
                 CustomTextButton(
                   text: '14'.tr,

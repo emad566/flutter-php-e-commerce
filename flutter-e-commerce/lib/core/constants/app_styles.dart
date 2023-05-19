@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/core/constants/app_constants.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 
 abstract class AppStyles {

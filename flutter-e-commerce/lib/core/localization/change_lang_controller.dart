@@ -1,9 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter_e_commerce/core/constants/app_chaches.dart';
-import 'package:flutter_e_commerce/core/services/app_themes.dart';
 import 'package:flutter_e_commerce/core/services/cache_helper.dart';
-import 'package:flutter_e_commerce/core/services/theme_services.dart';
 import 'package:get/get.dart';
 
 class ChangeLangController extends GetxController{

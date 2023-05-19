@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatefulWidget {
@@ -110,9 +109,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
         }(),
         prefixIcon: widget.prefixIcon,
         label: Text('${widget.hintText} ${widget.isRequired ? '*' : ''}'),
-        hintStyle: TextStyle(
-          color: (widget.borderColor?.withOpacity(0.3)) ??
-              ThemeColors.white.withOpacity(0.5),
+        hintText: '${widget.hintText} ${widget.isRequired ? '*' : ''}',
+        labelStyle: widget.controller.text.isEmpty?
+                    Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: ThemeColors.secondClr.withOpacity(0.5),
+                    )
+                    :
+                    Theme.of(context).textTheme.bodyLarge,
+        hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: ThemeColors.secondClr.withOpacity(0.8),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(

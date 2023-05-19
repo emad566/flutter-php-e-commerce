@@ -3,6 +3,10 @@ import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:get/get.dart';
 
 abstract class LoginController extends GetxController{
+  GlobalKey formKey = GlobalKey<FormState>();
+  GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
+  GlobalKey<FormFieldState> passwordKey = GlobalKey<FormFieldState>();
+
   late TextEditingController emailController;
   late TextEditingController passwordController;
   void login();
@@ -15,11 +19,13 @@ class LoginControllerImp extends LoginController{
   @override
   void goToForgetPassword() {
     Get.toNamed(AppRouteKeys.forgetPassword);
+    Get.delete<LoginController>();
   }
 
   @override
   void goToSignUp() {
     Get.toNamed(AppRouteKeys.signUp);
+    Get.delete<LoginController>();
   }
 
   @override

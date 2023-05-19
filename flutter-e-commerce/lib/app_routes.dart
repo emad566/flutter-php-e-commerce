@@ -13,8 +13,8 @@ import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_b
 abstract class AppRoutes{
   static Map<String, Widget Function(BuildContext)> routes = {
     AppRouteKeys.onBoarding: (context)=> const OnBoardingScreen(),
-    AppRouteKeys.login: (context)=> LoginScreen(),
-    AppRouteKeys.signUp: (context)=> SignUpScreen(),
+    AppRouteKeys.login: (context)=> const LoginScreen(),
+    AppRouteKeys.signUp: (context)=> const SignUpScreen(),
     AppRouteKeys.forgetPassword: (context)=> ForgetPasswordScreen(),
     AppRouteKeys.verifyCode: (context)=> VerifyCodeScreen(),
     AppRouteKeys.resetPassword: (context)=> ResetPasswordScreen(),
