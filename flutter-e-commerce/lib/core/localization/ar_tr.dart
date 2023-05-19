@@ -63,6 +63,10 @@ Map<String, String> arTr = {
   "The maximum length is ":" أكبر عدد مسموح به من الحروف هو ",
   "Not valid Email":"من فضلك ادخل بريد الكتروني صحيح!",
   "Not valid Phone":"من فضل ادخل رقم هاتف صحيح",
+  "Alarm":"تنبية",
+  "Do you exit app?":"هل تريد الخروج من التطبيق",
+  "Confirm'":"نعم",
+  "Cancel'":"لا",
   "":"",
 
 };

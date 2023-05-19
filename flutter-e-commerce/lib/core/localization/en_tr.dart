@@ -65,6 +65,10 @@ Map<String, String> enTr = {
   "The maximum length is ":"The maximum length is ",
   "Not valid Email":"Not valid Email",
   "Not valid Phone":"Not valid Phone",
+  "Alar":"Alar",
+  "Do you exit app":"Do you exit app",
+  "Confirm":"Confirm",
+  "Cancel":"Cancel",
   "":"",
   "":"",
 };
