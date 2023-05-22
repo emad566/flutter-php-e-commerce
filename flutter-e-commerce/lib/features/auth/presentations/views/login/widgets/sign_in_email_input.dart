@@ -21,7 +21,7 @@ class SignInEmailInput extends StatelessWidget {
       validator: (val)=> validateInput(
         val: val,
         type: AppValidateTypes.isEmail,
-        min: 10,
+        min: 4,
         max: 50,
       ),
       borderColor: ThemeColors.secondClr,

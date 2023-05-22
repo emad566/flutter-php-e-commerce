@@ -6,6 +6,7 @@ import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_input_field.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_text_button.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/sign_up_controller.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/sign_in_email_input.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/sign_in_password_input.dart';
@@ -48,7 +49,7 @@ class SignUpScreen extends StatelessWidget {
                   validator: (val)=> validateInput(
                     val: val,
                     type: AppValidateTypes.isUserName,
-                    min: 10,
+                    min: 3,
                     max: 50,
                   ),
                   borderColor: ThemeColors.secondClr,
@@ -80,6 +81,9 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(height: 30,),
                 SignInPasswordInput(passwordController: controller.passwordController, passwordKey: controller.passwordKey),
                 const SizedBox(height: 30,),
+
+
+
                 CustomTextButton(
                   text: '14'.tr,
                   textAlign: TextAlign.end,
@@ -88,13 +92,20 @@ class SignUpScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 30,),
-                CustomButton(
-                  text: '17'.tr,
-                  borderRadius: 50,
-                  onPress: (){
-                    controller.signUp();
-                  },
-                  width: 100,
+                GetBuilder<SignUpController>(
+                    builder: (controller) {
+                      return HandleLoading(
+                        state: controller.state,
+                        child: CustomButton(
+                          text: '17'.tr,
+                          borderRadius: 50,
+                          onPress: (){
+                            controller.signUp();
+                          },
+                          width: 100,
+                        ),
+                      );
+                    }
                 ),
                 const SizedBox(height: 30,),
                 CustomTextButton(

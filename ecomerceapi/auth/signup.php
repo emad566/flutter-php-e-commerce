@@ -13,7 +13,7 @@ $stmt = $con->prepare("SELECT * FROM users WHERE users_email = ? OR users_phone 
 $stmt->execute(array($email, $phone));
 $count = $stmt->rowCount();
 if ($count > 0) {
-    printFailure("PHONE OR EMAIL");
+    printFailure(['email'=> ["PHONE OR EMAIL"]], 'PHONE OR EMAIL: ' .$username);
 } else {
 
     $data = array(
@@ -24,8 +24,9 @@ if ($count > 0) {
         "users_verify_code" => $verfiycode ,
     );
     
+    
     try{
-        sendEmail($email , "Verfiy Code Ecommerce" , "Verfiy Code $verfiycode") ; 
+        sendEmail($email , " " , "Verfiy Code $verfiycode") ; 
     }catch(Exception $e){
         print("k,kjh,hj,e");
     }

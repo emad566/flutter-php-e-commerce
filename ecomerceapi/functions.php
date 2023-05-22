@@ -27,16 +27,16 @@ function getAllData($table, $where = null, $values = null, $json = true)
     $count  = $stmt->rowCount();
     if ($json == true) {
         if ($count > 0) {
-            echo json_encode(array("status" => "success", "data" => $data));
+            echo json_encode(array("status" => true, 'message'=> "success", 'data'=> $data));
         } else {
-            echo json_encode(array("status" => "failure"));
+            echo json_encode(array("status" => false, 'message'=> "failure"));
         }
         return $count;
     } else {
         if ($count > 0) {
-            return  array("status" => "success", "data" => $data);
+            return array("status" => true, 'message'=> "success", 'data'=> $data);
         } else {
-            return  array("status" => "failure");
+            return array("status" => false, 'message'=> "failure");
         }
     }
 }
@@ -60,29 +60,32 @@ function getData($table, $where = null, $values = null, $json = true)
     }
 }
 
-
-
-
 function insertData($table, $data, $json = true)
 {
+
     global $con;
     foreach ($data as $field => $v)
         $ins[] = ':' . $field;
     $ins = implode(',', $ins);
     $fields = implode(',', array_keys($data));
     $sql = "INSERT INTO $table ($fields) VALUES ($ins)";
-
+    
     $stmt = $con->prepare($sql);
     foreach ($data as $f => $v) {
         $stmt->bindValue(':' . $f, $v);
     }
-    $stmt->execute();
+    try {
+        $stmt->execute();
+    } catch (\Throwable $th) {
+        echo $th;
+    }
+    
     $count = $stmt->rowCount();
     if ($json == true) {
         if ($count > 0) {
-            echo json_encode(array("status" => "success"));
+            echo json_encode(array("status" => true, 'message'=> 'Success'));
         } else {
-            echo json_encode(array("status" => "failure"));
+            echo json_encode(array("status" => false, 'message'=> 'Faile'));
         }
     }
     return $count;
@@ -106,9 +109,9 @@ function updateData($table, $data, $where, $json = true)
     $count = $stmt->rowCount();
     if ($json == true) {
         if ($count > 0) {
-            echo json_encode(array("status" => "success"));
+            echo json_encode(array("status" => true, 'message'=> "success"));
         } else {
-            echo json_encode(array("status" => "failure"));
+            echo json_encode(array("status" => false, 'message'=> "failure"));
         }
     }
     return $count;
@@ -122,9 +125,9 @@ function deleteData($table, $where, $json = true)
     $count = $stmt->rowCount();
     if ($json == true) {
         if ($count > 0) {
-            echo json_encode(array("status" => "success"));
+            echo json_encode(array("status" => true, 'message'=> "success"));
         } else {
-            echo json_encode(array("status" => "failure"));
+            echo json_encode(array("status" => false, 'message'=> "failure"));
         }
     }
     return $count;
@@ -185,13 +188,13 @@ function checkAuthenticate()
 }
 
 
-function   printFailure($message = "none")
+function   printFailure($errors, $message = "none")
 {
-    echo     json_encode(array("status" => "failure", "message" => $message));
+    echo     json_encode(array("status" => false, "message" => $message, 'errors'=>$errors));
 }
 function   printSuccess($message = "none")
 {
-    echo     json_encode(array("status" => "success", "message" => $message));
+    echo     json_encode(array("status" => true, "message" => $message));
 }
 
 function result($count)
@@ -199,7 +202,7 @@ function result($count)
     if ($count > 0) {
         printSuccess();
     } else {
-        printFailure();
+        printFailure([]);
     }
 }
 

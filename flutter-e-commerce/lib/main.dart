@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/app_routes.dart';
+import 'package:flutter_e_commerce/core/bindings/initial_bindings.dart';
 import 'package:flutter_e_commerce/core/localization/app_translation.dart';
 import 'package:flutter_e_commerce/core/localization/change_lang_controller.dart';
 import 'package:flutter_e_commerce/core/services/api_services.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightThem,
       darkTheme: AppThemes.darkThem,
       themeMode: themeMode,
+      initialBinding: InitialBindings(),
       getPages: appRoutes,
     );
   }

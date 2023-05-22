@@ -19,5 +19,5 @@ List<GetPage<dynamic>>? appRoutes = [
   GetPage(name: AppRouteKeys.signUp, page: ()=>const SignUpScreen()),
   GetPage(name: AppRouteKeys.forgetPassword, page: ()=>ForgetPasswordScreen(),),  GetPage(name: AppRouteKeys.verifyCode, page: ()=>VerifyCodeScreen(),),  GetPage(name: AppRouteKeys.resetPassword, page: ()=>ResetPasswordScreen(),),  GetPage(name: AppRouteKeys.successSignUp, page: ()=>const SuccessSignUpScreen()),
   GetPage(name: AppRouteKeys.successResetPassword, page: ()=>const SuccessResetPasswordScreen()),
-  GetPage(name: AppRouteKeys.checkEmail, page: ()=>CheckEmailScreen(),),
+  GetPage(name: AppRouteKeys.checkEmail, page: ()=> const CheckEmailScreen(),),
 ];

@@ -1,66 +1,71 @@
 import 'package:dio/dio.dart';
 
+enum FailureTypes {
+  dio,
+  response,
+  noInternet,
+  flutterError,
+}
+
 abstract class Failure {
+  final int? code;
+  final FailureTypes type;
   final String errMessage;
-  const Failure(this.errMessage);
+  const Failure({required this.type, required this.errMessage, this.code});
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.errMessage);
-
+  ServerFailure({required FailureTypes type, required String errMessage, int? code}): super(type: type, errMessage: errMessage, code: code );
   factory ServerFailure.fromDioError(DioError dioError) {
     switch (dioError.type) {
       case DioErrorType.connectionTimeout:
-        return ServerFailure('Connection timeout with ApiServer');
+        return ServerFailure(errMessage: 'Connection timeout with ApiServer', type: FailureTypes.dio);
 
       case DioErrorType.sendTimeout:
-        return ServerFailure('Connection timeout with send to ApiServer');
+        return ServerFailure(errMessage: 'Connection timeout with send to ApiServer', type: FailureTypes.dio);
 
       case DioErrorType.receiveTimeout:
-        return ServerFailure('Connection timeout with receive from ApiServer');
+        return ServerFailure(errMessage: 'Connection timeout with receive from ApiServer', type: FailureTypes.dio);
 
       case DioErrorType.badCertificate:
-        return ServerFailure('Connection refused duo to bad certificate');
+        return ServerFailure(errMessage: 'Connection refused duo to bad certificate', type: FailureTypes.dio);
 
       case DioErrorType.badResponse:
         return ServerFailure.fromResponse(
             dioError.response!.statusCode, dioError.response!.data);
 
       case DioErrorType.cancel:
-        return ServerFailure('Connection has been canceled');
+        return ServerFailure(errMessage: 'Connection has been canceled', type: FailureTypes.dio);
 
       case DioErrorType.connectionError:
-        return ServerFailure('Server Connection Error');
+        return ServerFailure(errMessage: 'Server Connection Error', type: FailureTypes.dio);
 
       case DioErrorType.unknown:
-        return ServerFailure('Failure with unknown error!');
+        return ServerFailure(errMessage: 'Failure with unknown error!', type: FailureTypes.dio);
       default:
-        return ServerFailure('Failure with unexpected error!. try again');
+        return ServerFailure(errMessage: 'Failure with unexpected error!. try again', type: FailureTypes.dio);
     }
   }
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
 
     if ([400, 401, 403].contains(statusCode)) {
-      return ServerFailure('$statusCode: ${response['message']}');
+      return ServerFailure(errMessage: '$statusCode: ${response['message']}', type: FailureTypes.response, code: statusCode);
     }
 
     if (statusCode == 404) {
-      return ServerFailure(
-          '$statusCode: The request is not found. Please try again later: from server response');
+      return ServerFailure(errMessage: '$statusCode: The request is not found. Please try again later: from server response', type: FailureTypes.response, code: statusCode);
     }
 
     if (statusCode == 500) {
-      return ServerFailure(
-          '$statusCode: Internal server error. Please try again later: from server response');
+      return ServerFailure(errMessage: '$statusCode: Internal server error. Please try again later: from server response', type: FailureTypes.response, code: statusCode);
     }
 
     if(statusCode == 405){
       // logOut();
-      return ServerFailure('$statusCode: Your session has been expired, please logout and login again');
+      return ServerFailure(errMessage: '$statusCode: Your session has been expired, please logout and login again', type: FailureTypes.response, code: statusCode);
     }
 
-    return ServerFailure(
-        '$statusCode: Failure with unknown server respond error!: from server response');
+    return ServerFailure(errMessage: '$statusCode: Failure with unknown server respond error!: from server response', type: FailureTypes.response, code: statusCode);
   }
 }

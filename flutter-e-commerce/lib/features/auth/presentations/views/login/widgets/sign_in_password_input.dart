@@ -21,7 +21,7 @@ class SignInPasswordInput extends StatelessWidget {
       validator: (val)=> validateInput(
         val: val,
         type: AppValidateTypes.isPassword,
-        min: 8,
+        min: 1,
         max: 12,
       ),
       borderColor: ThemeColors.secondClr,
