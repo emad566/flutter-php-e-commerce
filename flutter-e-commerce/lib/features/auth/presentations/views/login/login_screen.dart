@@ -4,6 +4,7 @@ import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_text_button.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/login_controller.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/auth_logo.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/sign_in_email_input.dart';
@@ -59,14 +60,22 @@ class LoginScreen extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 30,),
-                  CustomButton(
-                    text: '15'.tr,
-                    borderRadius: 50,
-                    onPress: (){
-
-                    },
-                    width: 100,
+                  GetBuilder<LoginController>(
+                      builder: (controller) {
+                        return HandleLoading(
+                          state: controller.state,
+                          child: CustomButton(
+                            text: '15'.tr,
+                            borderRadius: 50,
+                            onPress: (){
+                              controller.login();
+                            },
+                            width: 100,
+                          ),
+                        );
+                      }
                   ),
+
                   const SizedBox(height: 30,),
                   CustomTextButton(
                     text: '${'16'.tr} ${'17'.tr}',

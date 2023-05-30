@@ -39,12 +39,10 @@ class CheckEmailControllerImp extends CheckEmailController{
     );
 
     result.fold((failure){
-      print('${failure.errMessage} &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
       state = handleFailure(failure);
     }, (response) async{
 
       if(!response['status']){
-        print('${response} ::::::::::::::::::::::::::');
         Get.defaultDialog(
             title: 'Warning',
             middleText: response['message'],
@@ -57,5 +55,4 @@ class CheckEmailControllerImp extends CheckEmailController{
       }
     });
   }
-
 }

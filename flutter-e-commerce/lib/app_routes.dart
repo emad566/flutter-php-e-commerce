@@ -9,6 +9,7 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassw
 import 'package:flutter_e_commerce/features/auth/presentations/views/success_sign_up/success_sign_up_screen.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassword/veryfy_code/verify_code_screen.dart';
 import 'package:flutter_e_commerce/features/choose_language/presentations/views/choose_language_screen.dart';
+import 'package:flutter_e_commerce/features/home/presentations/views/choose_language_screen.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
 import 'package:get/get.dart';
 
@@ -20,4 +21,5 @@ List<GetPage<dynamic>>? appRoutes = [
   GetPage(name: AppRouteKeys.forgetPassword, page: ()=>ForgetPasswordScreen(),),  GetPage(name: AppRouteKeys.verifyCode, page: ()=>VerifyCodeScreen(),),  GetPage(name: AppRouteKeys.resetPassword, page: ()=>ResetPasswordScreen(),),  GetPage(name: AppRouteKeys.successSignUp, page: ()=>const SuccessSignUpScreen()),
   GetPage(name: AppRouteKeys.successResetPassword, page: ()=>const SuccessResetPasswordScreen()),
   GetPage(name: AppRouteKeys.checkEmail, page: ()=> const CheckEmailScreen(),),
+  GetPage(name: AppRouteKeys.home, page: ()=> const HomeScreen(),),
 ];
