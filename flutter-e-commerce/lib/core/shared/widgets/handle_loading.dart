@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
-import 'package:get/get.dart';
 
 class HandleLoading extends StatefulWidget {
   const HandleLoading({Key? key, required this.state, required this.child}) : super(key: key);

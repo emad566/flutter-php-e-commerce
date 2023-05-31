@@ -13,6 +13,7 @@ abstract class VerifyCodeController extends GetxController{
   ApiService apiService;
   VerifyCodeController(this.apiService);
 
+
 }
 
 class VerifyCodeControllerImp extends VerifyCodeController{
@@ -51,7 +52,7 @@ class VerifyCodeControllerImp extends VerifyCodeController{
             ]
         );
       }else{
-        Get.offNamed(AppRouteKeys.resetPassword);
+        Get.offNamed(AppRouteKeys.resetPassword, arguments: {'email': email});
       }
     });
   }

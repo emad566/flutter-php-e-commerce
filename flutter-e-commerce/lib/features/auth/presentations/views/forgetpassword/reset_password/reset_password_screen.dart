@@ -5,13 +5,13 @@ import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_input_field.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/forget_password_controllers/reset_password_controller.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class ResetPasswordScreen extends StatelessWidget {
   ResetPasswordScreen({Key? key}) : super(key: key);
-  GlobalKey formKey = GlobalKey<FormState>();
   GlobalKey<FormFieldState> passwordKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> confirmPasswordKey = GlobalKey<FormFieldState>();
 
@@ -39,7 +39,7 @@ class ResetPasswordScreen extends StatelessWidget {
           height: SizeConfig.screenHeight-100,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
-            key: formKey,
+            key: controller.formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -53,8 +53,8 @@ class ResetPasswordScreen extends StatelessWidget {
                   validator: (val)=> validateInput(
                     val: val,
                     type: AppValidateTypes.isPassword,
-                    min: 8,
-                    max: 12,
+                    min: 3,
+                    max: 8,
                   ),
                   keyboardType: TextInputType.visiblePassword,
                   borderColor: ThemeColors.secondClr,
@@ -69,8 +69,9 @@ class ResetPasswordScreen extends StatelessWidget {
                   validator: (val)=> validateInput(
                     val: val,
                     type: AppValidateTypes.isPassword,
-                    min: 8,
-                    max: 12,
+                    min: 3,
+                    max: 8,
+                    confirm:controller.passwordController.text,
                   ),
                   keyboardType: TextInputType.visiblePassword,
                   borderColor: ThemeColors.secondClr,
@@ -81,14 +82,21 @@ class ResetPasswordScreen extends StatelessWidget {
                   inputKey: confirmPasswordKey,
                 ),
                 const SizedBox(height: 30,),
-
-                CustomButton(
-                  text: 'Send'.tr,
-                  borderRadius: 50,
-                  onPress: (){
-                    controller.savePassword();
-                  },
-                  width: 100,
+                GetBuilder<ResetPasswordController>(
+                    builder: (controller) {
+                      return HandleLoading(
+                        state: controller.state,
+                        child:
+                        CustomButton(
+                          text: 'Send'.tr,
+                          borderRadius: 50,
+                          onPress: (){
+                            controller.savePassword();
+                          },
+                          width: 100,
+                        ),
+                      );
+                    }
                 ),
                 const SizedBox(height: 30,),
 

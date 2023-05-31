@@ -54,7 +54,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                 const SizedBox(height: 30,),
                 GetBuilder<ForgetPasswordController>(
                     builder: (controller) {
-                      print('${controller.state} BBBBBBBBBBB :::::::::');
                       return HandleLoading(
                         state: controller.state,
                         child: CustomButton(

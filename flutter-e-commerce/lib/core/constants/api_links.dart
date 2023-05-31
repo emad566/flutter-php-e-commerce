@@ -6,4 +6,5 @@ abstract class ApiLinks {
   static const verifyCode = 'auth/verfiycode.php';
   static const forgetPasswordVerifyCode = 'forgetpassword/verifycode.php';
   static const forgetPasswordCheckEmail = 'forgetpassword/checkemail.php';
+  static const resetPassword = 'forgetpassword/resetpassword.php';
 }

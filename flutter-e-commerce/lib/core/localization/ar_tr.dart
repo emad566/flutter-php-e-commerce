@@ -67,6 +67,6 @@ Map<String, String> arTr = {
   "Do you exit app?":"هل تريد الخروج من التطبيق",
   "Confirm'":"نعم",
   "Cancel'":"لا",
-  "":"",
+  "The password confirmation is wrong":"كلمتي المرور غير متطابقتان",
 
 };

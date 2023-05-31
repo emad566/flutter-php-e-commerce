@@ -69,6 +69,6 @@ Map<String, String> enTr = {
   "Do you exit app":"Do you exit app",
   "Confirm":"Confirm",
   "Cancel":"Cancel",
-  "":"",
+  "The password confirmation is wrong":"The password confirmation is wrong",
   "":"",
 };
