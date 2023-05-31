@@ -4,4 +4,6 @@ abstract class ApiLinks {
   static const signup = 'auth/signup.php';
   static const login = 'auth/login.php';
   static const verifyCode = 'auth/verfiycode.php';
+  static const forgetPasswordVerifyCode = 'forgetpassword/verifycode.php';
+  static const forgetPasswordCheckEmail = 'forgetpassword/checkemail.php';
 }

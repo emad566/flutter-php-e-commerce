@@ -3,6 +3,7 @@ import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_text_button.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/forget_password_controllers/forget_password_controller.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/sign_in_email_input.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,6 @@ import 'package:get/get.dart';
 // ignore: must_be_immutable
 class ForgetPasswordScreen extends StatelessWidget {
   ForgetPasswordScreen({Key? key}) : super(key: key);
-  GlobalKey formKey = GlobalKey<FormState>();
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
 
   @override
@@ -37,7 +37,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
-            key: formKey,
+            key: controller.formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -52,15 +52,24 @@ class ForgetPasswordScreen extends StatelessWidget {
 
                 SignInEmailInput(emailController: controller.emailController, emailKey: emailKey),
                 const SizedBox(height: 30,),
-
-                CustomButton(
-                  text: 'Check'.tr,
-                  borderRadius: 50,
-                  onPress: (){
-                    controller.goToVerifyCode();
-                  },
-                  width: 100,
+                GetBuilder<ForgetPasswordController>(
+                    builder: (controller) {
+                      print('${controller.state} BBBBBBBBBBB :::::::::');
+                      return HandleLoading(
+                        state: controller.state,
+                        child: CustomButton(
+                          text: 'Check'.tr,
+                          borderRadius: 50,
+                          onPress: (){
+                            controller.checkEmail();
+                          },
+                          width: 100,
+                        ),
+                      );
+                    }
                 ),
+
+
                 const SizedBox(height: 30,),
                 CustomTextButton(
                   text: 'Do you remember password? login.'.tr,

@@ -15,7 +15,7 @@ class VerifyCodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeController controller = Get.put(VerifyCodeControllerImp());
+    VerifyCodeController controller = Get.put(VerifyCodeControllerImp(Get.find()));
 
     SizeConfig().init(context);
     return Scaffold(
@@ -66,7 +66,7 @@ class VerifyCodeScreen extends StatelessWidget {
                   },
                   //runs when every textfield is filled
                   onSubmit: (String verificationCode){
-                    controller.goToResetPassword();
+                    controller.checkEmail(verificationCode);
                   }, // end onSubmit
                 ),
               ],
