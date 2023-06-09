@@ -10,6 +10,7 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/success_sig
 import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassword/veryfy_code/verify_code_screen.dart';
 import 'package:flutter_e_commerce/features/choose_language/presentations/views/choose_language_screen.dart';
 import 'package:flutter_e_commerce/features/home/presentations/views/home_screen.dart';
+import 'package:flutter_e_commerce/features/home_layout/presentations/views/home_layout_screen.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
 import 'package:get/get.dart';
 
@@ -46,5 +47,9 @@ List<GetPage<dynamic>>? appRoutes = [
   GetPage(
     name: AppRouteKeys.home,
     page: () => const HomeScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.homeLayout,
+    page: () => const HomeLayoutScreen(),
   ),
 ];

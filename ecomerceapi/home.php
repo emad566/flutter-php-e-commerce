@@ -19,5 +19,9 @@ $alldata['categories'] = $categories ;
 
 // $alldata['items'] = $items ; 
 
+$items = getAllData("itemsview" , null , null , false )  ;
+
+$alldata['items'] = $items ; 
+
 
 echo json_encode($alldata);

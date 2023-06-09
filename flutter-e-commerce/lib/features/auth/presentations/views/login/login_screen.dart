@@ -90,19 +90,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 30,
                   ),
-                  GetBuilder<LoginController>(builder: (controller) {
-                    return HandleLoading(
-                      state: controller.state,
-                      child: CustomButton(
-                        text: '15'.tr,
-                        borderRadius: 50,
-                        onPress: () {
-                          controller.login();
-                        },
-                        width: 100,
-                      ),
-                    );
-                  }),
+                  GetBuilder<LoginController>(
+                    builder: (controller) {
+                      return HandleLoading(
+                        state: controller.state,
+                        child: CustomButton(
+                          text: '15'.tr,
+                          borderRadius: 50,
+                          onPress: () {
+                            controller.login();
+                          },
+                          width: 100,
+                        ),
+                      );
+                    },
+                  ),
                   const SizedBox(
                     height: 30,
                   ),

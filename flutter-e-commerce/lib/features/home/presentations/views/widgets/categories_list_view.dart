@@ -19,7 +19,7 @@ class CategoriesListView extends StatelessWidget {
       return HandleLoading(
         state: controller.state,
         child: SizedBox(
-          height: 110,
+          height: 105,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: controller.categories.length,

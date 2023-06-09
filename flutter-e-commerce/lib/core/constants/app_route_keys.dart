@@ -10,4 +10,5 @@ abstract class AppRouteKeys {
   static const String successResetPassword = '/successResetPassword';
   static const String checkEmail = '/checkEmail';
   static const String home = '/home';
+  static const String homeLayout = '/homeLayout';
 }

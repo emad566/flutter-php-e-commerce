@@ -4,6 +4,7 @@ import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/category_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/home_model.dart';
+import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 import 'package:flutter_e_commerce/features/home/repos/home_repo.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +15,7 @@ abstract class HomeController extends GetxController{
   AppStates state = AppInitialState();
   final HomeRepoImp _repoImp = HomeRepoImp(Get.find());
   List<CategoryModel> categories = [];
+  List<ItemViewModel> items = [];
   void list();
 }
 
@@ -33,6 +35,7 @@ class HomeControllerImp extends HomeController{
       } else {
         HomeModel homeModel = HomeModel.fromJson(response);
         _setCategories(homeModel);
+        _setItems(homeModel);
         state = AppSuccessState();
         update();
       }
@@ -41,10 +44,17 @@ class HomeControllerImp extends HomeController{
 
   void _setCategories(HomeModel homeModel) {
     if (homeModel.categories != null) {
-      categories =
-          homeModel.categories!.status ? homeModel.categories!.data! : [];
+      categories = homeModel.categories!.status ? homeModel.categories!.data! : [];
     } else {
       categories = [];
+    }
+  }
+
+  void _setItems(HomeModel homeModel) {
+    if (homeModel.items != null) {
+      items = homeModel.items!.status ? homeModel.items!.data! : [];
+    } else {
+      items = [];
     }
   }
 
