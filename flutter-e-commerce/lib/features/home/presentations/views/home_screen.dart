@@ -14,21 +14,26 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeControllerImp());
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HomeSearchBar(controller: controller),
-          const SizedBox(height: 20,),
-          const HomeAdsBar(),
-          const SizedBox(height: 20,),
-          const CategoriesListView(),
-          const SizedBox(height: 10,),
-          Text('Products For You', style: AppStyles.style20Bold.copyWith(color: ThemeColors.secondClr),),
-          const SizedBox(height: 10,),
-          const ItemsListView(),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HomeSearchBar(controller: controller),
+            const SizedBox(height: 20,),
+            const HomeAdsBar(),
+            const SizedBox(height: 20,),
+            const CategoriesListView(),
+            const SizedBox(height: 10,),
+            Text('Products For You', style: AppStyles.style20Bold.copyWith(color: ThemeColors.secondClr),),
+            const SizedBox(height: 10,),
+            const ItemsListView(),
+            Text('Products For You', style: AppStyles.style20Bold.copyWith(color: ThemeColors.secondClr),),
+            const SizedBox(height: 10,),
+            const ItemsListView(),
+          ],
+        ),
       ),
     );
   }

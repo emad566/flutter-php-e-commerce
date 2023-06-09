@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 abstract class AppThemes {
   static ThemeData get lightThem => ThemeData(
-        useMaterial3: true,
+        useMaterial3: false,
         textTheme: ChangeLangController().langStr == 'ar'
             ? GoogleFonts.cairoTextTheme(_lightTextTheme)
             : GoogleFonts.playfairDisplayTextTheme(_lightTextTheme),
       );
 
   static ThemeData get darkThem => ThemeData(
-        useMaterial3: true,
+        useMaterial3: false,
         textTheme: ChangeLangController().langStr == 'ar'
             ? GoogleFonts.cairoTextTheme(_darkTextTheme)
             : GoogleFonts.playfairDisplayTextTheme(_darkTextTheme),
