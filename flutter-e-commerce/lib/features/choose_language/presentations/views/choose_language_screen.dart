@@ -24,20 +24,27 @@ class ChooseLanguageScreen extends GetView<ChangeLangController> {
               style: Theme.of(context).textTheme.headlineLarge,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20,),
-            ChooseLangButton(text: 'AR', onPress: (){
-              controller.changeLang('ar');
-              Get.toNamed(AppRouteKeys.onBoarding);
-            }),
-            const SizedBox(height: 20,),
-            ChooseLangButton(text: 'EN',onPress: (){
-              controller.changeLang('en');
-              Get.toNamed(AppRouteKeys.onBoarding);
-            }),
+            const SizedBox(
+              height: 20,
+            ),
+            ChooseLangButton(
+                text: 'AR',
+                onPress: () {
+                  controller.changeLang('ar');
+                  Get.toNamed(AppRouteKeys.onBoarding);
+                }),
+            const SizedBox(
+              height: 20,
+            ),
+            ChooseLangButton(
+                text: 'EN',
+                onPress: () {
+                  controller.changeLang('en');
+                  Get.toNamed(AppRouteKeys.onBoarding);
+                }),
           ],
         ),
       ),
     );
   }
 }
-

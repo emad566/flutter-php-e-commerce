@@ -6,7 +6,6 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/login/widge
 import 'package:get/get.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-
 // ignore: must_be_immutable
 class VerifyCodeScreen extends StatelessWidget {
   VerifyCodeScreen({Key? key}) : super(key: key);
@@ -15,7 +14,8 @@ class VerifyCodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeController controller = Get.put(VerifyCodeControllerImp(Get.find()));
+    VerifyCodeController controller =
+        Get.put(VerifyCodeControllerImp(Get.find()));
 
     SizeConfig().init(context);
     return Scaffold(
@@ -25,16 +25,17 @@ class VerifyCodeScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'Check Code'.tr,
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-              color: ThemeColors.secondaryText
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(color: ThemeColors.secondaryText),
         ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          height: SizeConfig.screenHeight-100,
+          height: SizeConfig.screenHeight - 100,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: formKey,
@@ -42,17 +43,23 @@ class VerifyCodeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 50,),
+                const SizedBox(
+                  height: 50,
+                ),
                 const AuthLogo(),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 Text(
                   'Please Enter the digit code sent to emad@gmail.com'.tr,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: ThemeColors.secondClr,
-                  ),
+                        color: ThemeColors.secondClr,
+                      ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 OtpTextField(
                   fieldWidth: 50.0,
                   borderRadius: BorderRadius.circular(20),
@@ -65,7 +72,7 @@ class VerifyCodeScreen extends StatelessWidget {
                     //handle validation or checks here
                   },
                   //runs when every textfield is filled
-                  onSubmit: (String verificationCode){
+                  onSubmit: (String verificationCode) {
                     controller.checkEmail(verificationCode);
                   }, // end onSubmit
                 ),
@@ -77,9 +84,3 @@ class VerifyCodeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

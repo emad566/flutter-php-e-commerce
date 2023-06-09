@@ -15,29 +15,34 @@ function filterRequest($requestname)
 
 function getAllData($table, $where = null, $values = null, $json = true)
 {
-    global $con;
-    $data = array();
-    if ($where == null) {
-        $stmt = $con->prepare("SELECT  * FROM $table   ");
-    } else {
-        $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
-    }
-    $stmt->execute($values);
-    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $count  = $stmt->rowCount();
-    if ($json == true) {
-        if ($count > 0) {
-            echo json_encode(array("status" => true, 'message'=> "success", 'data'=> $data));
+    
+    try {
+        global $con;
+        $data = array();
+        if ($where == null) {
+            $stmt = $con->prepare("SELECT  * FROM $table   ");
         } else {
-            echo json_encode(array("status" => false, 'message'=> "failure"));
+            $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
         }
-        return $count;
-    } else {
-        if ($count > 0) {
-            return array("status" => true, 'message'=> "success", 'data'=> $data);
+        $stmt->execute($values);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $count  = $stmt->rowCount();
+        if ($json == true) {
+            if ($count > 0) {
+                echo json_encode(array("status" => true, 'message'=> "success", 'data'=> $data));
+            } else {
+                echo json_encode(array("status" => false, 'message'=> "failure"));
+            }
+            return $count;
         } else {
-            return array("status" => false, 'message'=> "failure");
+            if ($count > 0) {
+                return array("status" => true, 'message'=> "success", 'data'=> $data);
+            } else {
+                return array("status" => false, 'message'=> "failure");
+            }
         }
+    } catch (PDOException $e) {
+        echo $e->getMessage();
     }
 }
 
@@ -51,9 +56,9 @@ function getData($table, $where = null, $values = null, $json = true)
     $count  = $stmt->rowCount();
     if ($json == true) {
         if ($count > 0) {
-            echo json_encode(array("status" => "success", "data" => $data));
+            echo json_encode(array("status" => true, 'message'=> 'Success', "data" => $data));
         } else {
-            echo json_encode(array("status" => "failure"));
+            echo json_encode(array("status" => false, 'message'=> 'failer', 'errors'=> ['email'=>['not Valid email !!']]));
         }
     } else {
         return $count;
@@ -200,9 +205,9 @@ function   printSuccess($message = "none")
 function result($count)
 {
     if ($count > 0) {
-        printSuccess();
+        printSuccess('Yes, is a valide email ');
     } else {
-        printFailure([]);
+        printFailure(['email'=>"Email not found !!"], "Email not found !!");
     }
 }
 

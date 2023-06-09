@@ -19,3 +19,4 @@ try {
 } catch (PDOException $e) {
    echo $e->getMessage();
 }
+header('Content-Type: application/json; charset=utf-8');

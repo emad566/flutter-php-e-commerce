@@ -18,21 +18,21 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: SizeConfig.screenWidth * width/100,
+      width: SizeConfig.screenWidth * width / 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(500),
       ),
       child: MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
-        onPressed: ()=>onPress(),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius)),
+        onPressed: () => onPress(),
         height: 50,
         color: ThemeColors.primaryClr.withOpacity(0.8),
-
         child: Text(
           text,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: ThemeColors.white,
-          ),
+                color: ThemeColors.white,
+              ),
         ),
       ),
     );

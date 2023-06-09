@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/app_routes.dart';
 import 'package:flutter_e_commerce/core/bindings/initial_bindings.dart';
@@ -6,13 +8,30 @@ import 'package:flutter_e_commerce/core/localization/change_lang_controller.dart
 import 'package:flutter_e_commerce/core/services/api_services.dart';
 import 'package:flutter_e_commerce/core/services/app_services.dart';
 import 'package:flutter_e_commerce/core/services/app_themes.dart';
+import 'package:flutter_e_commerce/core/services/service_locator.dart';
 import 'package:flutter_e_commerce/core/services/theme_services.dart';
+import 'package:flutter_e_commerce/firebase_options.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() async{
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  if (kDebugMode) {
+    print("Handling a background message: ${message.messageId}");
+  }
+}
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  setupGetItServiceLocator();
+
   await AppServices.initialServices();
   ApiService().init();
   await GetStorage.init();

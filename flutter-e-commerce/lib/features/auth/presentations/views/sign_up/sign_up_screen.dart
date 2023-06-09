@@ -28,9 +28,10 @@ class SignUpScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           '17'.tr,
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-            color: ThemeColors.secondaryText
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(color: ThemeColors.secondaryText),
         ),
         elevation: 0,
       ),
@@ -42,11 +43,13 @@ class SignUpScreen extends StatelessWidget {
             key: controller.formKey,
             child: Column(
               children: [
-                const SizedBox(height: 50,),
+                const SizedBox(
+                  height: 50,
+                ),
 
                 // User Name
                 CustomTextField(
-                  validator: (val)=> validateInput(
+                  validator: (val) => validateInput(
                     val: val,
                     type: AppValidateTypes.isUserName,
                     min: 3,
@@ -59,13 +62,19 @@ class SignUpScreen extends StatelessWidget {
                   controller: controller.userNameController,
                   inputKey: controller.userNameKey,
                 ),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
 
-                SignInEmailInput(emailController: controller.emailController, emailKey: controller.emailKey),
-                const SizedBox(height: 30,),
+                SignInEmailInput(
+                    emailController: controller.emailController,
+                    emailKey: controller.emailKey),
+                const SizedBox(
+                  height: 30,
+                ),
                 // Phone
                 CustomTextField(
-                  validator: (val)=> validateInput(
+                  validator: (val) => validateInput(
                     val: val,
                     type: AppValidateTypes.isPhone,
                     min: 10,
@@ -78,39 +87,45 @@ class SignUpScreen extends StatelessWidget {
                   controller: controller.phoneController,
                   inputKey: controller.phoneKey,
                 ),
-                const SizedBox(height: 30,),
-                SignInPasswordInput(passwordController: controller.passwordController, passwordKey: controller.passwordKey),
-                const SizedBox(height: 30,),
-
-
+                const SizedBox(
+                  height: 30,
+                ),
+                SignInPasswordInput(
+                    passwordController: controller.passwordController,
+                    passwordKey: controller.passwordKey),
+                const SizedBox(
+                  height: 30,
+                ),
 
                 CustomTextButton(
                   text: '14'.tr,
                   textAlign: TextAlign.end,
-                  onPress: (){
+                  onPress: () {
                     controller.goToForgetPassword();
                   },
                 ),
-                const SizedBox(height: 30,),
-                GetBuilder<SignUpController>(
-                    builder: (controller) {
-                      return HandleLoading(
-                        state: controller.state,
-                        child: CustomButton(
-                          text: '17'.tr,
-                          borderRadius: 50,
-                          onPress: (){
-                            controller.signUp();
-                          },
-                          width: 100,
-                        ),
-                      );
-                    }
+                const SizedBox(
+                  height: 30,
                 ),
-                const SizedBox(height: 30,),
+                GetBuilder<SignUpController>(builder: (controller) {
+                  return HandleLoading(
+                    state: controller.state,
+                    child: CustomButton(
+                      text: '17'.tr,
+                      borderRadius: 50,
+                      onPress: () {
+                        controller.signUp();
+                      },
+                      width: 100,
+                    ),
+                  );
+                }),
+                const SizedBox(
+                  height: 30,
+                ),
                 CustomTextButton(
                   text: 'Already have account? Sign In.'.tr,
-                  onPress: (){
+                  onPress: () {
                     controller.goToLogIn();
                   },
                   textAlign: TextAlign.center,
@@ -123,9 +138,3 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

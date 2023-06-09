@@ -16,12 +16,12 @@ abstract class ResetPasswordController extends GetxController {
 
   void savePassword();
   Map<String, dynamic> get formatData => {
-    'email':email,
-    'password': passwordController.text,
-  };
+        'email': email,
+        'password': passwordController.text,
+      };
 }
-class ResetPasswordControllerImp extends ResetPasswordController{
 
+class ResetPasswordControllerImp extends ResetPasswordController {
   @override
   void onInit() {
     super.onInit();
@@ -38,59 +38,60 @@ class ResetPasswordControllerImp extends ResetPasswordController{
   }
 
   @override
-  void savePassword() async{
-    if((formKey.currentState?.validate())?? false){
+  void savePassword() async {
+    if ((formKey.currentState?.validate()) ?? false) {
       state = AppLoadingState();
       update();
-      Either<Failure, Map<String, dynamic>> result = await _repoImp.reset(formatData);
+      Either<Failure, Map<String, dynamic>> result =
+          await _repoImp.reset(formatData);
 
-      result.fold((failure){
+      result.fold((failure) {
         state = handleFailure(failure);
-        if(state is AppServerFailureState){
+        if (state is AppServerFailureState) {
           Get.defaultDialog(
               title: 'Error',
               middleText: (state as AppServerFailureState).errorMessage,
               actions: [
-                ElevatedButton(onPressed: () {
-                  Get.back();
-                }, child: const Text('Ok')),
-              ]
-          );
+                ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Text('Ok')),
+              ]);
         }
         update();
-      }, (response) async{
-
-        if(!response['status']){
+      }, (response) async {
+        if (!response['status']) {
           Get.defaultDialog(
               title: 'Warning',
               middleText: response['message'],
               actions: [
-                ElevatedButton(onPressed: () {
-                  Get.back();
-                  state = AppValidateFailureState(errors: response['errors'], errorMessage: response['message']);
-                  update();
-                }, child: const Text('Ok')),
-              ]
-          );
-
-        }else{
+                ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                      state = AppValidateFailureState(
+                          errors: response['errors'],
+                          errorMessage: response['message']);
+                      update();
+                    },
+                    child: const Text('Ok')),
+              ]);
+        } else {
           Get.defaultDialog(
               title: 'Success',
               middleText: response['message'],
               actions: [
-                ElevatedButton(onPressed: (){
-                  Get.back();
-                  state = AppSuccessState();
-                  update();
-                  Get.offAllNamed(AppRouteKeys.successResetPassword);
-                }, child: const Text('Ok')),
-              ]
-          );
-
-
+                ElevatedButton(
+                    onPressed: () {
+                      Get.back();
+                      state = AppSuccessState();
+                      update();
+                      Get.offAllNamed(AppRouteKeys.successResetPassword);
+                    },
+                    child: const Text('Ok')),
+              ]);
         }
       });
     }
   }
-
 }

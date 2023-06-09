@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatefulWidget {
-  const CustomTextField({
+  CustomTextField({
     Key? key,
     required this.hintText,
     required this.controller,
@@ -19,7 +19,10 @@ class CustomTextField extends StatefulWidget {
     this.keyboardType = TextInputType.name,
     this.textInputAction = TextInputAction.next,
     this.isRequired = true,
-    this.contentPadding = const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+    this.contentPadding =
+        const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+    this.borderRadius =50.0,
+    this.fillColor =Colors.white,
   }) : super(key: key);
 
   final String hintText;
@@ -31,11 +34,13 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final Color? borderColor;
+  Color fillColor;
   final int maxLines;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final bool isRequired;
   final EdgeInsets contentPadding;
+  double borderRadius;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -48,11 +53,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       key: widget.inputKey,
-      onChanged: (val){
-        if(widget.controller.text.length<2){
-          setState(() {
-
-          });
+      onChanged: (val) {
+        if (widget.controller.text.length < 2) {
+          setState(() {});
         }
         widget.inputKey.currentState!.validate();
       },
@@ -69,40 +72,48 @@ class _CustomTextFieldState extends State<CustomTextField> {
       style: TextStyle(
         color: widget.borderColor ?? ThemeColors.white,
       ),
-      obscureText: (){
-        if(widget.obscureText) return widget.obscureText;
-        if(widget.isPassword){
-          return isShowPassword? false : true;
+      obscureText: () {
+        if (widget.obscureText) return widget.obscureText;
+        if (widget.isPassword) {
+          return isShowPassword ? false : true;
         }
         return false;
       }(),
       maxLines: widget.maxLines,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: widget.fillColor,
         contentPadding: widget.contentPadding,
         errorStyle: TextStyle(
           color: widget.borderColor ?? ThemeColors.white,
         ),
-        suffixIcon: (){
-          if(widget.suffixIcon != null) return widget.suffixIcon;
-          if(widget.isPassword) {
+        suffixIcon: () {
+          if (widget.suffixIcon != null) return widget.suffixIcon;
+          if (widget.isPassword) {
             return IconButton(
-              onPressed: (){
+              onPressed: () {
                 setState(() {
                   isShowPassword = !isShowPassword;
                 });
               },
-              icon: Icon(isShowPassword? Icons.visibility_off : Icons.visibility , size: 24,),
+              icon: Icon(
+                isShowPassword ? Icons.visibility_off : Icons.visibility,
+                size: 24,
+              ),
             );
           }
-          if(widget.controller.text.isNotEmpty) {
+          if (widget.controller.text.isNotEmpty) {
             return IconButton(
-              onPressed: (){
+              onPressed: () {
                 setState(() {
                   widget.controller.text = '';
                   widget.inputKey.currentState!.validate();
                 });
               },
-              icon: const Icon(Icons.close , size: 24,),
+              icon: const Icon(
+                Icons.close,
+                size: 24,
+              ),
             );
           }
           return null;
@@ -110,32 +121,31 @@ class _CustomTextFieldState extends State<CustomTextField> {
         prefixIcon: widget.prefixIcon,
         label: Text('${widget.hintText} ${widget.isRequired ? '*' : ''}'),
         hintText: '${widget.hintText} ${widget.isRequired ? '*' : ''}',
-        labelStyle: widget.controller.text.isEmpty?
-                    Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: ThemeColors.secondClr.withOpacity(0.5),
-                    )
-                    :
-                    Theme.of(context).textTheme.bodyLarge,
+        labelStyle: widget.controller.text.isEmpty
+            ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: ThemeColors.secondClr.withOpacity(0.5),
+                )
+            : Theme.of(context).textTheme.bodyLarge,
         hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: ThemeColors.secondClr.withOpacity(0.8),
-        ),
+              color: ThemeColors.secondClr.withOpacity(0.8),
+            ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.blue,
           ),
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
             color: widget.borderColor ?? ThemeColors.white,
           ),
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(
             color: widget.borderColor ?? ThemeColors.white,
           ),
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(widget.borderRadius),
         ),
       ),
     );

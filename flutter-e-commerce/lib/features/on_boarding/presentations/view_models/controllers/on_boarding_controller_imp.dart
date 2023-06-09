@@ -7,20 +7,21 @@ import 'package:flutter_e_commerce/features/on_boarding/data/statics/on_boarding
 import 'package:flutter_e_commerce/features/on_boarding/presentations/view_models/controllers/on_boarding_controller.dart';
 import 'package:get/get.dart';
 
-class OnBoardingControllerImp extends OnBoardingController{
+class OnBoardingControllerImp extends OnBoardingController {
   @override
-  void next(){
-    if(currentPage < OnBoardingStatics.onBoardingList.length-1){
+  void next() {
+    if (currentPage < OnBoardingStatics.onBoardingList.length - 1) {
       currentPage++;
-      pageController.animateToPage(currentPage, duration: AppConstants.transitionDuration, curve: Curves.easeInOut);
-    }else{
+      pageController.animateToPage(currentPage,
+          duration: AppConstants.transitionDuration, curve: Curves.easeInOut);
+    } else {
       CacheHelper.setData(AppCaches.isShowOnBoardingScreen, false);
       Get.offAllNamed(AppRouteKeys.login);
     }
   }
 
   @override
-  void onPageChanged(int index){
+  void onPageChanged(int index) {
     currentPage = index;
     update();
   }

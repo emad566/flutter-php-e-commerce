@@ -21,7 +21,7 @@ class SuccessSignUpScreen extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 50),
           width: double.infinity,
-          height: SizeConfig.screenHeight-100,
+          height: SizeConfig.screenHeight - 100,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,19 +31,23 @@ class SuccessSignUpScreen extends StatelessWidget {
                 size: 200,
                 color: ThemeColors.primaryClr,
               ),
-              const SizedBox(height: 50,),
+              const SizedBox(
+                height: 50,
+              ),
               Text(
                 'Success Sign Up, You can log in now'.tr,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: ThemeColors.secondClr,
-                ),
+                      color: ThemeColors.secondClr,
+                    ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 50,),
+              const SizedBox(
+                height: 50,
+              ),
               CustomButton(
                 text: 'Sign In'.tr,
                 borderRadius: 50,
-                onPress: (){
+                onPress: () {
                   Get.offAllNamed(AppRouteKeys.login);
                 },
                 width: 100,

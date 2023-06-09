@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
+import 'package:flutter_e_commerce/core/constants/app_chaches.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
+import 'package:flutter_e_commerce/core/services/cache_helper.dart';
 import 'package:flutter_e_commerce/features/auth/repos/login_repo.dart';
 import 'package:get/get.dart';
 
-abstract class LoginController extends GetxController{
+abstract class LoginController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<FormFieldState> emailKey = GlobalKey<FormFieldState>();
   GlobalKey<FormFieldState> passwordKey = GlobalKey<FormFieldState>();
@@ -20,13 +24,12 @@ abstract class LoginController extends GetxController{
   void goToForgetPassword();
 
   Map<String, dynamic> get formatData => {
-    'email':emailController.text,
-    'password':passwordController.text,
-  };
+        'email': emailController.text,
+        'password': passwordController.text,
+      };
 }
 
-class LoginControllerImp extends LoginController{
-
+class LoginControllerImp extends LoginController {
   @override
   void goToForgetPassword() {
     Get.toNamed(AppRouteKeys.forgetPassword);
@@ -38,34 +41,37 @@ class LoginControllerImp extends LoginController{
   }
 
   @override
-  void login() async{
-    if((formKey.currentState?.validate())?? false){
+  void login() async {
+    if ((formKey.currentState?.validate()) ?? false) {
       state = AppLoadingState();
       update();
-      Either<Failure, Map<String, dynamic>> result = await _repoImp.login(formatData);
+      Either<Failure, Map<String, dynamic>> result =
+          await _repoImp.login(formatData);
 
-      result.fold((failure){
+      result.fold((failure) {
         state = handleFailure(failure);
-      }, (response) async{
-
-        if(!response['status']){
+      }, (response) async {
+        if (!response['status']) {
           Get.defaultDialog(
               title: 'Warning',
               middleText: response['message'],
               actions: [
-                ElevatedButton(onPressed: ()=>Get.back(), child: const Text('Ok')),
-              ]
-          );
-          state = AppValidateFailureState(errors: response['errors'], errorMessage: response['message']);
+                ElevatedButton(
+                    onPressed: () => Get.back(), child: const Text('Ok')),
+              ]);
+          state = AppValidateFailureState(
+              errors: response['errors'], errorMessage: response['message']);
           update();
-        }else{
+        } else {
+          cacheLoginData(response);
+
           Get.defaultDialog(
               title: 'Success',
               middleText: response['message'],
               actions: [
-                ElevatedButton(onPressed: ()=>Get.back(), child: const Text('Ok')),
-              ]
-          );
+                ElevatedButton(
+                    onPressed: () => Get.back(), child: const Text('Ok')),
+              ]);
 
           state = AppSuccessState();
           Get.offAllNamed(AppRouteKeys.home);
@@ -74,6 +80,10 @@ class LoginControllerImp extends LoginController{
     }
   }
 
+  void cacheLoginData(Map<String, dynamic> response) {
+    dynamic dataStr = jsonEncode(response['data']);
+    CacheHelper.setData(AppCaches.loginCached, dataStr);
+  }
 
   @override
   void onInit() {
@@ -88,5 +98,4 @@ class LoginControllerImp extends LoginController{
     emailController.dispose();
     passwordController.dispose();
   }
-
 }

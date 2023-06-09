@@ -14,16 +14,19 @@ class SignUpTextHeader extends StatelessWidget {
       children: [
         Text(
           'Welcome with you'.tr,
-          style:  Theme.of(context).textTheme.displayMedium,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
-        const SizedBox(height: 10,),
+        const SizedBox(
+          height: 10,
+        ),
         SizedBox(
-          width: SizeConfig.screenWidth *.80,
+          width: SizeConfig.screenWidth * .80,
           child: Text(
             'Please fill those fields to create new account'.tr,
-            style:  Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: ThemeColors.secondaryText
-            ),
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium
+                ?.copyWith(color: ThemeColors.secondaryText),
             textAlign: TextAlign.center,
           ),
         ),

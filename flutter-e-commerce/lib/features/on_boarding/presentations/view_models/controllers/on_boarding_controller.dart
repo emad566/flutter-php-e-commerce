@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-abstract class OnBoardingController extends GetxController{
+abstract class OnBoardingController extends GetxController {
   int currentPage = 0;
   late PageController pageController;
 

@@ -4,7 +4,6 @@ import 'package:flutter_e_commerce/features/on_boarding/data/statics/on_boarding
 import 'package:flutter_e_commerce/features/on_boarding/presentations/view_models/controllers/on_boarding_controller_imp.dart';
 import 'package:get/get.dart';
 
-
 class OnBoardingDotController extends StatelessWidget {
   const OnBoardingDotController({
     super.key,
@@ -18,18 +17,16 @@ class OnBoardingDotController extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ...OnBoardingStatics.onBoardingList.asMap().keys.map(
-                  (key) =>
-                  AnimatedContainer(
+                  (key) => AnimatedContainer(
                     margin: const EdgeInsets.symmetric(horizontal: 5),
                     duration: const Duration(milliseconds: 900),
                     height: 6,
-                    width: key == controller.currentPage? 6*4 : 6,
+                    width: key == controller.currentPage ? 6 * 4 : 6,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: ThemeColors.primaryClr
-                    ),
+                        color: ThemeColors.primaryClr),
                   ),
-            ),
+                ),
           ],
         );
       },

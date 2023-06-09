@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/functions/alert_exit_app.dart';
+import 'package:flutter_e_commerce/core/services/firebase/custom_firebase_messaging.dart';
+import 'package:flutter_e_commerce/core/services/service_locator.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
@@ -13,8 +15,21 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/login/widge
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getIt<CustomFirebaseMessaging>().requestNotificationPermission();
+    getIt<CustomFirebaseMessaging>().listenToFirebaseMessaging();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +43,15 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           '9'.tr,
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-            color: ThemeColors.secondaryText
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(color: ThemeColors.secondaryText),
         ),
         elevation: 0,
       ),
       body: WillPopScope(
-        onWillPop: ()=>alertExitApp(),
+        onWillPop: () => alertExitApp(),
         child: SingleChildScrollView(
           child: Container(
             width: double.infinity,
@@ -45,41 +61,54 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   const AuthLogo(),
-                  const SizedBox(height: 30,),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   const SignInTextHeader(),
-                  const SizedBox(height: 30,),
-                  SignInEmailInput(emailController: controller.emailController, emailKey: controller.emailKey),
-                  const SizedBox(height: 30,),
-                  SignInPasswordInput(passwordController: controller.passwordController, passwordKey: controller.passwordKey),
-                  const SizedBox(height: 30,),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SignInEmailInput(
+                      emailController: controller.emailController,
+                      emailKey: controller.emailKey),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  SignInPasswordInput(
+                      passwordController: controller.passwordController,
+                      passwordKey: controller.passwordKey),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   CustomTextButton(
                     text: '14'.tr,
                     textAlign: TextAlign.end,
-                    onPress: (){
+                    onPress: () {
                       controller.goToForgetPassword();
                     },
                   ),
-                  const SizedBox(height: 30,),
-                  GetBuilder<LoginController>(
-                      builder: (controller) {
-                        return HandleLoading(
-                          state: controller.state,
-                          child: CustomButton(
-                            text: '15'.tr,
-                            borderRadius: 50,
-                            onPress: (){
-                              controller.login();
-                            },
-                            width: 100,
-                          ),
-                        );
-                      }
+                  const SizedBox(
+                    height: 30,
                   ),
-
-                  const SizedBox(height: 30,),
+                  GetBuilder<LoginController>(builder: (controller) {
+                    return HandleLoading(
+                      state: controller.state,
+                      child: CustomButton(
+                        text: '15'.tr,
+                        borderRadius: 50,
+                        onPress: () {
+                          controller.login();
+                        },
+                        width: 100,
+                      ),
+                    );
+                  }),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   CustomTextButton(
                     text: '${'16'.tr} ${'17'.tr}',
-                    onPress: (){
+                    onPress: () {
                       controller.goToSignUp();
                     },
                     textAlign: TextAlign.center,
@@ -93,9 +122,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

@@ -25,4 +25,6 @@ abstract class ThemeColors {
       Get.isDarkMode ? AppColors.darkFourthClr : AppColors.fourthClr;
   static Color get thirdClr =>
       Get.isDarkMode ? AppColors.darkThirdClr : AppColors.thirdClr;
+  static Color get fillClr =>
+      Get.isDarkMode ? AppColors.darkFillClr : AppColors.fillClr;
 }

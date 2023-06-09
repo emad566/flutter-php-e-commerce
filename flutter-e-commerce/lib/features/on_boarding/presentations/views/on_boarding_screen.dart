@@ -15,7 +15,7 @@ class OnBoardingScreen extends StatelessWidget {
     Get.put(OnBoardingControllerImp());
 
     SizeConfig().init(context);
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: ThemeColors.primaryBg,
       body: const SafeArea(
         child: Column(
@@ -33,6 +33,3 @@ class OnBoardingScreen extends StatelessWidget {
     );
   }
 }
-
-
-

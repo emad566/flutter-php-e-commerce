@@ -27,30 +27,35 @@ class ResetPasswordScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'New Password'.tr,
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-              color: ThemeColors.secondaryText
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(color: ThemeColors.secondaryText),
         ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          height: SizeConfig.screenHeight-100,
+          height: SizeConfig.screenHeight - 100,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: controller.formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50,),
+                const SizedBox(
+                  height: 50,
+                ),
                 Text(
                   'Fill the new password'.tr,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 CustomTextField(
-                  validator: (val)=> validateInput(
+                  validator: (val) => validateInput(
                     val: val,
                     type: AppValidateTypes.isPassword,
                     min: 3,
@@ -64,14 +69,16 @@ class ResetPasswordScreen extends StatelessWidget {
                   controller: controller.passwordController,
                   inputKey: passwordKey,
                 ),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 CustomTextField(
-                  validator: (val)=> validateInput(
+                  validator: (val) => validateInput(
                     val: val,
                     type: AppValidateTypes.isPassword,
                     min: 3,
                     max: 8,
-                    confirm:controller.passwordController.text,
+                    confirm: controller.passwordController.text,
                   ),
                   keyboardType: TextInputType.visiblePassword,
                   borderColor: ThemeColors.secondClr,
@@ -81,25 +88,25 @@ class ResetPasswordScreen extends StatelessWidget {
                   controller: controller.confirmPasswordController,
                   inputKey: confirmPasswordKey,
                 ),
-                const SizedBox(height: 30,),
-                GetBuilder<ResetPasswordController>(
-                    builder: (controller) {
-                      return HandleLoading(
-                        state: controller.state,
-                        child:
-                        CustomButton(
-                          text: 'Send'.tr,
-                          borderRadius: 50,
-                          onPress: (){
-                            controller.savePassword();
-                          },
-                          width: 100,
-                        ),
-                      );
-                    }
+                const SizedBox(
+                  height: 30,
                 ),
-                const SizedBox(height: 30,),
-
+                GetBuilder<ResetPasswordController>(builder: (controller) {
+                  return HandleLoading(
+                    state: controller.state,
+                    child: CustomButton(
+                      text: 'Send'.tr,
+                      borderRadius: 50,
+                      onPress: () {
+                        controller.savePassword();
+                      },
+                      width: 100,
+                    ),
+                  );
+                }),
+                const SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           ),
@@ -108,9 +115,3 @@ class ResetPasswordScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

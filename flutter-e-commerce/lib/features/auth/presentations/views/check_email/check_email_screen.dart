@@ -6,14 +6,14 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/login/widge
 import 'package:get/get.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-
 // ignore: must_be_immutable
 class CheckEmailScreen extends StatelessWidget {
   const CheckEmailScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    CheckEmailController controller = Get.put(CheckEmailControllerImp(Get.find()));
+    CheckEmailController controller =
+        Get.put(CheckEmailControllerImp(Get.find()));
 
     SizeConfig().init(context);
     return Scaffold(
@@ -23,9 +23,10 @@ class CheckEmailScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'Check Code'.tr,
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-              color: ThemeColors.secondaryText
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(color: ThemeColors.secondaryText),
         ),
         elevation: 0,
       ),
@@ -35,26 +36,31 @@ class CheckEmailScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              const SizedBox(height: 50,),
+              const SizedBox(
+                height: 50,
+              ),
               const AuthLogo(),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               Text(
                 'Please Enter the digit code sent to emad@gmail.com'.tr,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: ThemeColors.secondClr,
-                ),
+                      color: ThemeColors.secondClr,
+                    ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(
+                height: 30,
+              ),
               OtpTextField(
-
                 fieldWidth: 50.0,
                 borderRadius: BorderRadius.circular(20),
                 numberOfFields: 5,
                 borderColor: ThemeColors.secondClr,
                 showFieldAsBox: true,
                 onCodeChanged: (String code) {},
-                onSubmit: (String verificationCode){
+                onSubmit: (String verificationCode) {
                   controller.checkEmail(verificationCode);
                 }, // end onSubmit
               ),
@@ -65,9 +71,3 @@ class CheckEmailScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

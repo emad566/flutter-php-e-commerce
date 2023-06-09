@@ -9,11 +9,12 @@ abstract class AppColors {
   static const Color primaryText = Colors.black;
   static const Color secondaryText = Color(0xff8e8e8e);
   static const Color tripleText = Color.fromARGB(255, 66, 66, 66);
-  static const Color primaryBg = Color(0xffF8F9FD) ;
+  static const Color primaryBg = Color(0xffF8F9FD);
   static const Color primaryClr = Color(0xffe74c3c);
   static const Color secondClr = Color(0xffc0392b);
   static const Color fourthClr = Color(0xff0d3056);
   static const Color thirdClr = Color.fromARGB(255, 255, 179, 170);
+  static const Color fillClr = Color(0xffdddddd);
 
   //DarkMode Mode
   static const Color darkPrimaryText = Colors.white;
@@ -24,4 +25,6 @@ abstract class AppColors {
   static const Color darkSecondClr = Color(0xffc0392b);
   static const Color darkFourthClr = Color(0xff0d3056);
   static const Color darkThirdClr = Color.fromARGB(255, 255, 179, 170);
+  static const Color darkFillClr = Color(0xffdddddd);
+
 }

@@ -7,7 +7,7 @@ $email = filterRequest("email");
 $verfiycode     = rand(10000 , 99999);
 
 $data = array(
-"users_verfiycode" => $verfiycode
+"users_verify_code" => $verfiycode
 ) ; 
 
 updateData("users" ,  $data  , "users_email = '$email'" ) ; 

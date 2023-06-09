@@ -18,7 +18,7 @@ class SignInPasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
-      validator: (val)=> validateInput(
+      validator: (val) => validateInput(
         val: val,
         type: AppValidateTypes.isPassword,
         min: 1,

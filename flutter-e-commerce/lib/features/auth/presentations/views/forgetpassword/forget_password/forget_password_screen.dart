@@ -15,7 +15,8 @@ class ForgetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordController controller = Get.put(ForgetPasswordControllerImp());
+    ForgetPasswordController controller =
+        Get.put(ForgetPasswordControllerImp());
 
     SizeConfig().init(context);
     return Scaffold(
@@ -25,15 +26,16 @@ class ForgetPasswordScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'Request Rest Password'.tr,
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-              color: ThemeColors.secondaryText
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(color: ThemeColors.secondaryText),
         ),
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: SizeConfig.screenHeight-100,
+          height: SizeConfig.screenHeight - 100,
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Form(
@@ -41,51 +43,56 @@ class ForgetPasswordScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50,),
+                const SizedBox(
+                  height: 50,
+                ),
                 Text(
                   'Please enter your email to reset password'.tr,
                   style: Theme.of(context).textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 50,),
-
-
-                SignInEmailInput(emailController: controller.emailController, emailKey: emailKey),
-                const SizedBox(height: 30,),
-                GetBuilder<ForgetPasswordController>(
-                    builder: (controller) {
-                      return HandleLoading(
-                        state: controller.state,
-                        child: CustomButton(
-                          text: 'Check'.tr,
-                          borderRadius: 50,
-                          onPress: (){
-                            controller.checkEmail();
-                          },
-                          width: 100,
-                        ),
-                      );
-                    }
+                const SizedBox(
+                  height: 50,
                 ),
-
-
-                const SizedBox(height: 30,),
+                SignInEmailInput(
+                    emailController: controller.emailController,
+                    emailKey: emailKey),
+                const SizedBox(
+                  height: 30,
+                ),
+                GetBuilder<ForgetPasswordController>(builder: (controller) {
+                  return HandleLoading(
+                    state: controller.state,
+                    child: CustomButton(
+                      text: 'Check'.tr,
+                      borderRadius: 50,
+                      onPress: () {
+                        controller.checkEmail();
+                      },
+                      width: 100,
+                    ),
+                  );
+                }),
+                const SizedBox(
+                  height: 30,
+                ),
                 CustomTextButton(
                   text: 'Do you remember password? login.'.tr,
-                  onPress: (){
+                  onPress: () {
                     controller.goToLogin();
                   },
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 30,),
+                const SizedBox(
+                  height: 30,
+                ),
                 CustomTextButton(
                   text: 'You could create new account'.tr,
                   textAlign: TextAlign.center,
-                  onPress: (){
+                  onPress: () {
                     controller.goToSignUp();
                   },
                 ),
-
               ],
             ),
           ),
@@ -94,9 +101,3 @@ class ForgetPasswordScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
