@@ -4,7 +4,7 @@ import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/features/home/presentations/view_models/controllers/home_controller.dart';
 import 'package:flutter_e_commerce/features/home/presentations/views/widgets/categories_list_view.dart';
 import 'package:flutter_e_commerce/features/home/presentations/views/widgets/home_ads_bar.dart';
-import 'package:flutter_e_commerce/features/home/presentations/views/widgets/home_search_bar.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/home_search_bar.dart';
 import 'package:flutter_e_commerce/features/home/presentations/views/widgets/items_list_view.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeSearchBar(controller: controller),
+            HomeSearchBar(controller: controller.searchController, inputKey: controller.searchKey,),
             const SizedBox(height: 20,),
             const HomeAdsBar(),
             const SizedBox(height: 20,),

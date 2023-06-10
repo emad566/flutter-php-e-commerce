@@ -6,6 +6,7 @@ import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 import 'package:flutter_e_commerce/features/home/presentations/view_models/controllers/home_controller.dart';
 import 'package:get/get.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemsListView extends StatelessWidget {
   const ItemsListView({
@@ -31,8 +32,8 @@ class ItemsListView extends StatelessWidget {
                     right: 0,
                     child: Container(
                       padding: const EdgeInsets.all(10.0),
-                      child: Image.network(
-                        "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
+                      child: CachedNetworkImage(
+                        imageUrl: "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
                         height: 100,
                         width: 170,
                       ),

@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
+import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/category_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/home_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
-import 'package:flutter_e_commerce/features/home/repos/home_repo.dart';
+import 'package:flutter_e_commerce/features/home/data/repos/home_repo.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController{
@@ -17,6 +18,7 @@ abstract class HomeController extends GetxController{
   List<CategoryModel> categories = [];
   List<ItemViewModel> items = [];
   void list();
+  void goToItems(int index);
 }
 
 class HomeControllerImp extends HomeController{
@@ -52,7 +54,7 @@ class HomeControllerImp extends HomeController{
 
   void _setItems(HomeModel homeModel) {
     if (homeModel.items != null) {
-      items = homeModel.items!.status ? homeModel.items!.data! : [];
+      items = homeModel.items!.status ? homeModel.items!.data : [];
     } else {
       items = [];
     }
@@ -64,5 +66,16 @@ class HomeControllerImp extends HomeController{
     super.onInit();
     searchController = TextEditingController();
     list();
+  }
+
+  @override
+  void goToItems(int index) {
+    Get.toNamed(
+      AppRouteKeys.items,
+      arguments: {
+        "selectedCategoryIndex": index,
+        "categories": categories,
+      },
+    );
   }
 }

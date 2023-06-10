@@ -11,4 +11,5 @@ abstract class AppRouteKeys {
   static const String checkEmail = '/checkEmail';
   static const String home = '/home';
   static const String homeLayout = '/homeLayout';
+  static const String items = '/items';
 }

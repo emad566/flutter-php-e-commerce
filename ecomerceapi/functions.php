@@ -15,7 +15,6 @@ function filterRequest($requestname)
 
 function getAllData($table, $where = null, $values = null, $json = true)
 {
-    
     try {
         global $con;
         $data = array();

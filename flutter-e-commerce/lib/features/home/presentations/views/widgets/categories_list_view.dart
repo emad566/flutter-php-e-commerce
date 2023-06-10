@@ -27,16 +27,21 @@ class CategoriesListView extends StatelessWidget {
               CategoryModel item = controller.categories[index];
               return Column(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: ThemeColors.thirdClr,
-                        borderRadius: BorderRadius.circular(20)),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    height: 80,
-                    width: 80,
-                    child: SvgPicture.network(
-                      "${ApiLinks.baseURL}upload/categories/${item.categoriesImage}",
-                      colorFilter: ColorFilter.mode(ThemeColors.secondClr, BlendMode.srcIn),
+                  InkWell(
+                    onTap: (){
+                      controller.goToItems(index);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: ThemeColors.thirdClr,
+                          borderRadius: BorderRadius.circular(20)),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      height: 80,
+                      width: 80,
+                      child: SvgPicture.network(
+                        "${ApiLinks.baseURL}upload/categories/${item.categoriesImage}",
+                        colorFilter: ColorFilter.mode(ThemeColors.secondClr, BlendMode.srcIn),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 10,),

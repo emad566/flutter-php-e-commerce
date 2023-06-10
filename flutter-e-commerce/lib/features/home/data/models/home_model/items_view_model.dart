@@ -3,9 +3,9 @@ import 'package:flutter_e_commerce/features/home/data/models/home_model/item_vie
 class ItemsViewModel {
 	bool status;
 	String message;
-	List<ItemViewModel>? data;
+	List<ItemViewModel> data;
 
-	ItemsViewModel({required this.status, required this.message, this.data});
+	ItemsViewModel({required this.status, required this.message, required this.data});
 
 	@override
 	String toString() {
@@ -15,14 +15,14 @@ class ItemsViewModel {
 	factory ItemsViewModel.fromJson(Map<String, dynamic> json) => ItemsViewModel(
 				status: json['status'] as bool,
 				message: json['message'] as String,
-				data: (json['data'] as List<dynamic>?)
-						?.map((e) => ItemViewModel.fromJson(e as Map<String, dynamic>))
+				data: json['data'] == null? [] : (json['data'] as List<dynamic>)
+						.map((e) => ItemViewModel.fromJson(e as Map<String, dynamic>))
 						.toList(),
 			);
 
 	Map<String, dynamic> toJson() => {
 				'status': status,
 				'message': message,
-				'data': data?.map((e) => e.toJson()).toList(),
+				'data': data.map((e) => e.toJson()).toList(),
 			};
 }

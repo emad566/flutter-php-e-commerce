@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_input_field.dart';
-import 'package:flutter_e_commerce/features/home/presentations/view_models/controllers/home_controller.dart';
-
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({
     super.key,
     required this.controller,
+    required this.inputKey,
   });
 
-  final HomeController controller;
+  final TextEditingController controller;
+  final GlobalKey<FormFieldState> inputKey;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class HomeSearchBar extends StatelessWidget {
           child: CustomTextField(
             isRequired: false,
             hintText: 'Find Product',
-            controller: controller.searchController,
-            inputKey: controller.searchKey,
+            controller: controller,
+            inputKey: inputKey,
             borderRadius: 5,
             borderColor: ThemeColors.primaryClr,
             prefixIcon: const Icon(Icons.search, size: 24,),
