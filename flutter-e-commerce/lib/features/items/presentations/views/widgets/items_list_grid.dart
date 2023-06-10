@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/api_links.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
+import 'package:flutter_e_commerce/core/functions/translate.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
@@ -19,6 +20,7 @@ class ItemsListGrid extends StatelessWidget {
     SizeConfig().init(context);
     return GetBuilder<ItemsController>(builder: (controller) {
       return HandleLoading(
+        size: 150,
         state: controller.state,
         child: SingleChildScrollView(
           child: GridView.builder(
@@ -27,7 +29,7 @@ class ItemsListGrid extends StatelessWidget {
             itemCount: controller.items.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 0.85,
+              childAspectRatio: 0.80,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
             ),
@@ -52,13 +54,13 @@ class ItemsListGrid extends StatelessWidget {
                       ),
                       const SizedBox(height: 10,),
                       Text(
-                        item.itemsName,
+                        translate(item.itemsNameAr, item.itemsName),
                         style: AppStyles.style14Bold.copyWith(color: ThemeColors.primaryText),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 10,),
                       Text(
-                        item.categoriesName,
+                        translate(item.categoriesNameAr, item.categoriesName),
                         style: AppStyles.style14Bold.copyWith(color: ThemeColors.secondaryText),
                         textAlign: TextAlign.center,
                       ),

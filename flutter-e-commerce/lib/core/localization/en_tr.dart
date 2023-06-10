@@ -71,5 +71,9 @@ Map<String, String> enTr = {
   "Confirm": "Confirm",
   "Cancel": "Cancel",
   "The password confirmation is wrong": "The password confirmation is wrong",
+  "A summer surprise": "A summer surprise",
+  "Cashback 20%": "Cashback 20%",
+  "Search": "Search ...",
+  "": "",
   "": "",
 };

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/api_links.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
+import 'package:flutter_e_commerce/core/functions/translate.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
@@ -36,6 +37,7 @@ class ItemsListView extends StatelessWidget {
                         imageUrl: "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
                         height: 100,
                         width: 170,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
@@ -51,9 +53,10 @@ class ItemsListView extends StatelessWidget {
 
                   Positioned(
                     top: 10,
-                    left: 10,
+                    left: isAr()? null : 10,
+                    right: !isAr()? null : 10,
                     child: Text(
-                      item.itemsName,
+                      translate(item.itemsNameAr, item.itemsName),
                       style: AppStyles.style20Bold.copyWith(
                         color: ThemeColors.white,
                       ),

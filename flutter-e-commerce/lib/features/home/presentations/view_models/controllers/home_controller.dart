@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
+import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/category_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/home_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
@@ -32,7 +33,7 @@ class HomeControllerImp extends HomeController{
       state = handleFailure(failure);
     }, (response) async {
       if (!response['status']) {
-        state = AppValidateFailureState(errors: response['errors'], errorMessage: response['message']);
+        state = emptyOrValidateState(response);
         update();
       } else {
         HomeModel homeModel = HomeModel.fromJson(response);

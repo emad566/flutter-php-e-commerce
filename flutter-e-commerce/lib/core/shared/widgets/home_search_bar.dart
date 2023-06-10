@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_input_field.dart';
+import 'package:get/get.dart';
 
 class HomeSearchBar extends StatelessWidget {
   const HomeSearchBar({
@@ -19,7 +20,7 @@ class HomeSearchBar extends StatelessWidget {
         Expanded(
           child: CustomTextField(
             isRequired: false,
-            hintText: 'Find Product',
+            hintText: "Search".tr,
             controller: controller,
             inputKey: inputKey,
             borderRadius: 5,
@@ -29,9 +30,8 @@ class HomeSearchBar extends StatelessWidget {
             contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
           ),
         ),
-
+        const SizedBox(width: 10,),
         Container(
-          margin: const EdgeInsets.only(left: 8),
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             color: ThemeColors.fillClr,

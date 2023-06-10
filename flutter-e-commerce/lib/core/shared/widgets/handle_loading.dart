@@ -3,50 +3,51 @@ import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/constants/app_paths.dart';
 import 'package:lottie/lottie.dart';
 
-class HandleLoading extends StatefulWidget {
-  const HandleLoading({Key? key, required this.state, required this.child})
+// ignore: must_be_immutable
+class HandleLoading  extends StatelessWidget {
+  HandleLoading({Key? key, required this.state, required this.child, this.size = 80.0})
       : super(key: key);
   final AppStates state;
   final Widget child;
+  double size;
 
-  @override
-  State<HandleLoading> createState() => _HandleLoadingState();
-}
-
-class _HandleLoadingState extends State<HandleLoading> {
   @override
   Widget build(BuildContext context) {
-    if (widget.state is AppLoadingState) {
-      return const AlarmImage(imagePath: AppPaths.loading);
+    if (state is AppLoadingState) {
+      return AlarmImage(imagePath: AppPaths.loading, size: size,);
     }
 
-    if (widget.state is AppOfflineFailureState) {
-      return const AlarmImage(imagePath: AppPaths.offline);
+    if (state is AppOfflineFailureState) {
+      return AlarmImage(imagePath: AppPaths.offline, size: size,);
     }
 
-    if (widget.state is AppServerFailureState) {
-      return const AlarmImage(imagePath: AppPaths.server);
+    if (state is AppServerFailureState) {
+      return AlarmImage(imagePath: AppPaths.server, size: size,);
     }
-    if (widget.state is AppFailureState) {
-      return const AlarmImage(imagePath: AppPaths.server);
+    if (state is AppFailureState) {
+      return AlarmImage(imagePath: AppPaths.server, size: size,);
     }
-    if (widget.state is AppNoDataState) {
-      return const AlarmImage(imagePath: AppPaths.noData);
+    if (state is AppEmptyState) {
+      return AlarmImage(imagePath: AppPaths.noData, size: size,);
     }
 
-    return widget.child;
+    return child;
   }
 }
 
+// ignore: must_be_immutable
 class AlarmImage extends StatelessWidget {
-  const AlarmImage({
+  AlarmImage({
     super.key,
     required this.imagePath,
+    this.size = 80,
   });
+
   final String imagePath;
+  double size;
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Lottie.asset(imagePath, width: 80, height: 80));
+    return Center(child: Lottie.asset(imagePath, width: size, height: size));
   }
 }

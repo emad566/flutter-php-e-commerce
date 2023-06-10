@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/api_links.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
+import 'package:flutter_e_commerce/core/functions/translate.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/category_model.dart';
@@ -19,7 +20,7 @@ class CategoriesListView extends StatelessWidget {
       return HandleLoading(
         state: controller.state,
         child: SizedBox(
-          height: 105,
+          height: 110,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: controller.categories.length,
@@ -46,7 +47,7 @@ class CategoriesListView extends StatelessWidget {
                   ),
                   const SizedBox(width: 10,),
                   Text(
-                    item.categoriesName,
+                    translate(item.categoriesNameAr, item.categoriesName),
                     style: AppStyles.style16Bold,
                   )
                 ],

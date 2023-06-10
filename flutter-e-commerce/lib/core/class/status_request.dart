@@ -21,9 +21,9 @@ class AppLoadingState extends AppStates {}
 
 class AppSuccessState extends AppStates {}
 
-class AppNoDataState extends AppStates {
+class AppEmptyState extends AppStates {
   final String message;
-  AppNoDataState(this.message);
+  AppEmptyState({this.message = 'Nodata'});
 }
 
 class AppFailureState extends AppStates {

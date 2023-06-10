@@ -73,4 +73,9 @@ Map<String, String> arTr = {
   "Confirm'": "نعم",
   "Cancel'": "لا",
   "The password confirmation is wrong": "كلمتي المرور غير متطابقتان",
+  "A summer surprise":"مفاجأة الصيف",
+  "Cashback 20%":"كاش باك 20%",
+  "Search":"ابحث ....",
+  "":"",
+  "":"",
 };

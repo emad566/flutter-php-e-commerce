@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
+import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/category_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/items_view_model.dart';
@@ -33,7 +34,7 @@ class ItemsControllerImp extends ItemsController{
       state = handleFailure(failure);
     }, (response) async {
       if (!response['status']) {
-        state = AppValidateFailureState(errors: response['errors'], errorMessage: response['message']);
+        state = emptyOrValidateState(response);
         update();
       } else {
         items = ItemsViewModel.fromJson(response).data;
@@ -57,6 +58,7 @@ class ItemsControllerImp extends ItemsController{
   @override
   void updateSelectedCategoryIndex(int index){
     selectedCategoryIndex = index;
+    list({"categories_id": categories[selectedCategoryIndex].categoriesId});
     update();
   }
 }
