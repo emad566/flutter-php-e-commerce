@@ -76,6 +76,10 @@ Map<String, String> arTr = {
   "A summer surprise":"مفاجأة الصيف",
   "Cashback 20%":"كاش باك 20%",
   "Search":"ابحث ....",
-  "":"",
-  "":"",
+  "Color": "اللون",
+  "Red": "أحمر",
+  "Black": "أسود",
+  "Blue": "أزرق",
+  "Add to Cart":"أضف إلي السلة",
+  // "":"",
 };

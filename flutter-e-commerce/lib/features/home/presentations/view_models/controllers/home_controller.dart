@@ -20,6 +20,8 @@ abstract class HomeController extends GetxController{
   List<ItemViewModel> items = [];
   void list();
   void goToItems(int index);
+  void goToItem(ItemViewModel item);
+
 }
 
 class HomeControllerImp extends HomeController{
@@ -61,14 +63,6 @@ class HomeControllerImp extends HomeController{
     }
   }
 
-
-  @override
-  void onInit() {
-    super.onInit();
-    searchController = TextEditingController();
-    list();
-  }
-
   @override
   void goToItems(int index) {
     Get.toNamed(
@@ -79,4 +73,18 @@ class HomeControllerImp extends HomeController{
       },
     );
   }
+
+  @override
+  void goToItem(ItemViewModel item) {
+    Get.toNamed(AppRouteKeys.itemSingle, arguments: {'single': item});
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    searchController = TextEditingController();
+    list();
+  }
+
+
 }

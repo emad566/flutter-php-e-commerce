@@ -9,9 +9,9 @@ class HomeLayoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeLayoutController controller = Get.put(HomeLayoutControllerImp());
 
-    return GetBuilder<HomeLayoutController>(
+    return GetBuilder<HomeLayoutControllerImp>(
+      init: HomeLayoutControllerImp(),
       builder: (controller){
         return Scaffold(
           extendBody: true,

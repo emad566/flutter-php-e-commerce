@@ -16,6 +16,7 @@ class ItemViewModel {
 	String categoriesNameAr;
 	String categoriesImage;
 	String categoriesDatetime;
+	bool favorite;
 
 	ItemViewModel({
 		required this.itemsId,
@@ -35,6 +36,7 @@ class ItemViewModel {
 		required this.categoriesNameAr,
 		required this.categoriesImage,
 		required this.categoriesDatetime,
+		required this.favorite,
 	});
 
 	@override
@@ -60,6 +62,7 @@ class ItemViewModel {
 				categoriesNameAr: json['categories_name_ar'] as String,
 				categoriesImage: json['categories_image'] as String,
 				categoriesDatetime: json['categories_datetime'] as String,
+				favorite: json['favorite'] == "1"? true : false,
 			);
 
 	Map<String, dynamic> toJson() => {
@@ -80,5 +83,6 @@ class ItemViewModel {
 				'categories_name_ar': categoriesNameAr,
 				'categories_image': categoriesImage,
 				'categories_datetime': categoriesDatetime,
+				'favorite': categoriesDatetime,
 			};
 }

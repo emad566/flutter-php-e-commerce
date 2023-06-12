@@ -26,43 +26,46 @@ class ItemsListView extends StatelessWidget {
             itemCount: controller.items.length,
             itemBuilder: (BuildContext context, int index){
               ItemViewModel item = controller.items[index];
-              return Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Container(
+              return InkWell(
+                onTap: ()=>controller.goToItem(item),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        padding: const EdgeInsets.all(10.0),
+                        child: CachedNetworkImage(
+                          imageUrl: "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
+                          height: 100,
+                          width: 170,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 210,
+                      height: 120,
                       padding: const EdgeInsets.all(10.0),
-                      child: CachedNetworkImage(
-                        imageUrl: "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
-                        height: 100,
-                        width: 170,
-                        fit: BoxFit.fill,
+                      decoration: BoxDecoration(
+                        color: ThemeColors.black.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 210,
-                    height: 120,
-                    padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: ThemeColors.black.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
 
-                  Positioned(
-                    top: 10,
-                    left: isAr()? null : 10,
-                    right: !isAr()? null : 10,
-                    child: Text(
-                      translate(item.itemsNameAr, item.itemsName),
-                      style: AppStyles.style20Bold.copyWith(
-                        color: ThemeColors.white,
+                    Positioned(
+                      top: 10,
+                      left: isAr()? null : 10,
+                      right: !isAr()? null : 10,
+                      child: Text(
+                        translate(item.itemsNameAr, item.itemsName),
+                        style: AppStyles.style20Bold.copyWith(
+                          color: ThemeColors.white,
+                        ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               );
             },
             separatorBuilder: (BuildContext context, int index){

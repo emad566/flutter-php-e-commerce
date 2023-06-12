@@ -11,6 +11,7 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassw
 import 'package:flutter_e_commerce/features/choose_language/presentations/views/choose_language_screen.dart';
 import 'package:flutter_e_commerce/features/home/presentations/views/home_screen.dart';
 import 'package:flutter_e_commerce/features/home_layout/presentations/views/home_layout_screen.dart';
+import 'package:flutter_e_commerce/features/item_single/presentations/views/item_single_screen.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/items_screen.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
 import 'package:get/get.dart';
@@ -56,5 +57,9 @@ List<GetPage<dynamic>>? appRoutes = [
   GetPage(
     name: AppRouteKeys.items,
     page: () => const ItemsScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.itemSingle,
+    page: () => const ItemSingleScreen(),
   ),
 ];

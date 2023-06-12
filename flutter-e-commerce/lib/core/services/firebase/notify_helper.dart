@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
@@ -43,8 +44,10 @@ class NotifyHelper {
       {required String title,
       required String body,
       required Map<String, dynamic> data}) async {
-    print(title);
-    print(body);
+    if (kDebugMode) {
+      print(title);
+      print(body);
+    }
 
     AndroidNotificationDetails androidPlatformChannelSpecifics =
         const AndroidNotificationDetails('your channel id', 'your channel name',

@@ -19,7 +19,7 @@ $alldata['categories'] = $categories ;
 
 // $alldata['items'] = $items ; 
 
-$items = getAllData("itemsview" , null , null , false )  ;
+$items = getAllData("view_itemsview_favorite" , null , null , false )  ;
 
 $alldata['items'] = $items ; 
 

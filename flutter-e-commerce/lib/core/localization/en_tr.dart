@@ -74,6 +74,11 @@ Map<String, String> enTr = {
   "A summer surprise": "A summer surprise",
   "Cashback 20%": "Cashback 20%",
   "Search": "Search ...",
-  "": "",
+  "Color": "Color",
+
+  "Red": "Red",
+  "Black": "Black",
+  "Blue": "Blue",
+  "Add to Cart": "Add to Cart",
   "": "",
 };

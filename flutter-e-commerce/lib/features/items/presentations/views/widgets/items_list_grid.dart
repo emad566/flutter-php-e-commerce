@@ -18,7 +18,9 @@ class ItemsListGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return GetBuilder<ItemsController>(builder: (controller) {
+    return GetBuilder<ItemsControllerImp>(
+      init: ItemsControllerImp(),
+      builder: (controller) {
       return HandleLoading(
         size: 150,
         state: controller.state,
@@ -38,7 +40,7 @@ class ItemsListGrid extends StatelessWidget {
 
               return InkWell(
                 onTap: (){
-
+                  controller.goToItem(item);
                 },
                 child: Container(
                   padding: const EdgeInsets.all(10.0),
@@ -47,10 +49,13 @@ class ItemsListGrid extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CachedNetworkImage(
-                        imageUrl: "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
-                        width: SizeConfig.screenWidth*0.5 - 60,
-                        fit: BoxFit.fill,
+                      Hero(
+                        tag: item.itemsId,
+                        child: CachedNetworkImage(
+                          imageUrl: "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
+                          width: SizeConfig.screenWidth*0.5 - 60,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                       const SizedBox(height: 10,),
                       Text(
@@ -78,7 +83,7 @@ class ItemsListGrid extends StatelessWidget {
 
                             },
                             child: Icon(
-                              Icons.favorite,
+                              item.favorite? Icons.favorite : Icons.favorite_border_outlined,
                               size: 20,
                               color: ThemeColors.secondClr,
                             ),

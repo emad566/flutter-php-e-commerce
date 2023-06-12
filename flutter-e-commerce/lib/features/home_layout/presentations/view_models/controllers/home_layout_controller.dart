@@ -16,6 +16,7 @@ abstract class HomeLayoutController extends GetxController{
 
   late int currentIndex = 0;
   void updateIndex(index);
+
   ScreenModel get currentScreen => screens[0];
 }
 
@@ -26,4 +27,6 @@ class HomeLayoutControllerImp extends HomeLayoutController{
     currentIndex = index;
     update();
   }
+
+
 }

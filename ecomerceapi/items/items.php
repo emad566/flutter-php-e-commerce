@@ -5,7 +5,7 @@ include "../connect.php";
 
 $categoryid = filterRequest("categories_id");
 
-getAllData("itemsview", "items_cat = $categoryid", null, true);
+getAllData("view_itemsview_favorite", "items_cat = $categoryid", null, true);
 
 // $userid = filterRequest("usersid");
 

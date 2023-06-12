@@ -13,8 +13,9 @@ class ItemsCategoriesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ItemsControllerImp controller = Get.put(ItemsControllerImp());
-    return GetBuilder<ItemsController>(builder: (controller) {
+    return GetBuilder<ItemsControllerImp>(
+      init: ItemsControllerImp(),
+      builder: (controller) {
       return SizedBox(
         height: 50,
         child: ListView.separated(

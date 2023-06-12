@@ -1,7 +1,15 @@
-CREATE OR REPLACE VIEW  itemsview AS
+CREATE OR REPLACE VIEW  view_itemsview AS
 SELECT items.* , categories.* FROM items 
 INNER JOIN  categories on  items.items_cat = categories.categories_id; 
 
+CREATE OR REPLACE view view_itemsview_favorite as 
+SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+INNER JOIN favorite on favorite.favorite_usersId = 48 AND favorite.favorite_itemsId=view_itemsview.items_id
+UNION ALL 
+SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
+SELECT favorite.favorite_itemsId FROM favorite
+)
+    
 
 
 CREATE OR REPLACE VIEW myfavorite AS

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
+import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/category_model.dart';
@@ -21,6 +22,7 @@ abstract class ItemsController extends GetxController{
   void updateSelectedCategoryIndex(int index);
 
   void list(Map<String, dynamic> data);
+  void goToItem(ItemViewModel item);
 }
 
 class ItemsControllerImp extends ItemsController{
@@ -60,5 +62,10 @@ class ItemsControllerImp extends ItemsController{
     selectedCategoryIndex = index;
     list({"categories_id": categories[selectedCategoryIndex].categoriesId});
     update();
+  }
+
+  @override
+  void goToItem(ItemViewModel item) {
+    Get.toNamed(AppRouteKeys.itemSingle, arguments: {'single': item});
   }
 }
