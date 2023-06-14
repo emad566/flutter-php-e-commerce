@@ -1,12 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/core/constants/app_paths.dart';
+import 'package:flutter_e_commerce/core/constants/api_links.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
+import 'package:flutter_e_commerce/core/functions/translate.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
+import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
     super.key,
+    required this.item,
   });
+
+  final ItemViewModel item;
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +21,23 @@ class CartItem extends StatelessWidget {
         children: [
           Expanded(
             flex: 3,
-            child: Image.asset(AppPaths.logo, fit: BoxFit.fill, height: 100,),
+            child: CachedNetworkImage(
+              imageUrl: "${ApiLinks.baseURL}upload/items/${item.itemsImage}",
+              fit: BoxFit.fill,
+              height: 100,
+            ),
           ),
           Expanded(
             flex: 7,
             child: ListTile(
               title: Text(
-                'MackBook M2 Max',
-                style: AppStyles.style18Bold.copyWith(color:  ThemeColors.black),
+                translate(item.itemsNameAr, item.itemsName),
+                style: AppStyles.style18Bold.copyWith(color: ThemeColors.black),
               ),
               subtitle: Text(
-                '150 \$',
-                style: AppStyles.style18Bold.copyWith(color:  ThemeColors.tripleText),
+                '${item.itemsPrice} \$',
+                style: AppStyles.style18Bold
+                    .copyWith(color: ThemeColors.tripleText),
               ),
             ),
           ),
@@ -39,27 +50,37 @@ class CartItem extends StatelessWidget {
                   SizedBox(
                     height: 38,
                     child: IconButton(
-                      onPressed: (){},
-                      icon: Icon(Icons.add, size: 25, color: ThemeColors.secondClr,),
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.add,
+                        size: 25,
+                        color: ThemeColors.secondClr,
+                      ),
                     ),
                   ),
-
                   Text(
-                    '2',
-                    style: AppStyles.style22Bold.copyWith(color:  ThemeColors.black),
+                    item.cartCount.toString(),
+                    style: AppStyles.style22Bold
+                        .copyWith(color: ThemeColors.black),
                   ),
                   SizedBox(
                     height: 30,
                     child: IconButton(
-                      onPressed: (){},
-                      icon: Icon(Icons.remove, size: 25, color: ThemeColors.secondClr,),
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.remove,
+                        size: 25,
+                        color: ThemeColors.secondClr,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
         ],
       ),
     );

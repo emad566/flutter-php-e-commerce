@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/button_bottom_nav.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/cart_controller.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_header.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_item.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_items_list.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_price_dart.dart';
 import 'package:get/get.dart';
 
@@ -21,9 +21,7 @@ class CartScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const SingleChildScrollView(
-            child: CartItem(),
-          ),
+          const CartItemsList(),
           const Spacer(),
           const CartPrice(),
           ButtonBottomNav(
@@ -36,3 +34,4 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
+

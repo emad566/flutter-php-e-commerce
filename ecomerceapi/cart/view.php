@@ -1,22 +1,27 @@
 <?php
 
-include "../connect.php";
+try {
+    include "../connect.php";
+    $userid = filterRequest("usersid");
 
-$userid = filterRequest("usersid");
+    
+    $reponse= getViewItemsCartByUser($userid);
 
-$data  = getAllData("cartview", "cart_usersid = $userid", null, false);
+    if ($reponse['count'] > 0) {
+        $items  =["status" => true, "message"=>"success", "data" => $reponse['data']];
+    } else {
+        $items =["status" => false, "message" => "failure"];
+    }
+    echo json_encode($items);
 
-$stmt = $con->prepare("SELECT SUM(itemsprice) as totalprice , count(countitems) as totalcount FROM `cartview`  
-WHERE  cartview.cart_usersid =  $userid 
-GROUP BY cart_usersid  ");
-
-$stmt->execute();
+} catch (\Throwable $th) {
+    echo $th;
+}
 
 
-$datacountprice = $stmt->fetch(PDO::FETCH_ASSOC);
 
-echo json_encode(array(
-    "status" => "success",
-    "countprice" =>  $datacountprice,
-    "datacart" => $data,
-));
+// echo json_encode(array(
+//     "status" => "success",
+//     "countprice" =>  $datacountprice,
+//     "datacart" => $data,
+// ));

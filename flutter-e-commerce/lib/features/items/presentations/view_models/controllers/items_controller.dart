@@ -22,9 +22,10 @@ abstract class ItemsController extends GetxController{
   final ItemsRepoImp _repoImp = ItemsRepoImp(Get.find());
   late int selectedCategoryIndex;
   List<CategoryModel> categories= [];
-  List<ItemViewModel> items= [];
+
   void updateSelectedCategoryIndex(int index);
 
+  List<ItemViewModel> items= [];
   void list(Map<String, dynamic> data);
   void toggleFavorite(ItemViewModel item);
   void goToItem(ItemViewModel item);
