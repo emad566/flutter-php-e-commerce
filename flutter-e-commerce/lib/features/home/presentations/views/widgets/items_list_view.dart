@@ -16,7 +16,9 @@ class ItemsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(builder: (controller) {
+    return GetBuilder<HomeControllerImp>(
+    init: HomeControllerImp(),
+    builder: (controller) {
       return HandleLoading(
         state: controller.state,
         child: SizedBox(

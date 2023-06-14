@@ -80,5 +80,11 @@ Map<String, String> enTr = {
   "Black": "Black",
   "Blue": "Blue",
   "Add to Cart": "Add to Cart",
+
+  "Disable Notifications": "Disable Notifications",
+  "Address": "Address",
+  "About Us": "About Us",
+  "Contact Us": "Contact Us",
+  "Log out": "Log out",
   "": "",
 };

@@ -17,7 +17,11 @@ abstract class AppStates {}
 
 class AppInitialState extends AppStates {}
 
-class AppLoadingState extends AppStates {}
+class AppLoadingState extends AppStates {
+  final int loadingLevel;
+
+  AppLoadingState({this.loadingLevel = 0});
+}
 
 class AppSuccessState extends AppStates {}
 

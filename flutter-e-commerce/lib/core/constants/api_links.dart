@@ -9,4 +9,7 @@ abstract class ApiLinks {
   static const resetPassword = 'forgetpassword/resetpassword.php';
   static const home = 'home.php';
   static const items = 'items/items.php';
+  static const addToFavorites = 'favorite/add.php';
+  static const removeFromFavorites = 'favorite/remove.php';
+  static const viewFavorites = 'favorite/view.php';
 }

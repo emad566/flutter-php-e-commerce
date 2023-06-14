@@ -5,16 +5,24 @@ import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
 class HandleLoading  extends StatelessWidget {
-  HandleLoading({Key? key, required this.state, required this.child, this.size = 80.0})
-      : super(key: key);
+  HandleLoading({
+    Key? key,
+    required this.state,
+    required this.child,
+    this.size = 80.0,
+    this.loadingLevel = 0,
+  }) : super(key: key);
   final AppStates state;
   final Widget child;
+  int loadingLevel;
   double size;
 
   @override
   Widget build(BuildContext context) {
-    if (state is AppLoadingState) {
-      return AlarmImage(imagePath: AppPaths.loading, size: size,);
+    if (state is AppLoadingState ) {
+      if(loadingLevel == (state as AppLoadingState).loadingLevel){
+        return AlarmImage(imagePath: AppPaths.loading, size: size,);
+      }
     }
 
     if (state is AppOfflineFailureState) {

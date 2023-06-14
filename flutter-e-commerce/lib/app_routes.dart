@@ -14,6 +14,7 @@ import 'package:flutter_e_commerce/features/home_layout/presentations/views/home
 import 'package:flutter_e_commerce/features/item_single/presentations/views/item_single_screen.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/items_screen.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
+import 'package:flutter_e_commerce/features/settings/presentations/views/settings_screen.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? appRoutes = [
@@ -61,5 +62,9 @@ List<GetPage<dynamic>>? appRoutes = [
   GetPage(
     name: AppRouteKeys.itemSingle,
     page: () => const ItemSingleScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.settings,
+    page: () => const SettingsScreen(),
   ),
 ];

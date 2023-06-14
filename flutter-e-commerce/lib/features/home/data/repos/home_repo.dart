@@ -6,14 +6,14 @@ import 'package:flutter_e_commerce/core/services/api_services.dart';
 abstract class HomeRepo {
   ApiService apiService;
   HomeRepo(this.apiService);
-  void list();
+  void list(Map<String, dynamic> data);
 }
 
 class HomeRepoImp extends HomeRepo {
   HomeRepoImp(super.apiService);
 
   @override
-  Future<Either<Failure, Map<String, dynamic>>> list() async {
-    return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.home);
+  Future<Either<Failure, Map<String, dynamic>>> list(Map<String, dynamic> data) async {
+    return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.home, data: data);
   }
 }

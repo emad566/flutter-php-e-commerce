@@ -12,5 +12,5 @@ $data = array(
     "favorite_itemsid"  =>   $itemsid
 );
 
-
+deleteData("favorite" , "favorite_usersid = $usersid AND favorite_itemsid = $itemsid", false) ; 
 insertData("favorite" ,$data) ; 

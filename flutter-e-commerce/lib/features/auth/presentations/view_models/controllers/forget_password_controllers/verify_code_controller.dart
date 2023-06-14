@@ -37,7 +37,7 @@ class VerifyCodeControllerImp extends VerifyCodeController {
     );
 
     result.fold((failure) {
-      state = handleFailure(failure);
+      state = handleFailure(failure);update();
     }, (response) async {
       if (!response['status']) {
         Get.defaultDialog(

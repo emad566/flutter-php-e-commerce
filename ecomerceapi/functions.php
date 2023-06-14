@@ -275,3 +275,56 @@ function insertNotify($title, $body, $userid, $topic, $pageid, $pagename)
     $count = $stmt->rowCount();
     return $count;
 }
+
+function getViewItemsByCategoryId($userid, $categoryid){
+    try {
+        global $con;
+        $stmt = $con->prepare("SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+        INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
+            AND view_itemsview.categories_id=$categoryid
+        UNION ALL 
+        SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
+        SELECT favorite.favorite_itemsId FROM favorite
+        ) AND view_itemsview.categories_id=$categoryid");
+        
+        $stmt->execute();
+        return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
+        
+    } catch (\Throwable $th) {
+        echo $th;
+    } 
+}
+
+function getViewItemsByUser($userid){
+    try {
+        global $con;
+        $stmt = $con->prepare("SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+        INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
+        UNION ALL 
+        SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
+        SELECT favorite.favorite_itemsId FROM favorite
+        ) ");
+        
+        $stmt->execute();
+        return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
+        
+    } catch (\Throwable $th) {
+        echo $th;
+    } 
+}
+
+function getViewItemsFavoriteByUser($userid){
+    try {
+        global $con;
+        $stmt = $con->prepare("SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+        INNER JOIN favorite 
+        on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
+        ");
+        
+        $stmt->execute();
+        return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
+        
+    } catch (\Throwable $th) {
+        echo $th;
+    } 
+}

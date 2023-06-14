@@ -74,7 +74,7 @@ class LoginControllerImp extends LoginController {
               ]);
 
           state = AppSuccessState();
-          Get.offAllNamed(AppRouteKeys.home);
+          Get.offAllNamed(AppRouteKeys.homeLayout);
         }
       });
     }

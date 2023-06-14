@@ -12,10 +12,10 @@ SELECT favorite.favorite_itemsId FROM favorite
     
 
 
-CREATE OR REPLACE VIEW myfavorite AS
-SELECT favorite.* , items.* , users.users_id FROM favorite 
-INNER JOIN users ON users.users_id  = favorite.favorite_usersid
-INNER JOIN items ON items.items_id  = favorite.favorite_itemsid
+CREATE OR REPLACE VIEW view_myfavorite AS
+SELECT view_itemsview_favorite* , items.* , users.users_id FROM view_itemsview_favorite 
+INNER JOIN users ON users.users_id  = view_itemsview_favoritefavorite_usersid
+INNER JOIN items ON items.items_id  = view_itemsview_favoritefavorite_itemsid
 
 
 

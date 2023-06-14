@@ -16,25 +16,28 @@ class CustomBottomNavigationBar2 extends StatelessWidget {
       shape: const CircularNotchedRectangle(),
 
       notchMargin: 10,
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: List.generate(
-          controller.screens.length,
-          ((index) {
+      child: Padding(
+        padding: const EdgeInsets.only(top: 5),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: List.generate(
+            controller.screens.length,
+            ((index) {
 
-            if(index == 2) return const Spacer();
-            ScreenModel screen = controller.screens[index];
+              if(index == 2) return const Spacer();
+              ScreenModel screen = controller.screens[index];
 
-            return  CustomButtonAppBar(
-              textButton: screen.title,
-              iconData: screen.icon,
-              onPressed: () {
-                controller.updateIndex(index);
-              },
-              active: controller.currentIndex == index ? true : false,
-            );
-          }),
+              return  CustomButtonAppBar(
+                textButton: screen.title,
+                iconData: screen.icon,
+                onPressed: () {
+                  controller.updateIndex(index);
+                },
+                active: controller.currentIndex == index ? true : false,
+              );
+            }),
+          ),
         ),
       ),
     );

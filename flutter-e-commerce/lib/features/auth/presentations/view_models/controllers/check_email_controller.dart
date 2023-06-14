@@ -37,7 +37,7 @@ class CheckEmailControllerImp extends CheckEmailController {
     );
 
     result.fold((failure) {
-      state = handleFailure(failure);
+      state = handleFailure(failure);update();update();
     }, (response) async {
       if (!response['status']) {
         Get.defaultDialog(

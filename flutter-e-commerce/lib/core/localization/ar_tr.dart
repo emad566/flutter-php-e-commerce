@@ -81,5 +81,10 @@ Map<String, String> arTr = {
   "Black": "أسود",
   "Blue": "أزرق",
   "Add to Cart":"أضف إلي السلة",
+  "Disable Notifications": "تعطيل الاشعارات",
+  "Address": "العنوان",
+  "About Us": "عنا",
+  "Contact Us": "اتصل بنا",
+  "Log out": "تسجيل خروج",
   // "":"",
 };

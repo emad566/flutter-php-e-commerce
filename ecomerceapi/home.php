@@ -19,8 +19,14 @@ $alldata['categories'] = $categories ;
 
 // $alldata['items'] = $items ; 
 
-$items = getAllData("view_itemsview_favorite" , null , null , false )  ;
-
+$userid = filterRequest("usersid");
+$reponse= getViewItemsByUser($userid);
+if ($reponse['count'] > 0) {
+    $items  =["status" => true, "message"=>"success", "data" => $reponse['data']];
+} else {
+    $items =["status" => true, "message" => "failure"];
+    echo json_encode(array());
+}
 $alldata['items'] = $items ; 
 
 

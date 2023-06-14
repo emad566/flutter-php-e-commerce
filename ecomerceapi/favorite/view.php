@@ -1,10 +1,19 @@
 <?php
 
+try {
+    include "../connect.php";
+    $userid = filterRequest("usersid");
 
-include "../connect.php";
+    
+    $reponse= getViewItemsFavoriteByUser($userid);
 
+    if ($reponse['count'] > 0) {
+        $items  =["status" => true, "message"=>"success", "data" => $reponse['data']];
+    } else {
+        $items =["status" => false, "message" => "failure"];
+    }
+    echo json_encode($items);
 
-$id = filterRequest("id");
-
-
-getAllData("myfavorite", "favorite_usersid = ?  ", array($id));
+} catch (\Throwable $th) {
+    echo $th;
+}

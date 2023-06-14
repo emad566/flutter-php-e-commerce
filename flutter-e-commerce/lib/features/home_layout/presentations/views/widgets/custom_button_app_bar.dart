@@ -23,6 +23,7 @@ class CustomButtonAppBar extends StatelessWidget {
         children: [
           Icon(
             iconData,
+            size: 30,
             color: active == true ? ThemeColors.secondClr : ThemeColors.thirdClr,
           ),
        Text(
