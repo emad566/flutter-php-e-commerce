@@ -86,5 +86,11 @@ Map<String, String> arTr = {
   "About Us": "عنا",
   "Contact Us": "اتصل بنا",
   "Log out": "تسجيل خروج",
+  "Confirm":"تأكيد ",
+  "Price": "السعر",
+  "Shipping": "الشحن",
+  "Total Price": "الإجمالي",
+  "Remove from Cart": "إزالة من السلة",
+  "Add To Cart":"أضف إلي السلة",
   // "":"",
 };

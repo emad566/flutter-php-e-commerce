@@ -15,31 +15,12 @@ class ItemSingleDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          children: [
-            IconButton(
-              onPressed: (){},
-              icon: Icon(Icons.add, size: 35, color: ThemeColors.primaryClr,),
-            ),
-            CircleAvatar(
-              backgroundColor: ThemeColors.primaryClr,
-              child: Text(
-                '8',
-                style: AppStyles.style22Bold.copyWith(color: ThemeColors.white),
-              ),
-            ),
-            IconButton(
-              onPressed: (){},
-              icon: Icon(Icons.remove, size: 35, color: ThemeColors.primaryClr,),
-            ),
-            const Spacer(),
-            Text(
-              '${single.itemsPrice} \$',
-              style: AppStyles.style22Bold.copyWith(color: ThemeColors.primaryClr),
-            )
-          ],
+        Text(
+          '${single.itemsPrice} \$',
+          style: AppStyles.style22Bold.copyWith(color: ThemeColors.primaryClr),
+          textAlign: TextAlign.end,
         ),
         const SizedBox(height: 15,),
         Text(
@@ -61,3 +42,4 @@ class ItemSingleDetails extends StatelessWidget {
     );
   }
 }
+

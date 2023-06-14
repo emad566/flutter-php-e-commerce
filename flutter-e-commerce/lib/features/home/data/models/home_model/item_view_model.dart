@@ -17,6 +17,7 @@ class ItemViewModel {
 	String categoriesImage;
 	String categoriesDatetime;
 	bool favorite;
+	int cartCount;
 
 	ItemViewModel({
 		required this.itemsId,
@@ -37,6 +38,7 @@ class ItemViewModel {
 		required this.categoriesImage,
 		required this.categoriesDatetime,
 		required this.favorite,
+		required this.cartCount,
 	});
 
 	@override
@@ -63,6 +65,7 @@ class ItemViewModel {
 				categoriesImage: json['categories_image'] as String,
 				categoriesDatetime: json['categories_datetime'] as String,
 				favorite: json['favorite'] == "1"? true : false,
+				cartCount: int.parse(json['cart_count'] as String),
 			);
 
 	Map<String, dynamic> toJson() => {
@@ -84,5 +87,6 @@ class ItemViewModel {
 				'categories_image': categoriesImage,
 				'categories_datetime': categoriesDatetime,
 				'favorite': categoriesDatetime,
+				'cart_count': cartCount,
 			};
 }

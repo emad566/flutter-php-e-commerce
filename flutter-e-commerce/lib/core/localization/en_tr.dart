@@ -86,5 +86,10 @@ Map<String, String> enTr = {
   "About Us": "About Us",
   "Contact Us": "Contact Us",
   "Log out": "Log out",
-  "": "",
+  "Confirm": "Confirm",
+  "Price": "Price",
+  "Shipping": "Shipping",
+  "Total Price": "Total Price",
+  "Remove from Cart": "Remove from Cart",
+  "Add To Cart": "Add To Cart",
 };

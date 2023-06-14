@@ -1,24 +1,29 @@
 <?php
 
 
-include "../connect.php";
+try {
+    
+  include "../connect.php";
 
 
-$usersid = filterRequest("usersid");
-$itemsid = filterRequest("itemsid");
-
-
-  getData("cart", "cart_itemsid = $itemsid AND cart_usersid = $usersid AND cart_orders = 0" ,null  , false );
-
-
-$data = array(
+  $usersid = filterRequest("usersid");
+  $itemsid = filterRequest("itemsid");
+  $cart_count = filterRequest("cart_count");
+  $data = array(
     "cart_usersid" =>  $usersid,
-    "cart_itemsid" =>  $itemsid
-);
+    "cart_itemsid" =>  $itemsid,
+    "cart_count" =>  $cart_count,
+  );
 
-insertData("cart", $data);
- 
-
-    // Mysql 
-
-    // PHP 
+  $response = getData("cart", "cart_itemsid = $itemsid AND cart_usersid = $usersid" ,null  , false, true );
+  if($cart_count == 0){
+    deleteData("cart" , "cart_id  = (SELECT cart_id FROM cart WHERE cart_usersid = $usersid AND cart_itemsid = $itemsid) "); 
+  }else if($response['count']>0){
+    updateData("cart", $data, "cart_itemsid = $itemsid AND cart_usersid = $usersid");
+  }else{
+    insertData("cart", $data);
+  }
+    
+} catch (\Throwable $th) {
+  //throw $th;
+}

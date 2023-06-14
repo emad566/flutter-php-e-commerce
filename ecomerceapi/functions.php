@@ -45,23 +45,28 @@ function getAllData($table, $where = null, $values = null, $json = true)
     }
 }
 
-function getData($table, $where = null, $values = null, $json = true)
+function getData($table, $where = null, $values = null, $json = true, $response =false)
 {
-    global $con;
-    $data = array();
-    $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
-    $stmt->execute($values);
-    $data = $stmt->fetch(PDO::FETCH_ASSOC);
-    $count  = $stmt->rowCount();
-    if ($json == true) {
-        if ($count > 0) {
-            echo json_encode(array("status" => true, 'message'=> 'Success', "data" => $data));
+    try {
+        global $con;
+        $data = array();
+        $stmt = $con->prepare("SELECT  * FROM $table WHERE   $where ");
+        $stmt->execute($values);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $count  = $stmt->rowCount();
+        if ($json == true) {
+            if ($count > 0) {
+                echo json_encode(array("status" => true, 'message'=> 'Success', "data" => $data));
+            } else {
+                echo json_encode(array("status" => false, 'message'=> 'failer', 'errors'=> ['failer'=>['failer !!']]));
+            }
         } else {
-            echo json_encode(array("status" => false, 'message'=> 'failer', 'errors'=> ['email'=>['not Valid email !!']]));
+            return !$response? $count : ['count'=> $count, 'data'=>$data];
         }
-    } else {
-        return $count;
+    } catch (\Throwable $th) {
+        echo $th;
     }
+    
 }
 
 function insertData($table, $data, $json = true)
@@ -279,13 +284,19 @@ function insertNotify($title, $body, $userid, $topic, $pageid, $pagename)
 function getViewItemsByCategoryId($userid, $categoryid){
     try {
         global $con;
-        $stmt = $con->prepare("SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
-        INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
-            AND view_itemsview.categories_id=$categoryid
-        UNION ALL 
-        SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
-        SELECT favorite.favorite_itemsId FROM favorite
-        ) AND view_itemsview.categories_id=$categoryid");
+        $stmt = $con->prepare("SELECT 
+        view_itemsview_favorit.*, 
+        IFNULL(cart.cart_count, 0) as cart_count 
+        from (
+        SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+                INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
+                    AND view_itemsview.categories_id=$categoryid
+                UNION ALL  
+                SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
+                SELECT favorite.favorite_itemsId FROM favorite
+                ) AND view_itemsview.categories_id=$categoryid
+        ) view_itemsview_favorit  
+        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
         
         $stmt->execute();
         return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
@@ -298,12 +309,18 @@ function getViewItemsByCategoryId($userid, $categoryid){
 function getViewItemsByUser($userid){
     try {
         global $con;
-        $stmt = $con->prepare("SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
-        INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
-        UNION ALL 
-        SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
-        SELECT favorite.favorite_itemsId FROM favorite
-        ) ");
+        $stmt = $con->prepare("SELECT 
+        view_itemsview_favorit.*, 
+        IFNULL(cart.cart_count, 0) as cart_count 
+        from (
+        SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+                INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
+                UNION ALL 
+                SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
+                SELECT favorite.favorite_itemsId FROM favorite
+                ) 
+        ) view_itemsview_favorit 
+        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id ");
         
         $stmt->execute();
         return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
@@ -316,10 +333,14 @@ function getViewItemsByUser($userid){
 function getViewItemsFavoriteByUser($userid){
     try {
         global $con;
-        $stmt = $con->prepare("SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
-        INNER JOIN favorite 
-        on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
-        ");
+        $stmt = $con->prepare("SELECT 
+        view_itemsview_favorit.*, 
+        IFNULL(cart.cart_count, 0) as cart_count 
+        from (
+        SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+                INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
+        ) view_itemsview_favorit 
+        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
         
         $stmt->execute();
         return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
