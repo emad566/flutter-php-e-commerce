@@ -8,7 +8,7 @@ class ItemViewModel {
 	String itemsImage;
 	String itemsCount;
 	String itemsActive;
-	String itemsPrice;
+	double itemsPrice;
 	String itemsDiscount;
 	String itemsDate;
 	String categoriesId;
@@ -56,7 +56,7 @@ class ItemViewModel {
 				itemsImage: json['items_image'] as String,
 				itemsCount: json['items_count'] as String,
 				itemsActive: json['items_active'] as String,
-				itemsPrice: json['items_price'] as String,
+				itemsPrice: double.parse(json['items_price'] as String),
 				itemsDiscount: json['items_discount'] as String,
 				itemsDate: json['items_date'] as String,
 				categoriesId: json['categories_id'] as String,

@@ -63,7 +63,7 @@ class ItemSingleControllerImp extends ItemSingleController{
       'itemsid': itemsId,
       'cart_count': cartCount,
     };
-    state = AppLoadingState();
+    state = AppLoadingState(loadingLevel: int.parse(itemsId));
     update();
     Either<Failure, Map<String, dynamic>> result = await _repoImp.addToCart(data);
     result.fold((failure) {

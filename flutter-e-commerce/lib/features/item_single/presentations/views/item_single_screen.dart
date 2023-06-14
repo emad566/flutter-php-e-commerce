@@ -22,6 +22,7 @@ class ItemSingleScreen extends StatelessWidget {
         init: ItemSingleControllerImp(),
         builder: (controller) {
           return HandleLoading(
+            loadingLevel: int.parse(single.itemsId),
             state: controller.state,
             child: ButtonBottomNav(
               title: single.cartCount==0? 'Add to Cart'.tr : 'Remove from Cart',

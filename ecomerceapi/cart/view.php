@@ -13,6 +13,7 @@ try {
         $items =["status" => false, "message" => "failure"];
     }
     echo json_encode($items);
+    
 
 } catch (\Throwable $th) {
     echo $th;

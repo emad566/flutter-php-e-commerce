@@ -92,5 +92,11 @@ Map<String, String> arTr = {
   "Total Price": "الإجمالي",
   "Remove from Cart": "إزالة من السلة",
   "Add To Cart":"أضف إلي السلة",
+  "Removed from Cart": "تم الازالة من السلة",
+  "Added To Cart":"تم الاضافة إلي السلة",
+  "Cart has been updated":"تم تحديث وحفظ السلة",
+  "Alert":"اشعار",
+  // "":"",
+  // "":"",
   // "":"",
 };

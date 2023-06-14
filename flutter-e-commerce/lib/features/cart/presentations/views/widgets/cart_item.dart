@@ -4,7 +4,10 @@ import 'package:flutter_e_commerce/core/constants/api_links.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
 import 'package:flutter_e_commerce/core/functions/translate.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/cart_controller.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
+import 'package:get/get.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
@@ -43,39 +46,54 @@ class CartItem extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: SizedBox(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: 38,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.add,
-                        size: 25,
-                        color: ThemeColors.secondClr,
+            child: GetBuilder<CartControllerImp>(
+              init: CartControllerImp(),
+              builder: (controller) {
+                return HandleLoading(
+                  loadingLevel: int.parse(item.itemsId),
+                  state: controller.state,
+                  size: 30,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        height: 38,
+                        child: IconButton(
+                          onPressed: () {
+                            item.cartCount +=1;
+                            controller.updateCart(item.itemsId, item.cartCount);
+                          },
+                          icon: Icon(
+                            Icons.add,
+                            size: 25,
+                            color: ThemeColors.secondClr,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Text(
-                    item.cartCount.toString(),
-                    style: AppStyles.style22Bold
-                        .copyWith(color: ThemeColors.black),
-                  ),
-                  SizedBox(
-                    height: 30,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.remove,
-                        size: 25,
-                        color: ThemeColors.secondClr,
+                      Text(
+                        item.cartCount.toString(),
+                        style: AppStyles.style22Bold
+                            .copyWith(color: ThemeColors.black),
                       ),
-                    ),
+                      if(item.cartCount>0)
+                      SizedBox(
+                        height: 30,
+                        child: IconButton(
+                          onPressed: () {
+                            item.cartCount -=1;
+                            controller.updateCart(item.itemsId, item.cartCount);
+                          },
+                          icon: Icon(
+                            Icons.remove,
+                            size: 25,
+                            color: ThemeColors.secondClr,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
           const SizedBox(
