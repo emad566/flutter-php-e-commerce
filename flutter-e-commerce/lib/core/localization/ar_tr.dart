@@ -98,7 +98,7 @@ Map<String, String> arTr = {
   "Alert":"اشعار",
   "Code successfully sent": "تم ارسال كود التفعيل",
   "Resend verification code": "إعادة إرسال",
-  // "":"",
+  "My Favorites":"المضلات",
   // "":"",
   // "":"",
 };

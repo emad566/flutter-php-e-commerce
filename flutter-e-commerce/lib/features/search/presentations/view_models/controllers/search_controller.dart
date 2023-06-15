@@ -11,7 +11,6 @@ import 'package:flutter_e_commerce/features/search/data/repos/search_repo.dart';
 import 'package:get/get.dart';
 
 abstract class SearchController extends GetxController{
-  GlobalKey<FormFieldState> searchKey = GlobalKey<FormFieldState>();
   late TextEditingController searchController;
 
   AppStates state = AppInitialState();

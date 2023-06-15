@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/core/shared/widgets/home_search_bar.dart';
+import 'package:flutter_e_commerce/features/favorite/presentations/views/widgets/favorite_header.dart';
 import 'package:flutter_e_commerce/features/favorite/presentations/views/widgets/favorite_items_list_grid.dart';
 
 class FavoriteScreen extends StatelessWidget {
@@ -13,8 +13,9 @@ class FavoriteScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeSearchBar(),
-            FavoriteItemsListGrid()
+            // HomeSearchBar(),
+            FavoritetHeader(),
+            FavoriteItemsListGrid(),
           ],
         ),
       ),

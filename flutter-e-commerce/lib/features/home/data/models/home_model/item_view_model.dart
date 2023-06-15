@@ -18,6 +18,7 @@ class ItemViewModel {
 	String categoriesDatetime;
 	bool favorite;
 	int cartCount;
+	double itemsPriceDiscount;
 
 	ItemViewModel({
 		required this.itemsId,
@@ -39,6 +40,7 @@ class ItemViewModel {
 		required this.categoriesDatetime,
 		required this.favorite,
 		required this.cartCount,
+		required this.itemsPriceDiscount,
 	});
 
 	@override
@@ -47,26 +49,27 @@ class ItemViewModel {
 	}
 
 	factory ItemViewModel.fromJson(Map<String, dynamic> json) => ItemViewModel(
-				itemsId: json['items_id'] as String,
-				itemsCat: json['items_cat'] as String,
-				itemsName: json['items_name'] as String,
-				itemsNameAr: json['items_name_ar'] as String,
-				itemsDesc: json['items_desc'] as String,
-				itemsDescAr: json['items_desc_ar'] as String,
-				itemsImage: json['items_image'] as String,
-				itemsCount: json['items_count'] as String,
-				itemsActive: json['items_active'] as String,
-				itemsPrice: double.parse(json['items_price'] as String),
-				itemsDiscount: json['items_discount'] as String,
-				itemsDate: json['items_date'] as String,
-				categoriesId: json['categories_id'] as String,
-				categoriesName: json['categories_name'] as String,
-				categoriesNameAr: json['categories_name_ar'] as String,
-				categoriesImage: json['categories_image'] as String,
-				categoriesDatetime: json['categories_datetime'] as String,
-				favorite: json['favorite'] == "1"? true : false,
-				cartCount: int.parse(json['cart_count'] as String),
-			);
+		itemsId: json['items_id'] as String,
+		itemsCat: json['items_cat'] as String,
+		itemsName: json['items_name'] as String,
+		itemsNameAr: json['items_name_ar'] as String,
+		itemsDesc: json['items_desc'] as String,
+		itemsDescAr: json['items_desc_ar'] as String,
+		itemsImage: json['items_image'] as String,
+		itemsCount: json['items_count'] as String,
+		itemsActive: json['items_active'] as String,
+		itemsPrice: double.parse(json['items_price'] as String),
+		itemsDiscount: json['items_discount'] as String,
+		itemsDate: json['items_date'] as String,
+		categoriesId: json['categories_id'] as String,
+		categoriesName: json['categories_name'] as String,
+		categoriesNameAr: json['categories_name_ar'] as String,
+		categoriesImage: json['categories_image'] as String,
+		categoriesDatetime: json['categories_datetime'] as String,
+		favorite: json['favorite'] == "1"? true : false,
+		cartCount: int.parse(json['cart_count'] as String),
+		itemsPriceDiscount: double.parse(json['items_price_discount'] as String),
+	);
 
 	Map<String, dynamic> toJson() => {
 				'items_id': itemsId,
@@ -88,5 +91,6 @@ class ItemViewModel {
 				'categories_datetime': categoriesDatetime,
 				'favorite': categoriesDatetime,
 				'cart_count': cartCount,
+				'items_price_discount': itemsPriceDiscount,
 			};
 }

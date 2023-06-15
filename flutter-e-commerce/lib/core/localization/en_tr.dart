@@ -98,7 +98,7 @@ Map<String, String> enTr = {
 
   "Code successfully sent":"Code successfully sent",
   "Resend verification code":"Resend Code",
-  // "":"",
+  "My Favorites":"My Favorites",
   // "":"",
   // "":"",
   // "":"",

@@ -5,12 +5,13 @@ import 'package:flutter_e_commerce/features/search/presentations/view_models/con
 import 'package:get/get.dart';
 
 class HomeSearchBar extends StatelessWidget {
-  const HomeSearchBar({
+  HomeSearchBar({
     super.key,
     this.isSearchScreen = false,
   });
 
   final bool isSearchScreen;
+  final GlobalKey<FormFieldState> searchKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class HomeSearchBar extends StatelessWidget {
             isRequired: false,
             hintText: "Search".tr,
             controller: controller.searchController,
-            inputKey: controller.searchKey,
+            inputKey: searchKey,
             borderRadius: 5,
             borderColor: ThemeColors.primaryClr,
             prefixIcon: InkWell(

@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HomeSearchBar(),
+                HomeSearchBar(),
                 (controller.searchController.text == '') ?
                 const HomeBody()
                     : const SearchScreen(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/core/shared/widgets/home_search_bar.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/widgets/items_categories_list_view.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/widgets/items_list_grid.dart';
 
@@ -16,7 +15,7 @@ class ItemsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeSearchBar(),
+              // HomeSearchBar(),
               SizedBox(height: 20,),
               ItemsCategoriesListView(),
               ItemsListGrid(),
