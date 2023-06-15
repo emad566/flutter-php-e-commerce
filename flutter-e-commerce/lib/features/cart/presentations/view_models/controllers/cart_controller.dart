@@ -89,7 +89,7 @@ class CartControllerImp extends CartController{
   void setTotalPrice() {
     double total = 0;
     for(ItemViewModel item in items){
-      total += item.cartCount * item.itemsPrice;
+      total += item.cartCount * item.itemsPriceDiscount;
     }
 
     totalPrice = total;

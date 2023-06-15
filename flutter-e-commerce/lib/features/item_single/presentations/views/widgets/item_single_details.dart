@@ -18,7 +18,7 @@ class ItemSingleDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          '${single.itemsPrice} \$',
+          '${single.itemsPriceDiscount} \$',
           style: AppStyles.style22Bold.copyWith(color: ThemeColors.primaryClr),
           textAlign: TextAlign.end,
         ),

@@ -56,7 +56,7 @@ class SearchListViewItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${item.itemsPrice} \$',
+                  '${item.itemsDiscount} \$',
                   style: AppStyles.style16Bold.copyWith(color: ThemeColors.secondClr),
                   textAlign: TextAlign.center,
                 ),

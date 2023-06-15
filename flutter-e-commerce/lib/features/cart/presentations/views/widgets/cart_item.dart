@@ -38,7 +38,7 @@ class CartItem extends StatelessWidget {
                 style: AppStyles.style18Bold.copyWith(color: ThemeColors.black),
               ),
               subtitle: Text(
-                '${item.itemsPrice} \$',
+                '${item.itemsPriceDiscount} \$',
                 style: AppStyles.style18Bold
                     .copyWith(color: ThemeColors.tripleText),
               ),
