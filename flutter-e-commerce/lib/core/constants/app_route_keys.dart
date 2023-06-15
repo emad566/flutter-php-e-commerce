@@ -15,4 +15,5 @@ abstract class AppRouteKeys {
   static const String itemSingle = '/itemSingle';
   static const String settings = '/settings';
   static const String cart = '/cart';
+  static const String search = '/search';
 }

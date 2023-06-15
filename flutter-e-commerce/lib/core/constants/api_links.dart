@@ -14,4 +14,5 @@ abstract class ApiLinks {
   static const viewFavorites = 'favorite/view.php';
   static const addToCart = 'cart/add.php';
   static const viewCart = 'cart/view.php';
+  static const search = 'search.php';
 }

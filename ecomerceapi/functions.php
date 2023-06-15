@@ -373,3 +373,30 @@ function getViewItemsCartByUser($userid){
         echo $th;
     } 
 }
+
+
+function getViewItemsBySearchByName($userid, $name){
+    try {
+        global $con;
+        $stmt = $con->prepare("SELECT 
+        view_itemsview_favorit.*, 
+        IFNULL(cart.cart_count, 0) as cart_count 
+        from (
+        SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
+                INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
+                UNION ALL 
+                SELECT view_itemsview.*, 0 as favorite FROM view_itemsview WHERE view_itemsview.items_id NOT IN (
+                SELECT favorite.favorite_itemsId FROM favorite
+                ) 
+        ) view_itemsview_favorit 
+        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id 
+        where items_name_ar LIKE '%$name%' OR items_name LIKE '%$name%' 
+        ");
+        
+        $stmt->execute();
+        return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
+        
+    } catch (\Throwable $th) {
+        echo $th;
+    } 
+}

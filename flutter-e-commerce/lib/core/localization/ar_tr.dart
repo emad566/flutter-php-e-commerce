@@ -96,6 +96,8 @@ Map<String, String> arTr = {
   "Added To Cart":"تم الاضافة إلي السلة",
   "Cart has been updated":"تم تحديث وحفظ السلة",
   "Alert":"اشعار",
+  "Code successfully sent": "تم ارسال كود التفعيل",
+  "Resend verification code": "إعادة إرسال",
   // "":"",
   // "":"",
   // "":"",

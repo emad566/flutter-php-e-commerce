@@ -23,6 +23,7 @@ class CustomTextField extends StatefulWidget {
         const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
     this.borderRadius =50.0,
     this.fillColor =Colors.white,
+    this.onChange,
   }) : super(key: key);
 
   final String hintText;
@@ -41,7 +42,7 @@ class CustomTextField extends StatefulWidget {
   final bool isRequired;
   final EdgeInsets contentPadding;
   double borderRadius;
-
+  final Function? onChange;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -58,6 +59,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           setState(() {});
         }
         widget.inputKey.currentState!.validate();
+        if(widget.onChange != null) widget.onChange!(val);
       },
       validator: (val) {
         if (widget.isRequired && widget.controller.text == '') {

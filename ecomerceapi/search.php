@@ -1,12 +1,12 @@
-<?php
+<?php 
 
 try {
-    include "../connect.php";
-    $userid = filterRequest("usersid");
-    $categoryid = filterRequest("categories_id");
+    include "connect.php";
+    $userid = filterRequest("userid");
+    $name = filterRequest("name");
 
     
-    $reponse= getViewItemsByCategoryId($userid, $categoryid);
+    $reponse= getViewItemsBySearchByName($userid, $name);
 
     if ($reponse['count'] > 0) {
         $items  =["status" => true, "message"=>"success", "data" => $reponse['data']];
@@ -18,4 +18,3 @@ try {
 } catch (\Throwable $th) {
     echo $th;
 }
-

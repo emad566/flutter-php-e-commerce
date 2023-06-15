@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/button_bottom_nav.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/cart_controller.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_header.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_items_list.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_price_dart.dart';
@@ -11,7 +10,6 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartControllerImp controller = Get.put(CartControllerImp());
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 0),
       child: Column(

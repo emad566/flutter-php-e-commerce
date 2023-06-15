@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce/core/constants/app_styles.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/check_email_controller.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/widgets/auth_logo.dart';
 import 'package:get/get.dart';
@@ -64,6 +66,27 @@ class CheckEmailScreen extends StatelessWidget {
                   controller.checkEmail(verificationCode);
                 }, // end onSubmit
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              GetBuilder<CheckEmailControllerImp>(
+                init: CheckEmailControllerImp(Get.find()),
+                builder: (controller) {
+                  return HandleLoading(
+                    state: controller.state,
+                    child: InkWell(
+                      onTap: () {
+                        controller.resendCode();
+                      },
+                      child: Text(
+                        'Resend verification code'.tr,
+                        style: AppStyles.style18Bold
+                            .copyWith(color: ThemeColors.thirdClr),
+                      ),
+                    ),
+                  );
+                },
+              )
             ],
           ),
         ),

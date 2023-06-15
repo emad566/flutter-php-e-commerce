@@ -7,6 +7,7 @@ import 'package:flutter_e_commerce/core/constants/app_chaches.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/core/services/cache_helper.dart';
+import 'package:flutter_e_commerce/features/auth/data/models/login_model.dart';
 import 'package:flutter_e_commerce/features/auth/repos/login_repo.dart';
 import 'package:get/get.dart';
 
@@ -45,8 +46,7 @@ class LoginControllerImp extends LoginController {
     if ((formKey.currentState?.validate()) ?? false) {
       state = AppLoadingState();
       update();
-      Either<Failure, Map<String, dynamic>> result =
-          await _repoImp.login(formatData);
+      Either<Failure, Map<String, dynamic>> result = await _repoImp.login(formatData);
 
       result.fold((failure) {
         state = handleFailure(failure);
@@ -59,22 +59,26 @@ class LoginControllerImp extends LoginController {
                 ElevatedButton(
                     onPressed: () => Get.back(), child: const Text('Ok')),
               ]);
-          state = AppValidateFailureState(
-              errors: response['errors'], errorMessage: response['message']);
+          state = AppValidateFailureState(errors: response['errors'], errorMessage: response['message']);
           update();
         } else {
-          cacheLoginData(response);
+          LoginModel loginModel = LoginModel.fromMap(response['data']);
+          if(loginModel.usersApprove == "0"){
+            cacheLoginData(response);
+            Get.offAllNamed(AppRouteKeys.checkEmail, arguments: {'email': loginModel.usersEmail});
+          }else{
+            Get.defaultDialog(
+                title: 'Success',
+                middleText: response['message'],
+                actions: [
+                  ElevatedButton(onPressed: () => Get.back(), child: const Text('Ok')),
+                ]);
 
-          Get.defaultDialog(
-              title: 'Success',
-              middleText: response['message'],
-              actions: [
-                ElevatedButton(
-                    onPressed: () => Get.back(), child: const Text('Ok')),
-              ]);
+            state = AppSuccessState();
+            Get.offAllNamed(AppRouteKeys.homeLayout);
+          }
 
-          state = AppSuccessState();
-          Get.offAllNamed(AppRouteKeys.homeLayout);
+
         }
       });
     }

@@ -12,11 +12,13 @@ abstract class CheckEmailController extends GetxController {
   AppStates state = AppInitialState();
   ApiService apiService;
   CheckEmailController(this.apiService);
+  late String email;
+  void resendCode();
 }
 
 class CheckEmailControllerImp extends CheckEmailController {
   CheckEmailControllerImp(super.apiService);
-  late String email;
+
   @override
   void onInit() {
     email = Get.arguments['email'];
@@ -50,6 +52,35 @@ class CheckEmailControllerImp extends CheckEmailController {
       } else {
         Get.offNamed(AppRouteKeys.successSignUp);
       }
+    });
+  }
+
+  @override
+  void resendCode() async {
+    state = AppLoadingState();
+    update();
+
+    Map<String, dynamic> data = {"email": email};
+
+    Either<Failure, Map<String, dynamic>> result = await apiService.ajax(
+      requestType: RequestType.post,
+      endPoint: ApiLinks.forgetPasswordCheckEmail,
+      data: data,
+    );
+
+    result.fold((failure) {
+      state = handleFailure(failure);update();
+      update();
+    }, (response) async {
+      Get.defaultDialog(
+          title: 'Success',
+          middleText: 'Code successfully sent'.tr,
+          actions: [
+            ElevatedButton(
+                onPressed: () => Get.back(), child: const Text('Ok')),
+          ]);
+      state = AppSuccessState();
+      update();
     });
   }
 }

@@ -96,8 +96,8 @@ Map<String, String> enTr = {
   "Alert":"Alert",
   "Cart has been updated":"Cart has been updated",
 
-  // "":"",
-  // "":"",
+  "Code successfully sent":"Code successfully sent",
+  "Resend verification code":"Resend Code",
   // "":"",
   // "":"",
   // "":"",

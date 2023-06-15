@@ -40,7 +40,6 @@ class LoginModel {
       };
 
   /// `dart:convert`
-  ///
   /// Parses the string and returns the resulting Json object as [LoginModel].
   factory LoginModel.fromJson(String data) {
     return LoginModel.fromMap(json.decode(data) as Map<String, dynamic>);
