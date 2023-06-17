@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
@@ -35,7 +36,7 @@ class SuccessSignUpScreen extends StatelessWidget {
                 height: 50,
               ),
               Text(
-                'Success Sign Up, You can log in now'.tr,
+                AppLangKeys.successSignUpYouCanLogInNow.tr,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: ThemeColors.secondClr,
                     ),
@@ -45,7 +46,7 @@ class SuccessSignUpScreen extends StatelessWidget {
                 height: 50,
               ),
               CustomButton(
-                text: 'Sign In'.tr,
+                text: AppLangKeys.signIn.tr,
                 borderRadius: 50,
                 onPress: () {
                   Get.offAllNamed(AppRouteKeys.login);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/functions/alert_exit_app.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/firebase/custom_firebase_messaging.dart';
 import 'package:flutter_e_commerce/core/services/service_locator.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
@@ -41,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: ThemeColors.primaryBg,
         centerTitle: true,
         title: Text(
-          '9'.tr,
+          AppLangKeys.t9.tr,
           style: Theme.of(context)
               .textTheme
               .headlineLarge

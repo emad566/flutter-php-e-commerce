@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
@@ -25,7 +26,7 @@ class ForgetPasswordScreen extends StatelessWidget {
         backgroundColor: ThemeColors.primaryBg,
         centerTitle: true,
         title: Text(
-          'Request Rest Password'.tr,
+          AppLangKeys.requestRestPassword.tr,
           style: Theme.of(context)
               .textTheme
               .headlineLarge
@@ -47,7 +48,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   height: 50,
                 ),
                 Text(
-                  'Please enter your email to reset password'.tr,
+                  AppLangKeys.pleaseEnterYourEmailToResetPassword.tr,
                   style: Theme.of(context).textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),

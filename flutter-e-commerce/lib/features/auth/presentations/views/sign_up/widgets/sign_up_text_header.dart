@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class SignUpTextHeader extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Welcome with you'.tr,
+          AppLangKeys.welcomeBack.tr,
           style: Theme.of(context).textTheme.displayMedium,
         ),
         const SizedBox(

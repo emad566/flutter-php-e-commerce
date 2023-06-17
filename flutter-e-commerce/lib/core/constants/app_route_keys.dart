@@ -19,4 +19,5 @@ abstract class AppRouteKeys {
   static const String address = '/address';
   static const String addressCreate = '/addressCreate';
   static const String addressCreatePartTwo = '/addressCreatePartTwo';
+  static const String checkout = '/checkout';
 }

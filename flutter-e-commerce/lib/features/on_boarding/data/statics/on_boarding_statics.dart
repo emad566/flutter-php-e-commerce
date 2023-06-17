@@ -1,16 +1,17 @@
 import 'package:flutter_e_commerce/core/constants/app_paths.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/features/on_boarding/data/models/on_boarding_model.dart';
 import 'package:get/get.dart';
 
 class OnBoardingStatics {
   static List<OnBoardingModel> get onBoardingList => [
         OnBoardingModel(
-            title: '2'.tr, body: '3'.tr, image: AppPaths.onBoardingImageOne),
+            title: AppLangKeys.t2.tr, body: AppLangKeys.t3.tr, image: AppPaths.onBoardingImageOne),
         OnBoardingModel(
-            title: '4'.tr, body: '5'.tr, image: AppPaths.onBoardingImageTwo),
+            title: AppLangKeys.t4.tr, body: AppLangKeys.t5.tr, image: AppPaths.onBoardingImageTwo),
         OnBoardingModel(
-            title: '6'.tr, body: '7'.tr, image: AppPaths.onBoardingImageThree),
+            title: AppLangKeys.t6.tr, body: AppLangKeys.t7.tr, image: AppPaths.onBoardingImageThree),
         OnBoardingModel(
-            title: '6'.tr, body: '7'.tr, image: AppPaths.onBoardingImageFour),
+            title: AppLangKeys.t6.tr, body: AppLangKeys.t7.tr, image: AppPaths.onBoardingImageFour),
       ];
 }

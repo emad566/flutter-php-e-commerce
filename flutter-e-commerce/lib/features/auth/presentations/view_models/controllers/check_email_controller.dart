@@ -4,6 +4,7 @@ import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/constants/api_links.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/api_services.dart';
 import 'package:get/get.dart';
 
@@ -74,7 +75,7 @@ class CheckEmailControllerImp extends CheckEmailController {
     }, (response) async {
       Get.defaultDialog(
           title: 'Success',
-          middleText: 'Code successfully sent'.tr,
+          middleText: AppLangKeys.contactUs.tr,
           actions: [
             ElevatedButton(
                 onPressed: () => Get.back(), child: const Text('Ok')),

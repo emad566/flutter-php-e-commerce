@@ -26,26 +26,3 @@ Future<bool> requestPermission1() async{
 }
 
 
-//
-// Future<SnackbarController?>  requestPermission() async{
-//   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-//   if(!serviceEnabled){
-//     return Get.snackbar('Alert', 'Please allow location service'.tr);
-//   }
-//
-//   LocationPermission permission = await Geolocator.checkPermission();
-//   if(permission == LocationPermission.denied){
-//     permission = await Geolocator.requestPermission();
-//     if(permission == LocationPermission.denied){
-//       return Get.snackbar('Alert', 'Please allow location permission for the app'.tr);
-//     }
-//   }
-//
-//   if(permission == LocationPermission.denied){
-//     permission = await Geolocator.requestPermission();
-//     if(permission == LocationPermission.deniedForever){
-//       return Get.snackbar('Alert', 'Please allow location permission for the app'.tr);
-//     }
-//   }
-//   return null;
-// }

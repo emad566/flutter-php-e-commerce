@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:get/get.dart';
 
@@ -63,7 +64,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       },
       validator: (val) {
         if (widget.isRequired && widget.controller.text == '') {
-          return 'This field is required'.tr;
+          return AppLangKeys.thisFieldIsRequired.tr;
         }
         if (widget.validator != null) return widget.validator!(val);
         return null;

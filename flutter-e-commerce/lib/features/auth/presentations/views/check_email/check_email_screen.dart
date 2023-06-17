@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
@@ -24,7 +25,7 @@ class CheckEmailScreen extends StatelessWidget {
         backgroundColor: ThemeColors.primaryBg,
         centerTitle: true,
         title: Text(
-          'Check Code'.tr,
+          AppLangKeys.checkCode.tr,
           style: Theme.of(context)
               .textTheme
               .headlineLarge
@@ -46,7 +47,7 @@ class CheckEmailScreen extends StatelessWidget {
                 height: 30,
               ),
               Text(
-                'Please Enter the digit code sent to emad@gmail.com'.tr,
+                AppLangKeys.pleaseEnterTheDigitCodeSentToEmadgmailcom.tr,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       color: ThemeColors.secondClr,
                     ),
@@ -79,7 +80,7 @@ class CheckEmailScreen extends StatelessWidget {
                         controller.resendCode();
                       },
                       child: Text(
-                        'Resend verification code'.tr,
+                        AppLangKeys.resendVerificationCode.tr,
                         style: AppStyles.style18Bold
                             .copyWith(color: ThemeColors.thirdClr),
                       ),

@@ -12,6 +12,7 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassw
 import 'package:flutter_e_commerce/features/auth/presentations/views/success_sign_up/success_sign_up_screen.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassword/veryfy_code/verify_code_screen.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/views/cart_screen.dart';
+import 'package:flutter_e_commerce/features/checkout/presentations/views/checkout_screen.dart';
 import 'package:flutter_e_commerce/features/choose_language/presentations/views/choose_language_screen.dart';
 import 'package:flutter_e_commerce/features/home/presentations/views/home_screen.dart';
 import 'package:flutter_e_commerce/features/home_layout/presentations/views/home_layout_screen.dart';
@@ -91,6 +92,10 @@ List<GetPage<dynamic>>? appRoutes = [
   GetPage(
     name: AppRouteKeys.addressCreatePartTwo,
     page: () => const AddressCreatePartTwoScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.checkout,
+    page: () => const CheckoutScreen(),
   ),
 
 ];

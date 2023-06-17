@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
+import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
 import 'package:flutter_e_commerce/features/auth/data/models/login_cached_model.dart';
@@ -29,6 +30,7 @@ abstract class CartController extends GetxController{
   void applyCoupon();
   void updateCart(String itemsId, cartCount);
   void setTotalPrice();
+  void goToCheckout();
 }
 
 class CartControllerImp extends CartController{
@@ -154,6 +156,11 @@ class CartControllerImp extends CartController{
       return true;
     }
     return false;
+  }
+
+  @override
+  void goToCheckout() {
+    Get.toNamed(AppRouteKeys.checkout);
   }
 
 }

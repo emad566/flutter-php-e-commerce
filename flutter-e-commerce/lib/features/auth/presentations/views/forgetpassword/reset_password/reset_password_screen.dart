@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/app_validate_types.dart';
 import 'package:flutter_e_commerce/core/functions/validator.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
@@ -26,7 +27,7 @@ class ResetPasswordScreen extends StatelessWidget {
         backgroundColor: ThemeColors.primaryBg,
         centerTitle: true,
         title: Text(
-          'New Password'.tr,
+            AppLangKeys.newPassword.tr,
           style: Theme.of(context)
               .textTheme
               .headlineLarge
