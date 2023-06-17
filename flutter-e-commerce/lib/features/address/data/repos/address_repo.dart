@@ -9,6 +9,7 @@ abstract class AddressRepo {
   void list(Map<String, dynamic> data);
   void store(Map<String, dynamic> data);
   void update(Map<String, dynamic> data);
+  Future<Either<Failure, Map<String, dynamic>>>delete(Map<String, dynamic> data);
 }
 
 class AddressRepoImp extends AddressRepo {
@@ -16,7 +17,7 @@ class AddressRepoImp extends AddressRepo {
 
   @override
   Future<Either<Failure, Map<String, dynamic>>> list(Map<String, dynamic> data) async {
-    return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.items, data: data);
+    return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.addressView, data: data);
   }
 
   @override
@@ -27,5 +28,10 @@ class AddressRepoImp extends AddressRepo {
   @override
   Future<Either<Failure, Map<String, dynamic>>> update(Map<String, dynamic> data) async {
     return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.addressEdit, data: data);
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>>delete(Map<String, dynamic> data) async {
+    return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.addressDelete, data: data);
   }
 }

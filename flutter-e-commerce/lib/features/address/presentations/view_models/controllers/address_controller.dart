@@ -5,14 +5,14 @@ import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
 import 'package:flutter_e_commerce/features/address/data/models/address_list_model/address_list_model.dart';
 import 'package:flutter_e_commerce/features/address/data/models/address_list_model/address_model.dart';
+import 'package:flutter_e_commerce/features/address/data/repos/address_repo.dart';
 import 'package:flutter_e_commerce/features/auth/data/models/login_cached_model.dart';
-import 'package:flutter_e_commerce/features/items/data/repos/items_repo.dart';
 import 'package:get/get.dart';
 
 abstract class AddressController extends GetxController{
   AppStates state = AppInitialState();
   final LoginCachedModel loginCached = LoginCachedModel.fromJson();
-  final ItemsRepoImp _repoImp = ItemsRepoImp(Get.find());
+  final AddressRepoImp _repoImp = AddressRepoImp(Get.find());
   List<AddressModel> listData= [];
   void list();
   void delete(String id);

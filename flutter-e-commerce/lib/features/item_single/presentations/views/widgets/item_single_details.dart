@@ -3,17 +3,18 @@ import 'package:flutter_e_commerce/core/constants/app_styles.dart';
 import 'package:flutter_e_commerce/core/functions/translate.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
+import 'package:flutter_e_commerce/features/item_single/presentations/view_models/controllers/item_single_controller.dart';
+import 'package:get/get.dart';
 
 class ItemSingleDetails extends StatelessWidget {
   const ItemSingleDetails({
     super.key,
-    required this.single,
   });
-
-  final ItemViewModel single;
 
   @override
   Widget build(BuildContext context) {
+    ItemSingleControllerImp controller = Get.put(ItemSingleControllerImp());
+    ItemViewModel single = controller.single;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
