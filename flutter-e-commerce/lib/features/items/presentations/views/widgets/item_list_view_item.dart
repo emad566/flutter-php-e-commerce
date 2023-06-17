@@ -85,7 +85,7 @@ class ItemListViewItem extends StatelessWidget {
               top: 35,
               left: 22,
               child: RotationTransition(
-                turns: new AlwaysStoppedAnimation(-15 / 360),
+                turns: const AlwaysStoppedAnimation(-15 / 360),
                 child: Text(
                   '${item.itemsDiscount.round()} %',
                   style: AppStyles.style22Bold.copyWith(color: ThemeColors.white),

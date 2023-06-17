@@ -8,6 +8,7 @@ abstract class CartRepo {
   CartRepo(this.apiService);
   Future<Either<Failure, Map<String, dynamic>>> list(Map<String, dynamic> data);
   Future<Either<Failure, Map<String, dynamic>>> updateCart(Map<String, dynamic> data);
+  Future<Either<Failure, Map<String, dynamic>>> applyCoupon(Map<String, dynamic> data);
 }
 
 class CartRepoImp extends CartRepo {
@@ -22,6 +23,11 @@ class CartRepoImp extends CartRepo {
   @override
   Future<Either<Failure, Map<String, dynamic>>> updateCart(Map<String, dynamic> data) async {
     return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.addToCart, data: data);
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> applyCoupon(Map<String, dynamic> data) async {
+    return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.applyCoupon, data: data);
   }
 
 }

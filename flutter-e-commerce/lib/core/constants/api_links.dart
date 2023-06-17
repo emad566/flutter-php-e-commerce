@@ -15,4 +15,9 @@ abstract class ApiLinks {
   static const addToCart = 'cart/add.php';
   static const viewCart = 'cart/view.php';
   static const search = 'search.php';
+  static const addressAdd= 'address/add.php';
+  static const addressEdit= 'address/edit.php';
+  static const addressDelete= 'address/delete.php';
+  static const addressView= 'address/view.php';
+  static const applyCoupon= 'coupon/checkcoupon.php';
 }

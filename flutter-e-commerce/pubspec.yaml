@@ -31,7 +31,7 @@ dependencies:
   # Google Map
   flutter_polyline_points: ^1.0.0
   google_maps_flutter: ^2.2.6
-  geolocator: ^9.0.2
+  location: ^4.2.0
   geocoding: ^2.1.0
 
   # Firebase And Notification
@@ -39,7 +39,6 @@ dependencies:
   firebase_core: ^2.13.1
   flutter_local_notifications: ^14.0.0+2
   cloud_firestore: ^4.7.0
-
 
   # Local Data Cache
   sqflite: ^2.2.8+2
@@ -62,7 +61,6 @@ dependencies:
   # Google Auth
   google_sign_in: ^6.1.0
   device_preview: ^1.1.0
-  responsive_builder: ^0.6.4
   image_pickers: ^2.0.4+1
   flutter_svg: ^2.0.5
   flutter_otp_text_field: ^1.1.1
@@ -79,6 +77,8 @@ dependencies:
   connectivity_plus: ^4.0.1
   get_it: ^7.3.0
   firebase_analytics: ^10.2.1
+  equatable: ^2.0.5
+  responsive_builder: ^0.7.0
 
 dev_dependencies:
   flutter_test:

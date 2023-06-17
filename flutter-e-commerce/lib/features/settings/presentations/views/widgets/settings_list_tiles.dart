@@ -39,7 +39,7 @@ class SettingsListTiles extends StatelessWidget {
               style: AppStyles.style18Bold.copyWith(color: ThemeColors.tripleText),
             ),
             trailing: Icon(Icons.location_on_outlined, size: 35, color: ThemeColors.primaryClr,),
-            onTap: (){},
+            onTap: ()=>controller.goToAddress(),
           ),
           ListTile(
             title: Text(

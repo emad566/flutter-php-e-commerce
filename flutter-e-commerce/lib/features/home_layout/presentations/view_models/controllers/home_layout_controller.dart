@@ -13,11 +13,11 @@ import 'package:get/get.dart';
 abstract class HomeLayoutController extends GetxController{
   AppStates state = AppInitialState();
   List<ScreenModel> screens = [
-    const ScreenModel(screen: HomeScreen(), title: 'Profile', icon: Icons.manage_accounts),
-    const ScreenModel(screen: CartScreen(), title: 'Cart', icon: Icons.shopping_cart),
+    ScreenModel(screen: const HomeScreen(), title: 'Profile'.tr, icon: Icons.manage_accounts),
+    ScreenModel(screen: const CartScreen(), title: 'Cart'.tr, icon: Icons.shopping_cart),
     const ScreenModel(screen: HomeScreen(), title: '', icon: Icons.cell_wifi),
-    const ScreenModel(screen: SettingsScreen(), title: 'Settings', icon: Icons.settings),
-    const ScreenModel(screen: FavoriteScreen(), title: 'Favorite', icon: Icons.favorite),
+    ScreenModel(screen: const SettingsScreen(), title: 'Settings'.tr, icon: Icons.settings),
+    ScreenModel(screen: const FavoriteScreen(), title: 'Favorite'.tr, icon: Icons.favorite),
   ];
 
   late int currentIndex = 0;

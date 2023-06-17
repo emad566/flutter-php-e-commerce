@@ -110,6 +110,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 setState(() {
                   widget.controller.text = '';
                   widget.inputKey.currentState!.validate();
+                  if(widget.onChange != null) widget.onChange!('');
                 });
               },
               icon: const Icon(

@@ -7,7 +7,6 @@ import 'package:flutter_e_commerce/core/constants/app_chaches.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/core/services/cache_helper.dart';
-import 'package:flutter_e_commerce/features/auth/data/models/login_model.dart';
 import 'package:flutter_e_commerce/features/auth/repos/login_repo.dart';
 import 'package:get/get.dart';
 
@@ -62,11 +61,12 @@ class LoginControllerImp extends LoginController {
           state = AppValidateFailureState(errors: response['errors'], errorMessage: response['message']);
           update();
         } else {
-          LoginModel loginModel = LoginModel.fromMap(response['data']);
-          if(loginModel.usersApprove == "0"){
-            cacheLoginData(response);
-            Get.offAllNamed(AppRouteKeys.checkEmail, arguments: {'email': loginModel.usersEmail});
+          if(response['data']['users_approve'] == "0"){
+            Get.offAllNamed(AppRouteKeys.checkEmail, arguments: {
+              'email': response['data']['users_email']
+            });
           }else{
+            cacheLoginData(response);
             Get.defaultDialog(
                 title: 'Success',
                 middleText: response['message'],

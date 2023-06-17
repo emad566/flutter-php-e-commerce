@@ -15,6 +15,7 @@ abstract class SettingsController extends GetxController{
   // final SettingsRepoImp _repoImp = SettingsRepoImp(Get.find());
 
   void logOut();
+  void goToAddress();
 }
 
 class SettingsControllerImp extends SettingsController{
@@ -23,5 +24,10 @@ class SettingsControllerImp extends SettingsController{
   void logOut(){
     CacheHelper.clearData();
     Get.offAllNamed(AppRouteKeys.login);
+  }
+
+  @override
+  void goToAddress() {
+    Get.toNamed(AppRouteKeys.address);
   }
 }

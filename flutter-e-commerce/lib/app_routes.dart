@@ -1,5 +1,8 @@
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/middleware/app_middleware.dart';
+import 'package:flutter_e_commerce/features/address/presentations/views/address_create/address_create_screen.dart';
+import 'package:flutter_e_commerce/features/address/presentations/views/address_create_part_two/address_create_part_two_screen.dart';
+import 'package:flutter_e_commerce/features/address/presentations/views/address_list/address_screen.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/check_email/check_email_screen.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassword/forget_password/forget_password_screen.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/login/login_screen.dart';
@@ -77,4 +80,17 @@ List<GetPage<dynamic>>? appRoutes = [
     name: AppRouteKeys.search,
     page: () => const SearchScreen(),
   ),
+  GetPage(
+    name: AppRouteKeys.address,
+    page: () => const AddressScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.addressCreate,
+    page: () => const AddressCreateScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.addressCreatePartTwo,
+    page: () => const AddressCreatePartTwoScreen(),
+  ),
+
 ];

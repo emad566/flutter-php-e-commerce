@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
-import 'package:flutter_e_commerce/core/shared/widgets/custom_input_field.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/custom_text_field.dart';
 import 'package:flutter_e_commerce/features/search/presentations/view_models/controllers/search_controller.dart';
 import 'package:get/get.dart';
 
@@ -35,7 +35,6 @@ class HomeSearchBar extends StatelessWidget {
             controller: controller.searchController,
             inputKey: searchKey,
             borderRadius: 5,
-            borderColor: ThemeColors.primaryClr,
             prefixIcon: InkWell(
               onTap: ()=>controller.list(),
               child: const Icon(
@@ -44,6 +43,7 @@ class HomeSearchBar extends StatelessWidget {
               ),
             ),
             fillColor: ThemeColors.fillClr,
+            borderColor: ThemeColors.primaryClr,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
           ),

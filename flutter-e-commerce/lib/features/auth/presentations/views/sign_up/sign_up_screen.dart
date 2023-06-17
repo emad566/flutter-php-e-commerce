@@ -4,7 +4,7 @@ import 'package:flutter_e_commerce/core/functions/validator.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_button.dart';
-import 'package:flutter_e_commerce/core/shared/widgets/custom_input_field.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/custom_text_field.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_text_button.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/view_models/controllers/sign_up_controller.dart';

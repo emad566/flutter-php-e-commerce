@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 abstract class AppThemes {
   static ThemeData get lightThem => ThemeData(
         useMaterial3: false,
+        primarySwatch: Colors.red,
         textTheme: ChangeLangController().langStr == 'ar'
             ? GoogleFonts.cairoTextTheme(_lightTextTheme)
             : GoogleFonts.playfairDisplayTextTheme(_lightTextTheme),

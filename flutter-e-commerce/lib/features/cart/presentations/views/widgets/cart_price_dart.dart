@@ -14,57 +14,85 @@ class CartPrice extends StatelessWidget {
     return GetBuilder<CartControllerImp>(
       init: CartControllerImp(),
       builder: (controller) {
-        return Column(
-          children: [
-            ListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-              visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
-              dense: true,
-              title: Text(
-                'Price'.tr,
-                style: AppStyles.style16Bold
-                    .copyWith(color: ThemeColors.tripleText),
+        return Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: ThemeColors.primaryClr),
+          ),
+          child: Column(
+            children: [
+              ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+                dense: true,
+                title: Text(
+                  'Price'.tr,
+                  style: AppStyles.style16Bold
+                      .copyWith(color: ThemeColors.tripleText),
+                ),
+                trailing: Text(
+                  '${controller.totalPrice} \$',
+                  style: AppStyles.style16Bold
+                      .copyWith(color: ThemeColors.tripleText),
+                ),
               ),
-              trailing: Text(
-                '${controller.totalPrice} \$',
-                style: AppStyles.style16Bold
-                    .copyWith(color: ThemeColors.tripleText),
+              ListTile(
+                dense: true,
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+                title: Text(
+                  'Shipping'.tr,
+                  style: AppStyles.style16Bold
+                      .copyWith(color: ThemeColors.tripleText),
+                ),
+                trailing: Text(
+                  '${controller.shipping.toStringAsFixed(2)} \$',
+                  style: AppStyles.style16Bold
+                      .copyWith(color: ThemeColors.tripleText),
+                ),
               ),
-            ),
-            ListTile(
-              dense: true,
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-              visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
-              title: Text(
-                'Shipping'.tr,
-                style: AppStyles.style16Bold
-                    .copyWith(color: ThemeColors.tripleText),
+              ListTile(
+                dense: true,
+                contentPadding:
+                const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+                title: Text(
+                  'Discount'.tr,
+                  style: AppStyles.style16Bold
+                      .copyWith(color: ThemeColors.tripleText),
+                ),
+                trailing: Text(
+                  '-${controller.discountValue.toStringAsFixed(2)} \$',
+                  style: AppStyles.style16Bold
+                      .copyWith(color: ThemeColors.tripleText),
+                ),
               ),
-              trailing: Text(
-                '${controller.shipping} \$',
-                style: AppStyles.style16Bold
-                    .copyWith(color: ThemeColors.tripleText),
+              Container(
+                width: double.infinity,
+                height: 1,
+                color: ThemeColors.tripleText,
               ),
-            ),
-            Divider(
-              height: 10,
-              color: ThemeColors.black,
-            ),
-            ListTile(
-              title: Text(
-                'Total Price'.tr,
-                style: AppStyles.style16Bold
-                    .copyWith(color: ThemeColors.tripleText),
+              ListTile(
+                dense: true,
+                contentPadding:
+                const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+                title: Text(
+                  'Total Price'.tr,
+                  style: AppStyles.style16Bold
+                      .copyWith(color: ThemeColors.tripleText),
+                ),
+                trailing: Text(
+                  '${controller.totalWithShipping} \$',
+                  style: AppStyles.style18Bold
+                      .copyWith(color: ThemeColors.secondClr),
+                ),
               ),
-              trailing: Text(
-                '${controller.totalWithShipping} \$',
-                style: AppStyles.style18Bold
-                    .copyWith(color: ThemeColors.secondClr),
-              ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );
