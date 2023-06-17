@@ -21,48 +21,60 @@ class SelectPaymentType extends StatelessWidget {
         SectionTitle(title: AppLangKeys.choosePaymentMethod.tr),
         InkWell(
           onTap: ()=>controller.setPaymentType('cash'),
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-                vertical: 5, horizontal: 20),
-            decoration: BoxDecoration(
-              color: controller.paymentType == 'cash'? ThemeColors.secondClr : ThemeColors.tripleText,
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Row(
-              children: [
-                if(controller.paymentType == 'cash')
-                  Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
-                const SizedBox(width: 20,),
-                Text(
-                  AppLangKeys.cash.tr,
-                  style: AppStyles.style18Bold.copyWith(color: ThemeColors
-                      .white),
-                ),
-              ],
+          child: Card(
+            elevation: 5,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                  vertical: 5, horizontal: 20),
+              decoration: BoxDecoration(
+                color: controller.paymentType == 'cash'? ThemeColors.secondClr : ThemeColors.white,
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: Row(
+                children: [
+                  if(controller.paymentType == 'cash')
+                    Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
+                  const SizedBox(width: 20,),
+                  Text(
+                    AppLangKeys.cash.tr,
+                    style: AppStyles.style18Bold.copyWith(
+                      color: controller.paymentType == 'cash'
+                          ? ThemeColors.white
+                          : ThemeColors.secondClr,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
         const SizedBox(height: 10,),
         InkWell(
           onTap: ()=>controller.setPaymentType('cards'),
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-                vertical: 5, horizontal: 20),
-            decoration: BoxDecoration(
-              color: controller.paymentType == 'cards'? ThemeColors.secondClr : ThemeColors.tripleText,
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Row(
-              children: [
-                if(controller.paymentType == 'cards')
-                  Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
-                const SizedBox(width: 20,),
-                Text(
-                  AppLangKeys.cardsPayment.tr,
-                  style: AppStyles.style18Bold.copyWith(color: ThemeColors
-                      .white),
-                ),
-              ],
+          child: Card(
+            elevation: 5,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                  vertical: 5, horizontal: 20),
+              decoration: BoxDecoration(
+                color: controller.paymentType == 'cards'? ThemeColors.secondClr : ThemeColors.white,
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: Row(
+                children: [
+                  if(controller.paymentType == 'cards')
+                    Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
+                  const SizedBox(width: 20,),
+                  Text(
+                    AppLangKeys.cardsPayment.tr,
+                    style: AppStyles.style18Bold.copyWith(
+                      color: controller.paymentType == 'cards'
+                          ? ThemeColors.white
+                          : ThemeColors.secondClr,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -23,29 +23,32 @@ class SelectDeliveryType extends StatelessWidget {
           children: [
             InkWell(
               onTap: () => controller.setDeliveryType('delivery'),
-              child: Container(
-                padding: const EdgeInsets.all(30),
-                color: controller.deliveryType == 'delivery'
-                    ? ThemeColors.secondClr
-                    : ThemeColors.tripleText,
-                child:Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Image.asset(
-                      AppPaths.deliveryImage2,
-                      width: 80,
-                    ),
-                    if (controller.deliveryType == 'delivery')
-                      Positioned(
-                        top: -15,
-                        left: -15,
-                        child: Icon(
-                          Icons.check_circle_outline,
-                          size: 30,
-                          color: ThemeColors.white,
-                        ),
+              child: Card(
+                elevation: 5,
+                child: Container(
+                  padding: const EdgeInsets.all(30),
+                  color: controller.deliveryType == 'delivery'
+                      ? ThemeColors.secondClr
+                      : ThemeColors.white,
+                  child:Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Image.asset(
+                        AppPaths.deliveryImage2,
+                        width: 80,
                       ),
-                  ],
+                      if (controller.deliveryType == 'delivery')
+                        Positioned(
+                          top: -15,
+                          left: -15,
+                          child: Icon(
+                            Icons.check_circle_outline,
+                            size: 30,
+                            color: ThemeColors.white,
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -54,29 +57,32 @@ class SelectDeliveryType extends StatelessWidget {
             ),
             InkWell(
               onTap: () => controller.setDeliveryType('thru'),
-              child: Container(
-                padding: const EdgeInsets.all(30),
-                color: controller.deliveryType == 'thru'
-                    ? ThemeColors.secondClr
-                    : ThemeColors.tripleText,
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Image.asset(
-                      AppPaths.drivethruImage,
-                      width: 80,
-                    ),
-                    if (controller.deliveryType == 'thru')
-                      Positioned(
-                        top: -15,
-                        left: -15,
-                        child: Icon(
-                          Icons.check_circle_outline,
-                          size: 30,
-                          color: ThemeColors.white,
-                        ),
+              child: Card(
+                elevation: 5,
+                child: Container(
+                  padding: const EdgeInsets.all(30),
+                  color: controller.deliveryType == 'thru'
+                      ? ThemeColors.secondClr
+                      : ThemeColors.white,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Image.asset(
+                        AppPaths.drivethruImage,
+                        width: 80,
                       ),
-                  ],
+                      if (controller.deliveryType == 'thru')
+                        Positioned(
+                          top: -15,
+                          left: -15,
+                          child: Icon(
+                            Icons.check_circle_outline,
+                            size: 30,
+                            color: ThemeColors.white,
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
