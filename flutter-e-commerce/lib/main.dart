@@ -16,19 +16,23 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  if (kDebugMode) {
-    print("Handling a background message: ${message.messageId}");
-  }
-}
+
 
 void main() async {
+  Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    await FirebaseMessaging.instance.getToken();
+    await Firebase.initializeApp();
+    if (kDebugMode) {
+      print("Handling a background message: ${message.messageId}");
+    }
+  }
+
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
 
   setupGetItServiceLocator();
 

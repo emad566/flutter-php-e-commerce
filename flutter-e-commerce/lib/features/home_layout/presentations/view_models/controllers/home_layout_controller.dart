@@ -1,5 +1,7 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
+import 'package:flutter_e_commerce/features/auth/data/models/login_cached_model.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/cart_controller.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/views/cart/cart_screen.dart';
 import 'package:flutter_e_commerce/features/favorite/presentations/view_models/controllers/favorite_controller.dart';
@@ -12,6 +14,7 @@ import 'package:get/get.dart';
 
 abstract class HomeLayoutController extends GetxController{
   AppStates state = AppInitialState();
+  LoginCachedModel loginCached = LoginCachedModel.fromJson();
   List<ScreenModel> screens = [
     ScreenModel(screen: const HomeScreen(), title: 'Profile'.tr, icon: Icons.manage_accounts),
     ScreenModel(screen: const CartScreen(), title: 'Cart'.tr, icon: Icons.shopping_cart),
@@ -42,5 +45,7 @@ class HomeLayoutControllerImp extends HomeLayoutController{
     super.onInit();
     currentIndex = Get.arguments['index']?? 0;
     if(currentIndex != 0) update();
+    FirebaseMessaging.instance.subscribeToTopic('users');
+    FirebaseMessaging.instance.subscribeToTopic('users${loginCached.usersId}');
   }
 }

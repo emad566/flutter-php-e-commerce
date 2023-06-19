@@ -1,5 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -28,7 +30,7 @@ class NotifyHelper {
           Get.dialog(Text(body!));
         },
       ),
-      android: const AndroidInitializationSettings('ic_stat_icon_marvel'),
+      android: const AndroidInitializationSettings('launcher_icon'),
     );
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
@@ -61,14 +63,18 @@ class NotifyHelper {
     var platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
+    try {
+      await flutterLocalNotificationsPlugin.show(
+        0,
+        title,
+        body,
+        platformChannelSpecifics,
+        payload: '${data['notifiable_id']}|${data['title']}',
+      );
+    } on Exception catch (_) {
 
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      title,
-      body,
-      platformChannelSpecifics,
-      payload: '${data['notifiable_id']}|${data['title']}',
-    );
+    }
+
   }
 
   void requestIOSPermissions() {

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
@@ -23,6 +24,8 @@ class SettingsControllerImp extends SettingsController{
 
   @override
   void logOut(){
+    FirebaseMessaging.instance.unsubscribeFromTopic('users');
+    FirebaseMessaging.instance.unsubscribeFromTopic('users${loginCached.usersId}');
     CacheHelper.clearData();
     Get.offAllNamed(AppRouteKeys.login);
   }

@@ -37,13 +37,14 @@ dependencies:
   # Firebase And Notification
   firebase_messaging: ^14.6.0
   firebase_core: ^2.13.1
-  flutter_local_notifications: ^14.0.0+2
+  flutter_local_notifications: ^14.1.1
   cloud_firestore: ^4.7.0
 
   # Local Data Cache
   sqflite: ^2.2.8+2
   shared_preferences: ^2.1.1
   path: ^1.8.3
+  firebase_dynamic_links: ^5.3.3
 
   # Qrcode
   qr_flutter: ^4.1.0
@@ -76,7 +77,7 @@ dependencies:
   # check internet connection
   connectivity_plus: ^4.0.1
   get_it: ^7.3.0
-  firebase_analytics: ^10.2.1
+  firebase_analytics: ^10.4.3
   equatable: ^2.0.5
   responsive_builder: ^0.7.0
 
@@ -84,6 +85,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
