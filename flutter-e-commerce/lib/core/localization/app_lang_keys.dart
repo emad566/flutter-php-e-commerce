@@ -118,4 +118,19 @@ abstract class AppLangKeys {
   static const String goToCart	=	"Go to cart";
   static const String yourOrderHasBeenRequested	=	"Your order has been requested";
   static const String pleaseSelectAnAddress	=	"Please select an address";
+  static const String pending	= 'Pending';
+  static const String underPreparing	= 'Under preparing';
+  static const String onTheWay	= 'On the way';
+  static const String received	= 'Received';
+  static const String archive	= 'Archive';
+  static const String orders	= 'Orders';
+  static const String details	= 'Details';
+  static const String orderNumber	= 'Order Number';
+  static const String orderType	= 'Order Type';
+  static const String orderPrice	= 'Order Price';
+  static const String deliveryPrice	= 'Delivery Price';
+  static const String paymentMethod	= 'Payment Method';
+  static const String orderStatus	= 'Order Status';
+  // static const String 	=	"";
 }
+

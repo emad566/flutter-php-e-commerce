@@ -19,6 +19,7 @@ import 'package:flutter_e_commerce/features/home_layout/presentations/views/home
 import 'package:flutter_e_commerce/features/items/presentations/views/single/item_single_screen.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/list/items_screen.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
+import 'package:flutter_e_commerce/features/orders/presentations/views/orders_screen.dart';
 import 'package:flutter_e_commerce/features/search/presentations/views/search_screen.dart';
 import 'package:flutter_e_commerce/features/settings/presentations/views/settings_screen.dart';
 import 'package:get/get.dart';
@@ -96,6 +97,10 @@ List<GetPage<dynamic>>? appRoutes = [
   GetPage(
     name: AppRouteKeys.checkout,
     page: () => const CheckoutScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.orders,
+    page: () => const OrdersScreen(),
   ),
 
 ];

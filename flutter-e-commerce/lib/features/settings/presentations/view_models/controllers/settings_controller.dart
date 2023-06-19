@@ -16,6 +16,7 @@ abstract class SettingsController extends GetxController{
 
   void logOut();
   void goToAddress();
+  void goToOrders();
 }
 
 class SettingsControllerImp extends SettingsController{
@@ -29,5 +30,11 @@ class SettingsControllerImp extends SettingsController{
   @override
   void goToAddress() {
     Get.toNamed(AppRouteKeys.address);
+  }
+
+
+  @override
+  void goToOrders() {
+    Get.toNamed(AppRouteKeys.orders);
   }
 }

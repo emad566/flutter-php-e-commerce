@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/features/settings/presentations/view_models/controllers/settings_controller.dart';
+import 'package:flutter_e_commerce/features/settings/presentations/views/widgets/settings_lis_tile_item.dart';
 import 'package:get/get.dart';
 
 class SettingsListTiles extends StatelessWidget {
@@ -22,48 +24,40 @@ class SettingsListTiles extends StatelessWidget {
           ListTile(
             title: Text(
               'Disable Notifications'.tr,
-              style: AppStyles.style18Bold.copyWith(color: ThemeColors.tripleText),
+              style:
+                  AppStyles.style18Bold.copyWith(color: ThemeColors.tripleText),
             ),
             trailing: Switch(
               activeColor: ThemeColors.primaryClr,
-              onChanged: (val){
-
-              },
+              onChanged: (val) {},
               value: false,
             ),
-            onTap: (){},
+            onTap: () {},
           ),
-          ListTile(
-            title: Text(
-              'Address'.tr,
-              style: AppStyles.style18Bold.copyWith(color: ThemeColors.tripleText),
-            ),
-            trailing: Icon(Icons.location_on_outlined, size: 35, color: ThemeColors.primaryClr,),
-            onTap: ()=>controller.goToAddress(),
+          SettingsLisTileItem(
+            title: AppLangKeys.orders.tr,
+            iconData: Icons.location_on_outlined,
+            onTap: () => controller.goToOrders(),
           ),
-          ListTile(
-            title: Text(
-              'About Us'.tr,
-              style: AppStyles.style18Bold.copyWith(color: ThemeColors.tripleText),
-            ),
-            trailing: Icon(Icons.help_outline, size: 35, color: ThemeColors.primaryClr,),
-            onTap: (){},
+          SettingsLisTileItem(
+            title: 'Address'.tr,
+            iconData: Icons.location_on_outlined,
+            onTap: () => controller.goToAddress(),
           ),
-          ListTile(
-            title: Text(
-              'Contact Us'.tr,
-              style: AppStyles.style18Bold.copyWith(color: ThemeColors.tripleText),
-            ),
-            trailing: Icon(Icons.phone_callback_outlined, size: 35, color: ThemeColors.primaryClr,),
-            onTap: (){},
+          SettingsLisTileItem(
+            title: 'About Us'.tr,
+            iconData: Icons.help_outline,
+            onTap: () {},
           ),
-          ListTile(
-            title: Text(
-              'Log out'.tr,
-              style: AppStyles.style18Bold.copyWith(color: ThemeColors.tripleText),
-            ),
-            trailing: Icon(Icons.exit_to_app, size: 35, color: ThemeColors.primaryClr,),
-            onTap: ()=>controller.logOut(),
+          SettingsLisTileItem(
+            title: 'Contact Us'.tr,
+            iconData: Icons.phone_callback_outlined,
+            onTap: () {},
+          ),
+          SettingsLisTileItem(
+            title: 'Log out'.tr,
+            iconData: Icons.exit_to_app,
+            onTap: () => controller.logOut(),
           ),
         ],
       ),
