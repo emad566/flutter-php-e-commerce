@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/features/items/presentations/views/widgets/items_categories_list_view.dart';
-import 'package:flutter_e_commerce/features/items/presentations/views/widgets/items_list_grid.dart';
+import 'package:flutter_e_commerce/features/items/presentations/views/list/widgets/items_categories_list_view.dart';
+import 'package:flutter_e_commerce/features/items/presentations/views/list/widgets/items_list_grid.dart';
 
 class ItemsScreen extends StatelessWidget {
   const ItemsScreen({Key? key}) : super(key: key);

@@ -6,7 +6,7 @@ import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/section_title.dart';
 import 'package:flutter_e_commerce/features/address/data/models/address_list_model/address_model.dart';
 import 'package:flutter_e_commerce/features/address/presentations/view_models/controllers/address_controller.dart';
-import 'package:flutter_e_commerce/features/checkout/presentations/view_models/controllers/checkout_controller.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/checkout_controller.dart';
 import 'package:get/get.dart';
 
 class SelectAddress extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:flutter_e_commerce/core/constants/app_paths.dart';
 import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/section_title.dart';
-import 'package:flutter_e_commerce/features/checkout/presentations/view_models/controllers/checkout_controller.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/checkout_controller.dart';
 import 'package:get/get.dart';
 
 class SelectDeliveryType extends StatelessWidget {

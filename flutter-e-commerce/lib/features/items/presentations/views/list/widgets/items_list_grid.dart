@@ -3,7 +3,7 @@ import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/items_controller.dart';
-import 'package:flutter_e_commerce/features/items/presentations/views/widgets/item_list_view_item.dart';
+import 'package:flutter_e_commerce/features/items/presentations/views/list/widgets/item_list_view_item.dart';
 import 'package:get/get.dart';
 
 class ItemsListGrid extends StatelessWidget {

@@ -7,7 +7,7 @@ import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
 import 'package:flutter_e_commerce/features/auth/data/models/login_cached_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 import 'package:flutter_e_commerce/features/home_layout/presentations/view_models/controllers/home_layout_controller.dart';
-import 'package:flutter_e_commerce/features/item_single/data/repos/item_single_repo.dart';
+import 'package:flutter_e_commerce/features/items/data/repos/item_single_repo.dart';
 import 'package:get/get.dart';
 
 abstract class ItemSingleController extends GetxController{

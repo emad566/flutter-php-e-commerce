@@ -7,8 +7,8 @@ import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/items_controller.dart';
-import 'package:flutter_e_commerce/features/items/presentations/views/widgets/item_favorite_icon.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_e_commerce/features/items/presentations/views/list/widgets/item_favorite_icon.dart';
 
 class ItemListViewItem extends StatelessWidget {
   const ItemListViewItem({

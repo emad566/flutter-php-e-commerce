@@ -11,13 +11,13 @@ import 'package:flutter_e_commerce/features/auth/presentations/views/sign_up/sig
 import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassword/success_reset_password/success_reset_password_screen.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/success_sign_up/success_sign_up_screen.dart';
 import 'package:flutter_e_commerce/features/auth/presentations/views/forgetpassword/veryfy_code/verify_code_screen.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/views/cart_screen.dart';
-import 'package:flutter_e_commerce/features/checkout/presentations/views/checkout_screen.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/views/cart/cart_screen.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/views/checkout/checkout_screen.dart';
 import 'package:flutter_e_commerce/features/choose_language/presentations/views/choose_language_screen.dart';
 import 'package:flutter_e_commerce/features/home/presentations/views/home_screen.dart';
 import 'package:flutter_e_commerce/features/home_layout/presentations/views/home_layout_screen.dart';
-import 'package:flutter_e_commerce/features/item_single/presentations/views/item_single_screen.dart';
-import 'package:flutter_e_commerce/features/items/presentations/views/items_screen.dart';
+import 'package:flutter_e_commerce/features/items/presentations/views/single/item_single_screen.dart';
+import 'package:flutter_e_commerce/features/items/presentations/views/list/items_screen.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
 import 'package:flutter_e_commerce/features/search/presentations/views/search_screen.dart';
 import 'package:flutter_e_commerce/features/settings/presentations/views/settings_screen.dart';

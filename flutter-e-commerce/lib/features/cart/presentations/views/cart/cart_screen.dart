@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/services/size_config.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/button_bottom_nav.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/cart_controller.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_apply_coupon.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_header.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_items_list.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/views/widgets/cart_price_dart.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/views/cart/widgets/cart_apply_coupon.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/views/cart/widgets/cart_header.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/views/cart/widgets/cart_items_list.dart';
+import 'package:flutter_e_commerce/features/cart/presentations/views/cart/widgets/cart_price_dart.dart';
 import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {

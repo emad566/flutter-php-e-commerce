@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/api_links.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
-import 'package:flutter_e_commerce/features/item_single/presentations/view_models/controllers/item_single_controller.dart';
+import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/item_single_controller.dart';
 import 'package:get/get.dart';
 
 class ItemSingleHeader extends StatelessWidget {

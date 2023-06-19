@@ -7,11 +7,7 @@ import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
 import 'package:flutter_e_commerce/core/functions/snack_bar.dart';
 import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/features/auth/data/models/login_cached_model.dart';
-import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/cart_controller.dart';
-import 'package:flutter_e_commerce/features/checkout/data/repos/checkout_repo.dart';
-import 'package:flutter_e_commerce/features/home_layout/presentations/view_models/controllers/home_layout_controller.dart';
-import 'package:flutter_e_commerce/features/item_single/presentations/view_models/controllers/item_single_controller.dart';
-import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/items_controller.dart';
+import 'package:flutter_e_commerce/features/cart/data/repos/checkout_repo.dart';
 import 'package:get/get.dart';
 
 abstract class CheckoutController extends GetxController{
