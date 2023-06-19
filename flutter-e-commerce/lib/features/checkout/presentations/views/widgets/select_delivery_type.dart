@@ -22,12 +22,12 @@ class SelectDeliveryType extends StatelessWidget {
         Row(
           children: [
             InkWell(
-              onTap: () => controller.setDeliveryType('delivery'),
+              onTap: () => controller.setDeliveryType('0'),
               child: Card(
                 elevation: 5,
                 child: Container(
                   padding: const EdgeInsets.all(30),
-                  color: controller.deliveryType == 'delivery'
+                  color: controller.deliveryType == '0'
                       ? ThemeColors.secondClr
                       : ThemeColors.white,
                   child:Stack(
@@ -37,7 +37,7 @@ class SelectDeliveryType extends StatelessWidget {
                         AppPaths.deliveryImage2,
                         width: 80,
                       ),
-                      if (controller.deliveryType == 'delivery')
+                      if (controller.deliveryType == '0')
                         Positioned(
                           top: -15,
                           left: -15,
@@ -56,12 +56,12 @@ class SelectDeliveryType extends StatelessWidget {
               width: 20,
             ),
             InkWell(
-              onTap: () => controller.setDeliveryType('thru'),
+              onTap: () => controller.setDeliveryType('1'),
               child: Card(
                 elevation: 5,
                 child: Container(
                   padding: const EdgeInsets.all(30),
-                  color: controller.deliveryType == 'thru'
+                  color: controller.deliveryType == '1'
                       ? ThemeColors.secondClr
                       : ThemeColors.white,
                   child: Stack(
@@ -71,7 +71,7 @@ class SelectDeliveryType extends StatelessWidget {
                         AppPaths.drivethruImage,
                         width: 80,
                       ),
-                      if (controller.deliveryType == 'thru')
+                      if (controller.deliveryType == '1')
                         Positioned(
                           top: -15,
                           left: -15,

@@ -27,7 +27,7 @@ class CartScreen extends StatelessWidget {
             ),
             const CartItemsList(),
             const SizedBox(height: 50,),
-            const CartApplyCoupon(),
+            CartApplyCoupon(),
             const SizedBox(height: 20,),
             const CartPrice(),
             ButtonBottomNav(

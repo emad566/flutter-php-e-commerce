@@ -14,17 +14,18 @@ import 'package:get/get.dart';
 abstract class CartController extends GetxController{
   AppStates state = AppInitialState();
   late TextEditingController couponController;
-  GlobalKey<FormFieldState> couponKey = GlobalKey<FormFieldState>();
+
 
   final LoginCachedModel loginCached = LoginCachedModel.fromJson();
   final CartRepoImp _repoImp = CartRepoImp(Get.find());
 
   List<ItemViewModel> items= [];
   double totalPrice =0;
-  double shipping = 0;
+  double shipping = 20;
   double totalWithShipping = 0;
   double discount = 0;
   double discountValue = 0;
+  String couponId = '';
 
   void list();
   void applyCoupon();
@@ -38,6 +39,7 @@ class CartControllerImp extends CartController{
 
   @override
   void list() async {
+
     state = AppLoadingState();
     update();
     Either<Failure, Map<String, dynamic>> result = await _repoImp.list({'usersid': loginCached.usersId});
@@ -70,6 +72,7 @@ class CartControllerImp extends CartController{
       update();
     }, (response) async {
       if (!response['status']) {
+        couponId = '';
         Get.snackbar(
           "Alert".tr,
           'Coupon Expired'.tr,
@@ -81,6 +84,7 @@ class CartControllerImp extends CartController{
           'Coupon Applied'.tr,
           snackPosition: SnackPosition.BOTTOM,
         );
+        couponId = response['data']['coupon_id'];
         discount = double.parse(response['data']['coupon_discount'].toString());
         setTotalPrice();
       }
@@ -135,9 +139,8 @@ class CartControllerImp extends CartController{
     }
 
     totalPrice = total;
-    shipping = 0.10 * totalPrice;
     totalWithShipping = totalPrice +  shipping;
-    discountValue = (totalWithShipping*discount / 100);
+    discountValue = (totalPrice*discount / 100);
     totalWithShipping -= discountValue;
     totalWithShipping = double.parse(totalWithShipping.toStringAsFixed(2).toString());
   }
@@ -160,7 +163,12 @@ class CartControllerImp extends CartController{
 
   @override
   void goToCheckout() {
-    Get.toNamed(AppRouteKeys.checkout);
+    Get.toNamed(AppRouteKeys.checkout, arguments: {
+      'ordersprice': totalPrice,
+      'pricedelivery': shipping,
+      'couponid': couponId,
+      'coupondiscount': discount,
+    });
   }
 
 }

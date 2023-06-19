@@ -115,4 +115,7 @@ Map<String, String> arTr = {
   AppLangKeys.cardsPayment	:	"كارت دفع",
   AppLangKeys.chooseDeliveryType	:	"طريقة التوصيل",
   AppLangKeys.shippingAddress	:	"عنوان الشحن",
+  AppLangKeys.goToCart	:	"اذهب للسلة",
+  AppLangKeys.yourOrderHasBeenRequested	:	"تم تأكيد الطلب، شكرا لك",
+  AppLangKeys.pleaseSelectAnAddress	:	"من فضلك اختر عنوان الشحن",
 };

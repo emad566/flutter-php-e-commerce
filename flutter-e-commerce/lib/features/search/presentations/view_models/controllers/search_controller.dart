@@ -102,7 +102,7 @@ class SearchControllerImp extends SearchController{
 
   @override
   void goToHomeScreen() {
-    Get.offAndToNamed(AppRouteKeys.homeLayout);
+    Get.offAndToNamed(AppRouteKeys.homeLayout, arguments: {'index': 0});
   }
 
   @override

@@ -20,4 +20,5 @@ abstract class ApiLinks {
   static const addressDelete= 'address/delete.php';
   static const addressView= 'address/view.php';
   static const applyCoupon= 'coupon/checkcoupon.php';
+  static const ordersCheckout= 'orders/checkout.php';
 }

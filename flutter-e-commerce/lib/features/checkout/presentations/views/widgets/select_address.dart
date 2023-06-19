@@ -18,68 +18,71 @@ class SelectAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CheckoutControllerImp controllerCheck = Get.put(CheckoutControllerImp());
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SectionTitle(title: AppLangKeys.shippingAddress.tr),
-        GetBuilder<AddressControllerImp>(
-          init: AddressControllerImp(),
-          builder: (controller) {
-            return HandleLoading(
-              state: controller.state,
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.listData.length,
-                itemBuilder: (context, index){
-                  AddressModel item = controller.listData[index];
-                  return InkWell(
-                    onTap: ()=>controllerCheck.setAddressId(index),
-                    child: Card(
-                      color: controllerCheck.addressId == index
-                          ? ThemeColors.secondClr
-                          : ThemeColors.white,
-                      margin: const EdgeInsets.all(10),
-                      elevation: 10,
+    return GetBuilder<AddressControllerImp>(
+      init: AddressControllerImp(),
+      builder: (controller) {
+        return Container(
+          child: controllerCheck.deliveryType == "1"? const Text('') :
+          HandleLoading(
+            state: controller.state,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SectionTitle(title: AppLangKeys.shippingAddress.tr),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: controller.listData.length,
+                  itemBuilder: (context, index){
+                    AddressModel item = controller.listData[index];
+                    return InkWell(
+                      onTap: ()=>controllerCheck.setAddressId(item.addressId),
+                      child: Card(
+                        color: controllerCheck.addressId == item.addressId
+                            ? ThemeColors.secondClr
+                            : ThemeColors.white,
+                        margin: const EdgeInsets.all(10),
+                        elevation: 10,
 
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Stack(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  item.addressName,
-                                  style: AppStyles.style18Bold.copyWith(color:  controllerCheck.addressId == index? ThemeColors.white : ThemeColors.primaryClr),
-                                ),
-                                Text(
-                                  item.addressCity,
-                                  style: AppStyles.style16Bold.copyWith(color:  controllerCheck.addressId == index? ThemeColors.white : ThemeColors.primaryClr),
-                                ),
-                                Text(
-                                  item.addressStreet,
-                                  style: AppStyles.style16Bold.copyWith(color:  controllerCheck.addressId == index? ThemeColors.white : ThemeColors.primaryClr),
-                                ),
-                              ],
-                            ),
-                            if(controllerCheck.addressId == index)
-                              Positioned(
-                                top: 5,
-                                left: 5,
-                                child:  Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
-                              )
-                          ],
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Stack(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    item.addressName,
+                                    style: AppStyles.style18Bold.copyWith(color:  controllerCheck.addressId == item.addressId? ThemeColors.white : ThemeColors.primaryClr),
+                                  ),
+                                  Text(
+                                    item.addressCity,
+                                    style: AppStyles.style16Bold.copyWith(color:  controllerCheck.addressId == item.addressId? ThemeColors.white : ThemeColors.primaryClr),
+                                  ),
+                                  Text(
+                                    item.addressStreet,
+                                    style: AppStyles.style16Bold.copyWith(color:  controllerCheck.addressId == item.addressId? ThemeColors.white : ThemeColors.primaryClr),
+                                  ),
+                                ],
+                              ),
+                              if(controllerCheck.addressId == item.addressId)
+                                Positioned(
+                                  top: 5,
+                                  left: 5,
+                                  child:  Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
+                                )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
-              ),
-            );
-          },
-        ),
-      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

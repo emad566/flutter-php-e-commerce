@@ -115,4 +115,7 @@ abstract class AppLangKeys {
   static const String chooseDeliveryType	=	"Choose Delivery Type";
   static const String shippingAddress	=	"Shipping Address";
   static const String pleaseFillThoseFieldsToCreateNewAccount	=	"PleaseFill those fields to create new account";
+  static const String goToCart	=	"Go to cart";
+  static const String yourOrderHasBeenRequested	=	"Your order has been requested";
+  static const String pleaseSelectAnAddress	=	"Please select an address";
 }

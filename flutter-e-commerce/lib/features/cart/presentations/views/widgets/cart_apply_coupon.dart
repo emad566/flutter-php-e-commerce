@@ -8,18 +8,20 @@ import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/cart/presentations/view_models/controllers/cart_controller.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class CartApplyCoupon extends StatelessWidget {
-  const CartApplyCoupon({
+  CartApplyCoupon({
     super.key,
   });
 
+  GlobalKey<FormFieldState> couponKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CartControllerImp>(
       init: CartControllerImp(),
       builder: (controller) {
-        return HandleLoading(
+        return (controller.items.isEmpty)? const Text('') : HandleLoading(
           state: controller.state,
           loadingLevel: 2,
           child: Row(
@@ -31,7 +33,7 @@ class CartApplyCoupon extends StatelessWidget {
                   hintText: 'Coupon'.tr,
                   prefixIcon: AppFieldIcon(iconData: Icons.vape_free),
                   controller: controller.couponController,
-                  inputKey: controller.couponKey,
+                  inputKey: couponKey,
                   borderColor: ThemeColors.secondClr,
                   isRequired: false,
                   onChange: (val){

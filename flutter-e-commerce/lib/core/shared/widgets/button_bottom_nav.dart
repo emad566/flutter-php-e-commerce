@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/app_styles.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 
+// ignore: must_be_immutable
 class ButtonBottomNav extends StatelessWidget {
-  const ButtonBottomNav({
-    super.key, required this.title, required this.onPress,
+  ButtonBottomNav({
+    super.key,
+    required this.title,
+    required this.onPress,
+    this.backgroundColor,
+    this.color,
   });
+
   final String title;
   final Function onPress;
+  Color? backgroundColor;
+  Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +24,12 @@ class ButtonBottomNav extends StatelessWidget {
       height: 40,
       child: MaterialButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: ThemeColors.secondClr,
-        onPressed: ()=>onPress(),
+        color: backgroundColor?? ThemeColors.secondClr,
+        onPressed: () => onPress(),
         child: Text(
           title,
           style: AppStyles.style18Bold.copyWith(
-            color: ThemeColors.white,
+            color: color?? ThemeColors.white,
           ),
           textAlign: TextAlign.center,
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/button_bottom_nav.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/handle_loading.dart';
 import 'package:flutter_e_commerce/features/checkout/presentations/view_models/controllers/checkout_controller.dart';
 import 'package:flutter_e_commerce/features/checkout/presentations/views/widgets/select_address.dart';
 import 'package:flutter_e_commerce/features/checkout/presentations/views/widgets/select_delivery_type.dart';
@@ -15,9 +16,17 @@ class CheckoutScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Checkout'.tr),
       ),
-      bottomNavigationBar: ButtonBottomNav(
-        title: 'Confirm'.tr,
-        onPress: () {},
+      bottomNavigationBar: GetBuilder<CheckoutControllerImp>(
+        init: CheckoutControllerImp(),
+        builder: (controller) {
+          return HandleLoading(
+            state: controller.state,
+            child: ButtonBottomNav(
+              title: 'Confirm'.tr,
+              onPress: () => controller.store(),
+            ),
+          );
+        },
       ),
       body: SingleChildScrollView(
         child: Padding(

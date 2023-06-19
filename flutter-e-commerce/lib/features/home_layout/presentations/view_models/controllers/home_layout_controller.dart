@@ -37,5 +37,10 @@ class HomeLayoutControllerImp extends HomeLayoutController{
     update();
   }
 
-
+  @override
+  void onInit() {
+    super.onInit();
+    currentIndex = Get.arguments['index']?? 0;
+    if(currentIndex != 0) update();
+  }
 }

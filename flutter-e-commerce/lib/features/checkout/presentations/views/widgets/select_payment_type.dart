@@ -20,25 +20,25 @@ class SelectPaymentType extends StatelessWidget {
       children: [
         SectionTitle(title: AppLangKeys.choosePaymentMethod.tr),
         InkWell(
-          onTap: ()=>controller.setPaymentType('cash'),
+          onTap: ()=>controller.setPaymentType('0'),
           child: Card(
             elevation: 5,
             child: Container(
               padding: const EdgeInsets.symmetric(
                   vertical: 5, horizontal: 20),
               decoration: BoxDecoration(
-                color: controller.paymentType == 'cash'? ThemeColors.secondClr : ThemeColors.white,
+                color: controller.paymentType == '0'? ThemeColors.secondClr : ThemeColors.white,
                 borderRadius: BorderRadius.circular(50),
               ),
               child: Row(
                 children: [
-                  if(controller.paymentType == 'cash')
+                  if(controller.paymentType == '0')
                     Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
                   const SizedBox(width: 20,),
                   Text(
                     AppLangKeys.cash.tr,
                     style: AppStyles.style18Bold.copyWith(
-                      color: controller.paymentType == 'cash'
+                      color: controller.paymentType == '0'
                           ? ThemeColors.white
                           : ThemeColors.secondClr,
                     ),
@@ -50,25 +50,25 @@ class SelectPaymentType extends StatelessWidget {
         ),
         const SizedBox(height: 10,),
         InkWell(
-          onTap: ()=>controller.setPaymentType('cards'),
+          onTap: ()=>controller.setPaymentType('1'),
           child: Card(
             elevation: 5,
             child: Container(
               padding: const EdgeInsets.symmetric(
                   vertical: 5, horizontal: 20),
               decoration: BoxDecoration(
-                color: controller.paymentType == 'cards'? ThemeColors.secondClr : ThemeColors.white,
+                color: controller.paymentType == '1'? ThemeColors.secondClr : ThemeColors.white,
                 borderRadius: BorderRadius.circular(50),
               ),
               child: Row(
                 children: [
-                  if(controller.paymentType == 'cards')
+                  if(controller.paymentType == '1')
                     Icon(Icons.check_circle_outline, size: 30, color: ThemeColors.white,),
                   const SizedBox(width: 20,),
                   Text(
                     AppLangKeys.cardsPayment.tr,
                     style: AppStyles.style18Bold.copyWith(
-                      color: controller.paymentType == 'cards'
+                      color: controller.paymentType == '1'
                           ? ThemeColors.white
                           : ThemeColors.secondClr,
                     ),

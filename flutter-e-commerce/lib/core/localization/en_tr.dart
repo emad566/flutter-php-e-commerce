@@ -117,4 +117,7 @@ Map<String, String> enTr = const {
   AppLangKeys.chooseDeliveryType	:	"Choose Delivery Type",
   AppLangKeys.shippingAddress	:	"Shipping Address",
   AppLangKeys.pleaseFillThoseFieldsToCreateNewAccount	:	"PleaseFill those fields to create new account",
+  AppLangKeys.goToCart	:	AppLangKeys.goToCart,
+  AppLangKeys.yourOrderHasBeenRequested	:	AppLangKeys.yourOrderHasBeenRequested,
+  AppLangKeys.pleaseSelectAnAddress	:	AppLangKeys.pleaseSelectAnAddress,
 };
