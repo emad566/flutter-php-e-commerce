@@ -2,6 +2,7 @@
 
 // ==========================================================
 //  Copyright Reserved Wael Wael Abo Hamza (Course Ecommerce)
+//  Refactored and updated by Emadeldeen Soliman (Multivendor E-commerce App)
 // ==========================================================
 
 // date_default_timezone_set("Asia/Damascus");
@@ -10,7 +11,7 @@ define("MB", 1048576);
 
 function filterRequest($requestname)
 {
-    return  htmlspecialchars(strip_tags($_POST[$requestname]));
+    return  htmlspecialchars(strip_tags(@$_POST[$requestname]));
 }
 
 function getAllData($table, $where = null, $values = null, $json = true)
@@ -296,7 +297,9 @@ function getViewItemsByCategoryId($userid, $categoryid){
                 SELECT favorite.favorite_itemsId FROM favorite
                 ) AND view_itemsview.categories_id=$categoryid
         ) view_itemsview_favorit  
-        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
+        LEFT JOIN (
+            SELECT * from cart WHERE cart_orders IS NULL
+        ) cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
         
         $stmt->execute();
         return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
@@ -320,7 +323,9 @@ function getViewItemsByUser($userid){
                 SELECT favorite.favorite_itemsId FROM favorite
                 ) 
         ) view_itemsview_favorit 
-        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id ");
+        LEFT JOIN (
+            SELECT * from cart WHERE cart_orders IS NULL
+        ) cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
         
         $stmt->execute();
         return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
@@ -340,7 +345,9 @@ function getViewItemsFavoriteByUser($userid){
         SELECT view_itemsview.*, 1 as favorite FROM view_itemsview 
                 INNER JOIN favorite on favorite.favorite_usersId = $userid AND favorite.favorite_itemsId=view_itemsview.items_id
         ) view_itemsview_favorit 
-        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
+        LEFT JOIN (
+            SELECT * from cart WHERE cart_orders IS NULL
+        ) cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
         
         $stmt->execute();
         return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
@@ -364,7 +371,10 @@ function getViewItemsCartByUser($userid){
                 SELECT favorite.favorite_itemsId FROM favorite
                 ) 
         ) view_itemsview_favorit 
-        RIGHT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id ");
+        RIGHT JOIN (
+            SELECT * from cart WHERE cart_orders IS NULL
+        ) cart 
+        ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id");
         
         $stmt->execute();
         return ['data'=>$stmt->fetchAll(PDO::FETCH_ASSOC), 'count'=>$stmt->rowCount()];
@@ -389,7 +399,9 @@ function getViewItemsBySearchByName($userid, $name){
                 SELECT favorite.favorite_itemsId FROM favorite
                 ) 
         ) view_itemsview_favorit 
-        LEFT JOIN cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id 
+        LEFT JOIN (
+            SELECT * from cart WHERE cart_orders IS NULL
+        ) cart ON cart.cart_usersid=$userid AND cart.cart_itemsid=view_itemsview_favorit.items_id
         where items_name_ar LIKE '%$name%' OR items_name LIKE '%$name%' 
         ");
         

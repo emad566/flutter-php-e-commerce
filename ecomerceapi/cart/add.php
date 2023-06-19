@@ -15,11 +15,11 @@ try {
     "cart_count" =>  $cart_count,
   );
 
-  $response = getData("cart", "cart_itemsid = $itemsid AND cart_usersid = $usersid" ,null  , false, true );
+  $response = getData("cart", "cart_itemsid = $itemsid AND cart_usersid = $usersid AND cart_orders IS NULL" ,null  , false, true );
   if($cart_count == 0){
-    deleteData("cart" , "cart_id  = (SELECT cart_id FROM cart WHERE cart_usersid = $usersid AND cart_itemsid = $itemsid) "); 
+    deleteData("cart" , "cart_id  = (SELECT cart_id FROM cart WHERE cart_usersid = $usersid AND cart_itemsid = $itemsid AND cart_orders IS NULL) "); 
   }else if($response['count']>0){
-    updateData("cart", $data, "cart_itemsid = $itemsid AND cart_usersid = $usersid");
+    updateData("cart", $data, "cart_itemsid = $itemsid AND cart_usersid = $usersid AND cart_orders IS NULL");
   }else{
     insertData("cart", $data);
   }
