@@ -131,6 +131,8 @@ abstract class AppLangKeys {
   static const String deliveryPrice	= 'Delivery Price';
   static const String paymentMethod	= 'Payment Method';
   static const String orderStatus	= 'Order Status';
+  static const String delivery	= 'Delivery';
+  static const String fromStore	= 'From Store';
   // static const String 	=	"";
 }
 

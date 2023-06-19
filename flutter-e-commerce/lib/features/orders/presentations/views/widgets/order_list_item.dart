@@ -26,7 +26,7 @@ class OrderListItem extends StatelessWidget {
                 '${AppLangKeys.orderNumber.tr}: ${item.ordersId}'),
             OrderFieldItem(
               label: '${AppLangKeys.orderType.tr}:',
-              value: item.ordersType!,
+              value: item.ordersType! == '0'? AppLangKeys.delivery.tr : AppLangKeys.fromStore.tr,
             ),
             OrderFieldItem(
               label: '${AppLangKeys.orderPrice.tr}:',
@@ -38,7 +38,7 @@ class OrderListItem extends StatelessWidget {
             ),
             OrderFieldItem(
               label: '${AppLangKeys.paymentMethod.tr}:',
-              value: item.ordersPaymentmethod!,
+              value: item.ordersPaymentmethod! == '0'? AppLangKeys.cash.tr : AppLangKeys.cardsPayment.tr,
             ),
             OrderFieldItem(
               label: '${AppLangKeys.orderStatus.tr}:',

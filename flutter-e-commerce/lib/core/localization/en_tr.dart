@@ -133,4 +133,6 @@ Map<String, String> enTr = const {
   AppLangKeys.deliveryPrice : AppLangKeys.deliveryPrice,
   AppLangKeys.paymentMethod : AppLangKeys.paymentMethod,
   AppLangKeys.orderStatus : AppLangKeys.orderStatus,
+  AppLangKeys.delivery : AppLangKeys.delivery,
+  AppLangKeys.fromStore : AppLangKeys.fromStore,
 };

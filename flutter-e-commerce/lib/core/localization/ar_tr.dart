@@ -131,4 +131,6 @@ Map<String, String> arTr = {
   AppLangKeys.deliveryPrice : "تكلفة الشحن",
   AppLangKeys.paymentMethod : "نوع الدفع",
   AppLangKeys.orderStatus : "حالة الطلب",
+  AppLangKeys.delivery : "شحن",
+  AppLangKeys.fromStore : "استلام من المخزن",
 };

@@ -36,7 +36,7 @@ class SettingsListTiles extends StatelessWidget {
           ),
           SettingsLisTileItem(
             title: AppLangKeys.orders.tr,
-            iconData: Icons.location_on_outlined,
+            iconData: Icons.card_travel,
             onTap: () => controller.goToOrders(),
           ),
           SettingsLisTileItem(
