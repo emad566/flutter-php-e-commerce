@@ -75,7 +75,7 @@ class LoginControllerImp extends LoginController {
                 ]);
 
             state = AppSuccessState();
-            Get.offAllNamed(AppRouteKeys.homeLayout, arguments: {'index': 0});
+            Get.offAllNamed(AppRouteKeys.homeLayout, arguments: {'index': 2});
           }
 
 

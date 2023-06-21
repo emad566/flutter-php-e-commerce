@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_commerce/features/items/presentations/views/list/widgets/items_categories_list_view.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/list/widgets/items_list_grid.dart';
 
 class ItemsScreen extends StatelessWidget {
@@ -17,7 +16,6 @@ class ItemsScreen extends StatelessWidget {
             children: [
               // HomeSearchBar(),
               SizedBox(height: 20,),
-              ItemsCategoriesListView(),
               ItemsListGrid(),
             ],
           ),

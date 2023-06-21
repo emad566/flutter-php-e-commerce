@@ -9,18 +9,18 @@ import 'package:flutter_e_commerce/features/home/data/models/home_model/item_vie
 import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/items_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/list/widgets/item_favorite_icon.dart';
+import 'package:get/get.dart';
 
 class ItemListViewItem extends StatelessWidget {
   const ItemListViewItem({
-    super.key,
-    required this.item, required this.controller,
+    super.key, required this.item,
   });
-  final ItemsControllerImp controller;
 
   final ItemViewModel item;
 
   @override
   Widget build(BuildContext context) {
+    ItemsControllerImp controller = Get.put(ItemsControllerImp());
     return InkWell(
       onTap: (){
         controller.goToItem(item);

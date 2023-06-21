@@ -9,9 +9,11 @@ class ItemFavoriteIcon extends StatelessWidget {
   const ItemFavoriteIcon({
     super.key,
     required this.item,
+    this.size =30,
   });
 
   final ItemViewModel item;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ItemFavoriteIcon extends StatelessWidget {
       init: ItemsControllerImp(),
       builder: (controllerFavorite) {
         return HandleLoading(
-          size: 30,
+          size: size,
           state: controllerFavorite.state,
           loadingLevel: 1,
           child: InkWell(
@@ -30,7 +32,7 @@ class ItemFavoriteIcon extends StatelessWidget {
               item.favorite
                   ? Icons.favorite
                   : Icons.favorite_border_outlined,
-              size: 20,
+              size: size-10,
               color: ThemeColors.secondClr,
             ),
           ),

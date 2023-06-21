@@ -18,8 +18,10 @@ import 'package:flutter_e_commerce/features/home/presentations/views/home_screen
 import 'package:flutter_e_commerce/features/home_layout/presentations/views/home_layout_screen.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/single/item_single_screen.dart';
 import 'package:flutter_e_commerce/features/items/presentations/views/list/items_screen.dart';
+import 'package:flutter_e_commerce/features/notifications/presentations/views/notifications_screen.dart';
 import 'package:flutter_e_commerce/features/on_boarding/presentations/views/on_boarding_screen.dart';
-import 'package:flutter_e_commerce/features/orders/presentations/views/orders_screen.dart';
+import 'package:flutter_e_commerce/features/orders/presentations/views/list/orders_screen.dart';
+import 'package:flutter_e_commerce/features/orders/presentations/views/single/orders_single_screen.dart';
 import 'package:flutter_e_commerce/features/search/presentations/views/search_screen.dart';
 import 'package:flutter_e_commerce/features/settings/presentations/views/settings_screen.dart';
 import 'package:get/get.dart';
@@ -102,5 +104,17 @@ List<GetPage<dynamic>>? appRoutes = [
     name: AppRouteKeys.orders,
     page: () => const OrdersScreen(),
   ),
+  GetPage(
+    name: AppRouteKeys.notifications,
+    page: () => const NotificationsScreen(),
+  ),
+  GetPage(
+    name: AppRouteKeys.notifications,
+    page: () => const NotificationsScreen(),
+  ),
 
+  GetPage(
+    name: AppRouteKeys.orderSingle,
+    page: () => const OrdersSingleScreen(),
+  ),
 ];

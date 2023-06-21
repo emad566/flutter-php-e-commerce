@@ -100,6 +100,6 @@ class ItemSingleControllerImp extends ItemSingleController{
   @override
   void goToCart() {
     Get.delete<HomeLayoutControllerImp>();
-    Get.offNamed(AppRouteKeys.homeLayout, arguments: {'index': 1});
+    Get.offNamed(AppRouteKeys.homeLayout, arguments: {'index': 4});
   }
 }

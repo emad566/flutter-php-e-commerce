@@ -4,6 +4,8 @@ import 'package:flutter_e_commerce/features/home/presentations/view_models/contr
 import 'package:flutter_e_commerce/features/home_layout/presentations/view_models/controllers/home_layout_controller.dart';
 import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/item_single_controller.dart';
 import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/items_controller.dart';
+import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/offers_controller.dart';
+import 'package:flutter_e_commerce/features/search/presentations/view_models/controllers/search_controller.dart';
 import 'package:get/get.dart';
 
 void deleteHomeControllers(){
@@ -13,4 +15,6 @@ void deleteHomeControllers(){
   Get.delete<CheckoutControllerImp>();
   Get.delete<ItemsControllerImp>();
   Get.delete<ItemSingleControllerImp>();
+  Get.delete<SearchControllerImp>();
+  Get.delete<OffersControllerImp>();
 }

@@ -14,7 +14,7 @@ class AppMiddleware extends GetMiddleware {
 
 
     if (isLogin()) {
-      return const RouteSettings(name: AppRouteKeys.homeLayout, arguments: {'index': 0});
+      return const RouteSettings(name: AppRouteKeys.homeLayout, arguments: {'index': 2});
     }
 
     if (!isShowOnBoardingScreen) {

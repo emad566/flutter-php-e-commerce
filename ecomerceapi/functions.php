@@ -246,7 +246,7 @@ function sendGCM($title, $message, $topic, $pageid, $pagename)
         ),
         'data' => array(
             "pageid" => $pageid,
-            "pagename" => $pagename
+            "pageName" => $pagename
         )
 
     );
@@ -254,7 +254,7 @@ function sendGCM($title, $message, $topic, $pageid, $pagename)
 
     $fields = json_encode($fields);
     $headers = array(
-        'Authorization: key=' . "",
+        'Authorization: key=' . "AAAAS2cVB6I:APA91bGX7ZRHRfd8FM-4bRwgwk1lfErSYNADxCpk1OvedB1fCG5S62Pddn00XcBaEkSY54cb4S7u-98F8N-THwQvPmt82YM9hIIImCOh0uPHLdWBnRHUUvhEgXsRXfDwnfXEsHXCm0F4",
         'Content-Type: application/json'
     );
 
@@ -411,4 +411,23 @@ function getViewItemsBySearchByName($userid, $name){
     } catch (\Throwable $th) {
         echo $th;
     } 
+}
+
+function applySQL($sql){
+    try {
+        global $con;
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $count  = $stmt->rowCount();
+    
+        if ($count > 0) {
+            echo json_encode(array("status" =>true, "message"=> "success", "data" => $data));
+        } else {
+            echo json_encode(array("status" =>false, "message"=> "failure"));
+        }
+    
+    } catch (\Throwable $th) {
+        echo $th;
+    }
 }

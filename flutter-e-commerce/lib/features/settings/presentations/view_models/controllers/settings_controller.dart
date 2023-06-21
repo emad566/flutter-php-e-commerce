@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
+import 'package:flutter_e_commerce/core/functions/lanch_url.dart';
 import 'package:flutter_e_commerce/core/services/cache_helper.dart';
 import 'package:flutter_e_commerce/features/auth/data/models/login_cached_model.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ abstract class SettingsController extends GetxController{
   void logOut();
   void goToAddress();
   void goToOrders();
+  void contactUs();
 }
 
 class SettingsControllerImp extends SettingsController{
@@ -39,5 +41,10 @@ class SettingsControllerImp extends SettingsController{
   @override
   void goToOrders() {
     Get.toNamed(AppRouteKeys.orders);
+  }
+
+  @override
+  void contactUs() {
+    launchURL('tel:+201021838680');
   }
 }

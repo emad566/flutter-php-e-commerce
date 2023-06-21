@@ -133,6 +133,18 @@ abstract class AppLangKeys {
   static const String orderStatus	= 'Order Status';
   static const String delivery	= 'Delivery';
   static const String fromStore	= 'From Store';
+  static const String notificationsList	= 'Notifications List';
+  static const String type	= 'Type';
+  static const String count	= 'Count';
+  static const String offers	= 'Offers';
+  static const String sales	= 'Sales';
+  static const String rate	= 'Rate';
+  static const String ratingDialog	= 'Rating Dialog';
+  static const String submit	= 'Submit';
+  static const String typeCommentHere	= 'Type comment here';
+  static const String tapStarToSetYourRatingAddMoreDescriptionHereIfYouWant	= 'Tap a star to set your rating. Add more description here if you want.';
+  static const String notValidData	= 'Not Valid Data';
+
   // static const String 	=	"";
 }
 

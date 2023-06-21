@@ -2,7 +2,7 @@
 
 include "./connect.php";
 
-$id = filterRequest("id");
+$order_id = filterRequest("order_id");
 
 $rating = filterRequest("rating");
 
@@ -14,4 +14,4 @@ $data = array(
     "orders_rating" =>  $rating
 );
 
-updateData("orders", $data, "orders_id = $id ");
+updateData("orders", $data, "orders_id = $order_id ");

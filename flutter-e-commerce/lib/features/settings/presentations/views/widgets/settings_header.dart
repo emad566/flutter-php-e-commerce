@@ -15,7 +15,7 @@ class SettingsHeader extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          height: 180,
+          height: 120,
           decoration: BoxDecoration(
             color: ThemeColors.primaryClr,
             borderRadius: const BorderRadius.vertical(
@@ -25,7 +25,7 @@ class SettingsHeader extends StatelessWidget {
         ),
 
         Positioned(
-          top: 85,
+          top: 25,
           left: Get.width/2-73,
           child: Container(
             padding: const EdgeInsets.all(2),

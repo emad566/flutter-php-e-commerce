@@ -2,7 +2,7 @@
 
 include "./connect.php"  ;
 
-$userid = filterRequest("id") ; 
+$userid = filterRequest("usersid") ; 
 
 getAllData("notification"  , "notification_userid = $userid") ; 
 

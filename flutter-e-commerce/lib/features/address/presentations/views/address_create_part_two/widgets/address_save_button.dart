@@ -17,7 +17,7 @@ class AddressSaveButton extends StatelessWidget {
         return HandleLoading(
           state: controller.state,
           child: ButtonBottomNav(
-            title: 'Save'.tr,
+            title: 'Submit'.tr,
             onPress: () => controller.store(),
           ),
         );

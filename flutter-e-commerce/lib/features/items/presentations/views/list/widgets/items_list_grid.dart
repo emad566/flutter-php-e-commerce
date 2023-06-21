@@ -34,7 +34,7 @@ class ItemsListGrid extends StatelessWidget {
             itemBuilder: (BuildContext context, index){
               ItemViewModel item = controller.items[index];
 
-              return ItemListViewItem(item: item, controller: controller,);
+              return ItemListViewItem(item: item);
             },
           ),
         ),

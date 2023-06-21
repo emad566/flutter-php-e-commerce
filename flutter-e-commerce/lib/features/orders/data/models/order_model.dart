@@ -20,6 +20,8 @@ class OrderModel extends Equatable {
 	final dynamic addressStreet;
 	final dynamic addressLat;
 	final dynamic addressLong;
+	final int? ordersRating;
+	final String? ordersNoteRating;
 
 	const OrderModel({
 		this.ordersId, 
@@ -41,6 +43,8 @@ class OrderModel extends Equatable {
 		this.addressStreet, 
 		this.addressLat, 
 		this.addressLong, 
+		this.ordersRating,
+		this.ordersNoteRating,
 	});
 
 	factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
@@ -63,6 +67,8 @@ class OrderModel extends Equatable {
 				addressStreet: json['address_street'] as dynamic,
 				addressLat: json['address_lat'] as dynamic,
 				addressLong: json['address_long'] as dynamic,
+				ordersRating: int.parse(json['orders_rating'] as String),
+				ordersNoteRating: json['orders_noterating'] as String?,
 			);
 
 	Map<String, dynamic> toJson() => {
@@ -85,6 +91,8 @@ class OrderModel extends Equatable {
 				'address_street': addressStreet,
 				'address_lat': addressLat,
 				'address_long': addressLong,
+				'orders_rating': ordersRating,
+				'orders_noterating': ordersNoteRating,
 			};
 
 	@override
@@ -109,6 +117,8 @@ class OrderModel extends Equatable {
 				addressStreet,
 				addressLat,
 				addressLong,
+				ordersRating,
+				ordersNoteRating,
 		];
 	}
 }

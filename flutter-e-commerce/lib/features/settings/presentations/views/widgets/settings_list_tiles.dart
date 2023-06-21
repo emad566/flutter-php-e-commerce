@@ -52,7 +52,7 @@ class SettingsListTiles extends StatelessWidget {
           SettingsLisTileItem(
             title: 'Contact Us'.tr,
             iconData: Icons.phone_callback_outlined,
-            onTap: () {},
+            onTap: ()=>controller.contactUs(),
           ),
           SettingsLisTileItem(
             title: 'Log out'.tr,

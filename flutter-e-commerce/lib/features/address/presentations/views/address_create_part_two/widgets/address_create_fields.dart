@@ -13,45 +13,48 @@ class AddressCreateFields extends StatelessWidget {
     AddressCreatePartTwoControllerImp controller =
         Get.put(AddressCreatePartTwoControllerImp());
 
-    return Column(
-      children: [
-        const SizedBox(
-          height: 10,
-        ),
-        CustomTextField(
-          hintText: 'name'.tr.capitalizeFirst.toString(),
-          prefixIcon: AppFieldIcon(iconData: Icons.supervised_user_circle),
-          controller: controller.nameController,
-          inputKey: controller.nameKey,
-          borderColor: ThemeColors.primaryClr,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        CustomTextField(
-          hintText: 'city'.tr.capitalizeFirst.toString(),
-          prefixIcon: AppFieldIcon(iconData: Icons.house_outlined),
-          controller: controller.cityController,
-          inputKey: controller.cityKey,
-          borderColor: ThemeColors.primaryClr,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        CustomTextField(
-          hintText: 'street'.tr.capitalizeFirst.toString(),
-          prefixIcon: AppFieldIcon(iconData: Icons.streetview_outlined),
-          controller: controller.streetController,
-          inputKey: controller.streetKey,
-          borderColor: ThemeColors.primaryClr,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
-        ),
-      ],
+    return Form(
+      key: controller.formKey,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          CustomTextField(
+            hintText: 'name'.tr.capitalizeFirst.toString(),
+            prefixIcon: AppFieldIcon(iconData: Icons.supervised_user_circle),
+            controller: controller.nameController,
+            inputKey: controller.nameKey,
+            borderColor: ThemeColors.primaryClr,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          CustomTextField(
+            hintText: 'city'.tr.capitalizeFirst.toString(),
+            prefixIcon: AppFieldIcon(iconData: Icons.house_outlined),
+            controller: controller.cityController,
+            inputKey: controller.cityKey,
+            borderColor: ThemeColors.primaryClr,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          CustomTextField(
+            hintText: 'street'.tr.capitalizeFirst.toString(),
+            prefixIcon: AppFieldIcon(iconData: Icons.streetview_outlined),
+            controller: controller.streetController,
+            inputKey: controller.streetKey,
+            borderColor: ThemeColors.primaryClr,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 18, horizontal: 30),
+          ),
+        ],
+      ),
     );
   }
 }

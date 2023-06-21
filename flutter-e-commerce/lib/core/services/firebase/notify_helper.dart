@@ -1,7 +1,4 @@
 // ignore_for_file: depend_on_referenced_packages
-
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -42,27 +39,31 @@ class NotifyHelper {
     });
   }
 
-  displayNotification(
-      {required String title,
+
+
+  displayNotification({required String title,
       required String body,
-      required Map<String, dynamic> data}) async {
+      required Map<String, dynamic> data
+  }) async {
     if (kDebugMode) {
       print(title);
       print(body);
     }
 
     AndroidNotificationDetails androidPlatformChannelSpecifics =
-        const AndroidNotificationDetails('your channel id', 'your channel name',
-            channelDescription: 'your channel description',
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker');
+    const AndroidNotificationDetails('your channel id', 'your channel name',
+        channelDescription: 'your channel description',
+        importance: Importance.max,
+        priority: Priority.high,
+        ticker: 'ticker',
+    );
 
-    DarwinNotificationDetails iOSPlatformChannelSpecifics =
-        const DarwinNotificationDetails();
+    DarwinNotificationDetails iOSPlatformChannelSpecifics = const DarwinNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics);
+        iOS: iOSPlatformChannelSpecifics,
+    );
+
     try {
       await flutterLocalNotificationsPlugin.show(
         0,

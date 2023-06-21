@@ -7,6 +7,7 @@ abstract class ItemsRepo {
   ApiService apiService;
   ItemsRepo(this.apiService);
   void list(Map<String, dynamic> data);
+  void offers(Map<String, dynamic> data);
   void addToFavorites(Map<String, dynamic> data);
   void removeFromFavorites(Map<String, dynamic> data);
 }
@@ -20,6 +21,10 @@ class ItemsRepoImp extends ItemsRepo {
   }
 
 
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> offers(Map<String, dynamic> data) async {
+    return await apiService.ajax(requestType: RequestType.post, endPoint: ApiLinks.offers, data: data);
+  }
 
   @override
   Future<Either<Failure, Map<String, dynamic>>> addToFavorites(Map<String, dynamic> data) async {

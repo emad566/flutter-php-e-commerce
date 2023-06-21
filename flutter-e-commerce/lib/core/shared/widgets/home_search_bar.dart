@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/services/theme_colors.dart';
 import 'package:flutter_e_commerce/core/shared/widgets/custom_text_field.dart';
 import 'package:flutter_e_commerce/features/search/presentations/view_models/controllers/search_controller.dart';
@@ -51,15 +52,18 @@ class HomeSearchBar extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Container(
-          padding: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            color: ThemeColors.fillClr,
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: const Icon(
-            Icons.notifications_active_outlined,
-            size: 40,
+        InkWell(
+          onTap: ()=>Get.toNamed(AppRouteKeys.notifications),
+          child: Container(
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: ThemeColors.fillClr,
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: const Icon(
+              Icons.notifications_active_outlined,
+              size: 40,
+            ),
           ),
         )
       ],

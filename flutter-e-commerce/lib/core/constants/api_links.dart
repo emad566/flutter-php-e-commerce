@@ -9,6 +9,8 @@ abstract class ApiLinks {
   static const resetPassword = 'forgetpassword/resetpassword.php';
   static const home = 'home.php';
   static const items = 'items/items.php';
+  static const offers = 'items/offers.php';
+  static const rating = 'rating.php';
   static const addToFavorites = 'favorite/add.php';
   static const removeFromFavorites = 'favorite/remove.php';
   static const viewFavorites = 'favorite/view.php';
@@ -22,4 +24,6 @@ abstract class ApiLinks {
   static const applyCoupon= 'coupon/checkcoupon.php';
   static const ordersCheckout= 'orders/checkout.php';
   static const indexOrders= 'orders/index.php';
+  static const orderSingle= 'orders/single.php';
+  static const notifications= 'notification.php';
 }

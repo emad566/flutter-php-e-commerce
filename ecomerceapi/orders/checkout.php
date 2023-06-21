@@ -12,11 +12,7 @@ $paymentmethod = filterRequest("paymentmethod");
 $coupondiscount = filterRequest("coupondiscount");
 
 
-if ($orderstype == "1") {
-    $pricedelivery = 0;
-}
 
-$totalprice = $ordersprice  + $pricedelivery;
 
 
 // Check Coupon 
@@ -29,11 +25,19 @@ $checkcoupon = getData("coupon", "coupon_id = '$couponid' AND coupon_expiredate 
 
 
 if ($checkcoupon  > 0) {
-    $totalprice =  $totalprice - $ordersprice * $coupondiscount / 100;
+    $coupondiscount = $ordersprice * $coupondiscount / 100;
+    $totalprice =  $ordersprice - $coupondiscount;
     $stmt = $con->prepare("UPDATE `coupon` SET  `coupon_count`= `coupon_count` - 1  WHERE coupon_id = '$couponid' ");
     $stmt->execute();
+}else{
+    $totalprice =  $ordersprice;
 }
 
+if ($orderstype == "1") {
+    $pricedelivery = 0;
+}
+
+$totalprice = $totalprice  + $pricedelivery;
 
 $data = array(
     "orders_usersid"  =>  $usersid,
@@ -43,9 +47,12 @@ $data = array(
     "orders_price"  =>  $ordersprice,
     "orders_coupon"  =>  $couponid == ''? null : $couponid,
     "orders_totalprice"  =>  $totalprice,
-    "orders_paymentmethod"  =>  $paymentmethod
+    "orders_paymentmethod"  =>  $paymentmethod,
+    "coupondiscount"  =>  $coupondiscount
 );
 
+// echo print_r($data);
+// exit;
 
 $count = insertData("orders", $data, false);
 

@@ -85,10 +85,12 @@ class ItemsControllerImp extends ItemsController{
   void onInit() {
     super.onInit();
     searchController = TextEditingController();
-    selectedCategoryIndex = Get.arguments['selectedCategoryIndex'];
-    categories = Get.arguments['categories'];
+    selectedCategoryIndex = Get.arguments['selectedCategoryIndex']?? 0;
+    categories = Get.arguments['categories']?? [];
     LoginCachedModel loginCached = LoginCachedModel.fromJson();
-    list({"categories_id": categories[selectedCategoryIndex].categoriesId, 'usersid':loginCached.usersId });
+    if(categories.isNotEmpty){
+      list({"categories_id": categories[selectedCategoryIndex].categoriesId, 'usersid':loginCached.usersId });
+    }
   }
 
   @override

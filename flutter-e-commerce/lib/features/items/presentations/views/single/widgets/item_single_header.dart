@@ -19,7 +19,7 @@ class ItemSingleHeader extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          height: 200,
+          height: 150,
           decoration: BoxDecoration(
             color: ThemeColors.primaryClr,
             borderRadius: const BorderRadius.vertical(
@@ -28,7 +28,7 @@ class ItemSingleHeader extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 75,
+          top: 25,
           left: Get.width * 0.095,
           child: Hero(
             tag: controller.single.itemsId,

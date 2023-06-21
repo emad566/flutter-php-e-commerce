@@ -4,6 +4,8 @@ import 'package:flutter_e_commerce/core/class/status_request.dart';
 import 'package:flutter_e_commerce/core/constants/app_route_keys.dart';
 import 'package:flutter_e_commerce/core/errors/failures.dart';
 import 'package:flutter_e_commerce/core/functions/empty_or_validate_state.dart';
+import 'package:flutter_e_commerce/core/functions/snack_bar.dart';
+import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
 import 'package:flutter_e_commerce/features/address/data/repos/address_repo.dart';
 import 'package:flutter_e_commerce/features/address/presentations/view_models/controllers/address_controller.dart';
 import 'package:flutter_e_commerce/features/auth/data/models/login_cached_model.dart';
@@ -11,6 +13,7 @@ import 'package:get/get.dart';
 
 abstract class AddressCreatePartTwoController extends GetxController{
   AppStates state = AppInitialState();
+  late GlobalKey<FormState> formKey; 
 
   GlobalKey<FormFieldState> nameKey = GlobalKey<FormFieldState>();
   late TextEditingController nameController;
@@ -31,6 +34,10 @@ class AddressCreatePartTwoControllerImp extends AddressCreatePartTwoController{
 
   @override
   void store() async {
+    if(!formKey.currentState!.validate()) {
+      snackBar(AppLangKeys.alarm.tr, AppLangKeys.notValidData.tr);
+      return;
+    }
     state = AppLoadingState();
     update();
     Map<String, dynamic> data = {
@@ -70,6 +77,7 @@ class AddressCreatePartTwoControllerImp extends AddressCreatePartTwoController{
   @override
   void onInit() {
     super.onInit();
+    formKey = GlobalKey<FormState>();
     nameController = TextEditingController();
     cityController = TextEditingController();
     streetController = TextEditingController();

@@ -1,7 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_e_commerce/core/services/firebase/notify_helper.dart';
-import 'package:flutter_e_commerce/core/services/service_locator.dart';
+import 'package:flutter_e_commerce/core/functions/display_in_app_notification.dart';
 
 class CustomFirebaseMessaging {
   Future<void> requestNotificationPermission() async {
@@ -32,10 +31,17 @@ class CustomFirebaseMessaging {
           print('Message also contained a notification: ${message.notification!.title} | ${message.notification!.body}');
         }
 
-        getIt<NotifyHelper>().displayNotification(
+        displayInAppNotification(
             title: message.notification!.title!,
             body: message.notification!.body!,
-            data: message.data);
+            data: message.data
+        );
+
+        // getIt<NotifyHelper>().displayNotification(
+        //     title: message.notification!.title!,
+        //     body: message.notification!.body!,
+        //     data: message.data
+        // );
       }
     });
   }

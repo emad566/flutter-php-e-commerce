@@ -111,7 +111,7 @@ class CheckoutControllerImp extends CheckoutController{
   @override
   void goToHomeScreen() {
     deleteHomeControllers();
-    Get.offNamed(AppRouteKeys.homeLayout, arguments: {'index': 0});
+    Get.offNamed(AppRouteKeys.homeLayout, arguments: {'index': 2});
   }
 
   @override
