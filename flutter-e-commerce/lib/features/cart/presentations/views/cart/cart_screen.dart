@@ -32,11 +32,16 @@ class CartScreen extends StatelessWidget {
               const SizedBox(height: 20,),
               const CartPrice(),
               const SizedBox(height: 20,),
-              if(controller.items.isNotEmpty)
-              ButtonBottomNav(
-                title: 'Confirm'.tr,
-                onPress: () =>controller.goToCheckout(),
+              GetBuilder<CartControllerImp>(
+                init: CartControllerImp(),
+                builder: (controller){
+                  return  (controller.items.isEmpty)? const Text('') : ButtonBottomNav(
+                    title: 'Confirm'.tr,
+                    onPress: () =>controller.goToCheckout(),
+                  );
+                },
               ),
+
               const SizedBox(
                 height: 60,
               ),

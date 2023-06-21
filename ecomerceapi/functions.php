@@ -413,7 +413,7 @@ function getViewItemsBySearchByName($userid, $name){
     } 
 }
 
-function applySQL($sql){
+function applySQL($sql, $print=true){
     try {
         global $con;
         $stmt = $con->prepare($sql);
@@ -421,6 +421,13 @@ function applySQL($sql){
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $count  = $stmt->rowCount();
     
+        if(!$print){
+            return [
+                'count'=>$count,
+                'data'=>$data,
+            ];
+        }
+
         if ($count > 0) {
             echo json_encode(array("status" =>true, "message"=> "success", "data" => $data));
         } else {

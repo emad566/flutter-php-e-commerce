@@ -73,6 +73,7 @@ class FavoriteControllerImp extends FavoriteController{
 
   @override
   void goToItem(ItemViewModel item) {
+    
     Get.toNamed(AppRouteKeys.itemSingle, arguments: {'single': item});
   }
 

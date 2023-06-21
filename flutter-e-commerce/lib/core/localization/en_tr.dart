@@ -146,4 +146,5 @@ Map<String, String> enTr = const {
   AppLangKeys.typeCommentHere : AppLangKeys.typeCommentHere,
   AppLangKeys.tapStarToSetYourRatingAddMoreDescriptionHereIfYouWant : AppLangKeys.tapStarToSetYourRatingAddMoreDescriptionHereIfYouWant,
   AppLangKeys.notValidData : AppLangKeys.notValidData,
+  AppLangKeys.topSelling : AppLangKeys.topSelling,
 };

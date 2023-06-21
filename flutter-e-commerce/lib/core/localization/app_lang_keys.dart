@@ -144,6 +144,7 @@ abstract class AppLangKeys {
   static const String typeCommentHere	= 'Type comment here';
   static const String tapStarToSetYourRatingAddMoreDescriptionHereIfYouWant	= 'Tap a star to set your rating. Add more description here if you want.';
   static const String notValidData	= 'Not Valid Data';
+  static const String topSelling	= 'Top Selling';
 
   // static const String 	=	"";
 }

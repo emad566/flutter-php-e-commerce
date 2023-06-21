@@ -9,6 +9,7 @@ import 'package:flutter_e_commerce/features/home/data/models/home_model/category
 import 'package:flutter_e_commerce/features/home/data/models/home_model/home_model.dart';
 import 'package:flutter_e_commerce/features/home/data/models/home_model/item_view_model.dart';
 import 'package:flutter_e_commerce/features/home/data/repos/home_repo.dart';
+import 'package:flutter_e_commerce/features/items/presentations/view_models/controllers/items_controller.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController{
@@ -69,6 +70,7 @@ class HomeControllerImp extends HomeController{
 
   @override
   void goToItems(int index) {
+    Get.delete<ItemsControllerImp>();
     Get.toNamed(
       AppRouteKeys.items,
       arguments: {

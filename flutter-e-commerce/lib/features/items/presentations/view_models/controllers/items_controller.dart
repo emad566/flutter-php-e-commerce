@@ -102,6 +102,7 @@ class ItemsControllerImp extends ItemsController{
 
   @override
   void goToItem(ItemViewModel item) {
+    
     Get.toNamed(AppRouteKeys.itemSingle, arguments: {'single': item});
   }
 }

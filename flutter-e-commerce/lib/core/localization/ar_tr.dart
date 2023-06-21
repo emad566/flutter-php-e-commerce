@@ -144,4 +144,5 @@ Map<String, String> arTr = {
   AppLangKeys.typeCommentHere : "اكتب تعليقك هنا",
   AppLangKeys.tapStarToSetYourRatingAddMoreDescriptionHereIfYouWant : "اضغط علي نجمة للتقيم، كذلك يمكنك إضافة تعليق.",
   AppLangKeys.notValidData : "تأكد من إدخال جميع البيانات بشكل سليم",
+  AppLangKeys.topSelling : "الأكثر مبيعا",
 };

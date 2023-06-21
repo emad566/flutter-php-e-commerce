@@ -107,6 +107,7 @@ class SearchControllerImp extends SearchController{
 
   @override
   void goToItem(ItemViewModel item) {
+
     Get.toNamed(AppRouteKeys.itemSingle, arguments: {'single': item});
   }
 

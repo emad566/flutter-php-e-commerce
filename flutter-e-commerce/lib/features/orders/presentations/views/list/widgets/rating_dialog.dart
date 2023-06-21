@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_e_commerce/core/constants/app_paths.dart';
 import 'package:flutter_e_commerce/core/localization/app_lang_keys.dart';
+import 'package:flutter_e_commerce/core/shared/widgets/circle_image.dart';
 import 'package:flutter_e_commerce/features/orders/data/models/order_model.dart';
 import 'package:flutter_e_commerce/features/orders/presentations/view_models/controllers/orders_controller.dart';
 import 'package:rating_dialog/rating_dialog.dart';
@@ -27,10 +28,7 @@ void showRatingDialog(OrderModel item) {
         textAlign: TextAlign.center,
         style: const TextStyle(fontSize: 16),
       ),
-      image: Image.asset(
-        AppPaths.logo,
-        width: 30,
-      ),
+      image: CircleImage(radius: 100, path: AppPaths.logo),
       submitButtonText: AppLangKeys.submit.tr,
       commentHint: AppLangKeys.typeCommentHere.tr,
       onCancelled: () {},
@@ -41,3 +39,4 @@ void showRatingDialog(OrderModel item) {
     ),
   );
 }
+
